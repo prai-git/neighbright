@@ -54,3 +54,23 @@
 
 ### Deviations
 - None — all keys referenced by components verified against `en.json` before build.
+
+## Module 04 — Landing Page
+**Date:** 2026-05-03  
+**Status:** ✅ Complete
+
+### Changes
+- Created `src/components/landing/` directory with 7 section components
+- `LandingHero.jsx` — full-viewport hero with animated logo, tagline, CTA, scroll hint, decorative background blobs
+- `LandingFeatures.jsx` — 4 feature cards in responsive grid (1/2/4 col), scroll-animated with Framer Motion whileInView
+- `LandingHowItWorks.jsx` — 3 numbered steps with dashed connector line on desktop, scroll-animated
+- `LandingAudience.jsx` — 3 audience cards (Parents, Therapists, Teachers), outlined variant
+- `LandingEvidence.jsx` — evidence paragraph, disclaimer box with ⚕️, multilingual flags section
+- `LandingFeedback.jsx` — feedback CTA linking to GitHub Issues (configurable via `FEEDBACK_URL` constant)
+- `LandingFooter.jsx` — dark footer, 3 columns, GitHub link with SVG icon, footer tagline
+- Replaced `src/pages/Landing.jsx` placeholder with full page assembly
+- All text uses `t()` — fully translatable via language switcher
+
+### Deviations
+- `Card` `color` prop fixed to use CSS variable syntax (`var(--color-primary)` etc.) instead of string names, matching the component's `style` implementation
+- `Card` `padding="none"` used when custom padding applied via `className` to avoid double-padding
