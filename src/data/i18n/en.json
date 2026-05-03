@@ -3,7 +3,6 @@
     "name": "NeighBright",
     "tagline": "Find Your Voice, One Spark at a Time"
   },
-
   "nav": {
     "home": "Home",
     "talkBoard": "Talk Board",
@@ -15,7 +14,6 @@
     "getStarted": "Get Started",
     "language": "Language"
   },
-
   "landing": {
     "heroTitle": "Find Your Voice, One Spark at a Time",
     "heroDescription": "Free speech therapy and learning tools for children — no account, no download, works on any device.",
@@ -57,7 +55,6 @@
     "footerContact": "Contact",
     "footerTagline": "Built for every family who deserves access."
   },
-
   "onboarding": {
     "welcomeTitle": "Welcome to NeighBright!",
     "welcomeDesc": "Let's set things up for your child.",
@@ -77,7 +74,6 @@
     "back": "Back",
     "startPracticing": "Start Practicing!"
   },
-
   "home": {
     "greeting": "Hi, {name}! Ready to practice?",
     "wordOfDay": "Word of the Day",
@@ -96,7 +92,6 @@
     "dailyGoal": "Daily Goal",
     "minutesLeft": "{minutes} minutes left today"
   },
-
   "talkBoard": {
     "sentenceStrip": "Tap pictures to build a sentence",
     "speak": "Speak",
@@ -125,7 +120,6 @@
       "routines": "Daily Routines"
     }
   },
-
   "sounds": {
     "title": "Sound Explorer",
     "chooseSound": "Choose a Sound",
@@ -158,7 +152,6 @@
       "glottal": "Throat Sounds"
     }
   },
-
   "words": {
     "title": "Word Builder",
     "learnMode": "Learn",
@@ -184,7 +177,6 @@
       "descriptors": "Descriptors"
     }
   },
-
   "games": {
     "title": "Match & Learn",
     "pictureMatch": "Picture Match",
@@ -208,7 +200,6 @@
     "findInstruction": "Find {count} {item}",
     "whichDoesntBelong": "Which one doesn't belong?"
   },
-
   "puzzles": {
     "title": "Puzzles",
     "tier1": "Early Learners",
@@ -237,7 +228,6 @@
     "completed": "Puzzle completed!",
     "locked": "Complete Tier {n} puzzles to unlock"
   },
-
   "rewards": {
     "stars": "{count} Stars",
     "streak": "{count} Day Streak",
@@ -260,7 +250,6 @@
       "soundStar": "Sound Star"
     }
   },
-
   "dashboard": {
     "title": "Parent Dashboard",
     "profile": "Profile",
@@ -292,7 +281,6 @@
     "thisMonth": "This Month",
     "allTime": "All Time"
   },
-
   "common": {
     "loading": "Loading...",
     "save": "Save",
@@ -312,32 +300,402 @@
     "minutes": "minutes",
     "seconds": "seconds"
   },
-
   "vocabulary": {
-    "happy": { "word": "happy", "phrase": "I am happy" },
-    "sad": { "word": "sad", "phrase": "I am sad" },
-    "angry": { "word": "angry", "phrase": "I am angry" },
-    "scared": { "word": "scared", "phrase": "I am scared" },
-    "tired": { "word": "tired", "phrase": "I am tired" },
-    "hungry": { "word": "hungry", "phrase": "I am hungry" },
-    "thirsty": { "word": "thirsty", "phrase": "I am thirsty" },
-    "sick": { "word": "sick", "phrase": "I feel sick" },
-    "excited": { "word": "excited", "phrase": "I am excited" },
-    "love": { "word": "love", "phrase": "I love you" },
-    "hurt": { "word": "hurt", "phrase": "I am hurt" },
-    "cold": { "word": "cold", "phrase": "I am cold" },
-    "hot": { "word": "hot", "phrase": "I am hot" },
-    "dog": { "word": "dog", "phrase": "I see a dog" },
-    "cat": { "word": "cat", "phrase": "I see a cat" },
-    "bird": { "word": "bird", "phrase": "I see a bird" },
-    "fish": { "word": "fish", "phrase": "I see a fish" },
-    "apple": { "word": "apple", "phrase": "I want an apple" },
-    "milk": { "word": "milk", "phrase": "I want milk" },
-    "water": { "word": "water", "phrase": "I want water" },
-    "ball": { "word": "ball", "phrase": "I see a ball" },
-    "book": { "word": "book", "phrase": "I want the book" },
-    "car": { "word": "car", "phrase": "I see a car" },
-    "more": { "word": "more", "phrase": "I want more" },
-    "stop": { "word": "stop", "phrase": "Please stop" }
+    "happy": {
+      "word": "happy",
+      "phrase": "I am happy"
+    },
+    "sad": {
+      "word": "sad",
+      "phrase": "I am sad"
+    },
+    "angry": {
+      "word": "angry",
+      "phrase": "I am angry"
+    },
+    "scared": {
+      "word": "scared",
+      "phrase": "I am scared"
+    },
+    "tired": {
+      "word": "tired",
+      "phrase": "I am tired"
+    },
+    "hungry": {
+      "word": "hungry",
+      "phrase": "I am hungry"
+    },
+    "thirsty": {
+      "word": "thirsty",
+      "phrase": "I am thirsty"
+    },
+    "sick": {
+      "word": "sick",
+      "phrase": "I feel sick"
+    },
+    "excited": {
+      "word": "excited",
+      "phrase": "I am excited"
+    },
+    "love": {
+      "word": "love",
+      "phrase": "I love you"
+    },
+    "hurt": {
+      "word": "hurt",
+      "phrase": "I am hurt"
+    },
+    "cold": {
+      "word": "cold",
+      "phrase": "I am cold"
+    },
+    "hot": {
+      "word": "hot",
+      "phrase": "I am hot"
+    },
+    "dog": {
+      "word": "dog",
+      "phrase": "I see a dog"
+    },
+    "cat": {
+      "word": "cat",
+      "phrase": "I see a cat"
+    },
+    "bird": {
+      "word": "bird",
+      "phrase": "I see a bird"
+    },
+    "fish": {
+      "word": "fish",
+      "phrase": "I see a fish"
+    },
+    "apple": {
+      "word": "apple",
+      "phrase": "I want an apple"
+    },
+    "milk": {
+      "word": "milk",
+      "phrase": "I want milk"
+    },
+    "water": {
+      "word": "water",
+      "phrase": "I want water"
+    },
+    "ball": {
+      "word": "ball",
+      "phrase": "I see a ball"
+    },
+    "book": {
+      "word": "book",
+      "phrase": "I want the book"
+    },
+    "car": {
+      "word": "car",
+      "phrase": "I want to go in the car"
+    },
+    "more": {
+      "word": "more",
+      "phrase": "I want more"
+    },
+    "stop": {
+      "word": "stop",
+      "phrase": "Please stop"
+    },
+    "cow": {
+      "word": "cow",
+      "phrase": "I see a cow"
+    },
+    "pig": {
+      "word": "pig",
+      "phrase": "I see a pig"
+    },
+    "duck": {
+      "word": "duck",
+      "phrase": "I see a duck"
+    },
+    "horse": {
+      "word": "horse",
+      "phrase": "I see a horse"
+    },
+    "sheep": {
+      "word": "sheep",
+      "phrase": "I see a sheep"
+    },
+    "lion": {
+      "word": "lion",
+      "phrase": "I see a lion"
+    },
+    "frog": {
+      "word": "frog",
+      "phrase": "I see a frog"
+    },
+    "bear": {
+      "word": "bear",
+      "phrase": "I see a bear"
+    },
+    "banana": {
+      "word": "banana",
+      "phrase": "I want a banana"
+    },
+    "bread": {
+      "word": "bread",
+      "phrase": "I want bread"
+    },
+    "cookie": {
+      "word": "cookie",
+      "phrase": "I want a cookie"
+    },
+    "rice": {
+      "word": "rice",
+      "phrase": "I want rice"
+    },
+    "egg": {
+      "word": "egg",
+      "phrase": "I want an egg"
+    },
+    "juice": {
+      "word": "juice",
+      "phrase": "I want juice"
+    },
+    "cheese": {
+      "word": "cheese",
+      "phrase": "I want cheese"
+    },
+    "chicken": {
+      "word": "chicken",
+      "phrase": "I want chicken"
+    },
+    "pizza": {
+      "word": "pizza",
+      "phrase": "I want pizza"
+    },
+    "eat": {
+      "word": "eat",
+      "phrase": "I want to eat"
+    },
+    "drink": {
+      "word": "drink",
+      "phrase": "I want to drink"
+    },
+    "play": {
+      "word": "play",
+      "phrase": "I want to play"
+    },
+    "sleep": {
+      "word": "sleep",
+      "phrase": "I want to sleep"
+    },
+    "read": {
+      "word": "read",
+      "phrase": "I want to read"
+    },
+    "wash": {
+      "word": "wash",
+      "phrase": "I need to wash"
+    },
+    "sit": {
+      "word": "sit",
+      "phrase": "Please sit down"
+    },
+    "run": {
+      "word": "run",
+      "phrase": "I want to run"
+    },
+    "hug": {
+      "word": "hug",
+      "phrase": "I want a hug"
+    },
+    "mama": {
+      "word": "mama",
+      "phrase": "I want mama"
+    },
+    "papa": {
+      "word": "papa",
+      "phrase": "I want papa"
+    },
+    "baby": {
+      "word": "baby",
+      "phrase": "That is a baby"
+    },
+    "sister": {
+      "word": "sister",
+      "phrase": "That is my sister"
+    },
+    "brother": {
+      "word": "brother",
+      "phrase": "That is my brother"
+    },
+    "grandma": {
+      "word": "grandma",
+      "phrase": "I want grandma"
+    },
+    "grandpa": {
+      "word": "grandpa",
+      "phrase": "I want grandpa"
+    },
+    "teacher": {
+      "word": "teacher",
+      "phrase": "That is my teacher"
+    },
+    "friend": {
+      "word": "friend",
+      "phrase": "That is my friend"
+    },
+    "doctor": {
+      "word": "doctor",
+      "phrase": "I see the doctor"
+    },
+    "home": {
+      "word": "home",
+      "phrase": "I want to go home"
+    },
+    "school": {
+      "word": "school",
+      "phrase": "I am at school"
+    },
+    "park": {
+      "word": "park",
+      "phrase": "I want to go to the park"
+    },
+    "store": {
+      "word": "store",
+      "phrase": "We are at the store"
+    },
+    "outside": {
+      "word": "outside",
+      "phrase": "I want to go outside"
+    },
+    "bathroom": {
+      "word": "bathroom",
+      "phrase": "I need the bathroom"
+    },
+    "bed": {
+      "word": "bed",
+      "phrase": "I want to go to bed"
+    },
+    "kitchen": {
+      "word": "kitchen",
+      "phrase": "I am in the kitchen"
+    },
+    "yard": {
+      "word": "yard",
+      "phrase": "I want to play in the yard"
+    },
+    "mouth": {
+      "word": "mouth",
+      "phrase": "My mouth hurts"
+    },
+    "nose": {
+      "word": "nose",
+      "phrase": "My nose is runny"
+    },
+    "eyes": {
+      "word": "eyes",
+      "phrase": "My eyes hurt"
+    },
+    "ears": {
+      "word": "ears",
+      "phrase": "My ears hurt"
+    },
+    "hands": {
+      "word": "hands",
+      "phrase": "My hands are dirty"
+    },
+    "feet": {
+      "word": "feet",
+      "phrase": "My feet hurt"
+    },
+    "head": {
+      "word": "head",
+      "phrase": "My head hurts"
+    },
+    "tummy": {
+      "word": "tummy",
+      "phrase": "My tummy hurts"
+    },
+    "shirt": {
+      "word": "shirt",
+      "phrase": "I want my shirt"
+    },
+    "pants": {
+      "word": "pants",
+      "phrase": "I want my pants"
+    },
+    "shoes": {
+      "word": "shoes",
+      "phrase": "I want my shoes"
+    },
+    "hat": {
+      "word": "hat",
+      "phrase": "I want my hat"
+    },
+    "socks": {
+      "word": "socks",
+      "phrase": "I want my socks"
+    },
+    "jacket": {
+      "word": "jacket",
+      "phrase": "I want my jacket"
+    },
+    "red": {
+      "word": "red",
+      "phrase": "I see red"
+    },
+    "blue": {
+      "word": "blue",
+      "phrase": "I see blue"
+    },
+    "green": {
+      "word": "green",
+      "phrase": "I see green"
+    },
+    "yellow": {
+      "word": "yellow",
+      "phrase": "I see yellow"
+    },
+    "orange": {
+      "word": "orange",
+      "phrase": "I see orange"
+    },
+    "purple": {
+      "word": "purple",
+      "phrase": "I see purple"
+    },
+    "white": {
+      "word": "white",
+      "phrase": "I see white"
+    },
+    "black": {
+      "word": "black",
+      "phrase": "I see black"
+    },
+    "wakeUp": {
+      "word": "wake up",
+      "phrase": "Time to wake up"
+    },
+    "brushTeeth": {
+      "word": "brush teeth",
+      "phrase": "Time to brush teeth"
+    },
+    "eatBreakfast": {
+      "word": "eat breakfast",
+      "phrase": "Time to eat breakfast"
+    },
+    "getDressed": {
+      "word": "get dressed",
+      "phrase": "Time to get dressed"
+    },
+    "goToSchool": {
+      "word": "go to school",
+      "phrase": "Time to go to school"
+    },
+    "bathTime": {
+      "word": "bath time",
+      "phrase": "Time for a bath"
+    },
+    "bedtime": {
+      "word": "bedtime",
+      "phrase": "Time for bed"
+    }
   }
 }

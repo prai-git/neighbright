@@ -100,3 +100,22 @@
 ### Deviations
 - `SmartRedirect` component added (not in original spec) — spec said to handle redirect in `App.jsx` conditionally; cleaner as a component
 - Dexie `progress` query uses `.filter()` instead of `.where().startsWith()` since `createdAt` is not an indexed range field
+
+## Module 06 — Talk Board
+**Date:** 2026-05-03  
+**Status:** ✅ Complete
+
+### Changes
+- Created `src/hooks/useSpeech.js` — speech synthesis hook with language filtering, IndexedDB voice persistence, rate/pitch settings, `voiceUnavailable` flag
+- Created `src/data/vocabulary.js` — full structured vocabulary for all 10 categories (≈100 words) with i18n keys and emojis
+- Added 76 vocabulary words to `src/data/i18n/en.json` (all categories: animals, food, actions, people, places, body, clothes, colors, routines)
+- Created `src/components/talkboard/CategorySelector.jsx` — horizontal scrollable tab row with active highlight
+- Created `src/components/talkboard/SentenceStrip.jsx` — AnimatePresence word chips, max 8 words, Speak/Clear buttons
+- Created `src/components/talkboard/PictureCardGrid.jsx` — 3/4/5 col grid, highlight animation on tap, loads custom cards from IndexedDB
+- Created `src/components/talkboard/QuickPhrases.jsx` — collapsible section, 6 quick-tap phrases
+- Created `src/components/talkboard/CustomCardForm.jsx` — Modal form, validates, writes to IndexedDB customVocabulary
+- Replaced `src/pages/TalkBoard.jsx` placeholder with full page assembly
+- Progress tracked to IndexedDB on every word tap, sentence speak, and quick phrase
+
+### Deviations
+- Bundle size warning emitted (>500KB) — expected for this phase; code-splitting can be added in Module 12 (PWA/deployment)
