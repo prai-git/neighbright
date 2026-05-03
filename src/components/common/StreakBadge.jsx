@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../data/i18n';
 
 export default function StreakBadge({ streak = 0 }) {
   const { t } = useTranslation();
@@ -13,7 +13,7 @@ export default function StreakBadge({ streak = 0 }) {
     >
       <span>🔥</span>
       <span>{streak}</span>
-      <span>{t('days')}</span>
+      <span>{t('common.days')}</span>
     </motion.span>
   );
 }

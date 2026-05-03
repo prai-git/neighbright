@@ -1,16 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import { useProfile } from '../../contexts/ProfileContext';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../data/i18n';
 import Badge from './Badge';
 
 const navItems = [
-  { emoji: '🏠', label: 'Home', to: '/home' },
-  { emoji: '💬', label: 'Talk Board', to: '/talk-board' },
-  { emoji: '🔊', label: 'Sounds', to: '/sound-explorer' },
-  { emoji: '🔤', label: 'Word Builder', to: '/word-builder' },
-  { emoji: '🎮', label: 'Games', to: '/match-and-learn' },
-  { emoji: '🧩', label: 'Puzzles', to: '/puzzles' },
-  { emoji: '⚙️', label: 'Dashboard', to: '/dashboard' },
+  { emoji: '🏠', labelKey: 'nav.home', to: '/home' },
+  { emoji: '💬', labelKey: 'nav.talkBoard', to: '/talk-board' },
+  { emoji: '🔊', labelKey: 'nav.sounds', to: '/sound-explorer' },
+  { emoji: '🔤', labelKey: 'nav.wordBuilder', to: '/word-builder' },
+  { emoji: '🎮', labelKey: 'nav.games', to: '/match-and-learn' },
+  { emoji: '🧩', labelKey: 'nav.puzzles', to: '/puzzles' },
+  { emoji: '⚙️', labelKey: 'nav.dashboard', to: '/dashboard' },
 ];
 
 export default function SideNav() {
@@ -45,7 +45,7 @@ export default function SideNav() {
           <li key={item.to}>
             <NavLink
               to={item.to}
-              aria-label={item.label}
+              aria-label={t(item.labelKey)}
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2.5 rounded-xl font-display text-sm font-semibold transition-colors ${
                   isActive
@@ -55,7 +55,7 @@ export default function SideNav() {
               }
             >
               <span className="text-lg">{item.emoji}</span>
-              <span>{t(item.label)}</span>
+              <span>{t(item.labelKey)}</span>
             </NavLink>
           </li>
         ))}

@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../data/i18n';
 
 const navItems = [
-  { emoji: '🏠', label: 'Home', to: '/home' },
-  { emoji: '💬', label: 'Talk', to: '/talk-board' },
-  { emoji: '🔤', label: 'Words', to: '/word-builder' },
-  { emoji: '🧩', label: 'Puzzles', to: '/puzzles' },
-  { emoji: '⚙️', label: 'Dashboard', to: '/dashboard' },
+  { emoji: '🏠', labelKey: 'nav.home', to: '/home' },
+  { emoji: '💬', labelKey: 'nav.talkBoard', to: '/talk-board' },
+  { emoji: '🔤', labelKey: 'nav.wordBuilder', to: '/word-builder' },
+  { emoji: '🧩', labelKey: 'nav.puzzles', to: '/puzzles' },
+  { emoji: '⚙️', labelKey: 'nav.dashboard', to: '/dashboard' },
 ];
 
 export default function BottomNav() {
@@ -21,7 +21,7 @@ export default function BottomNav() {
         <NavLink
           key={item.to}
           to={item.to}
-          aria-label={item.label}
+          aria-label={t(item.labelKey)}
           className={({ isActive }) =>
             `flex-1 flex flex-col items-center justify-center gap-0.5 h-full text-xs font-display font-semibold transition-colors ${
               isActive ? 'text-primary' : 'text-text-secondary'
@@ -29,7 +29,7 @@ export default function BottomNav() {
           }
         >
           <span className="text-xl">{item.emoji}</span>
-          <span>{t(item.label)}</span>
+          <span>{t(item.labelKey)}</span>
         </NavLink>
       ))}
     </nav>

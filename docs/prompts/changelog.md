@@ -35,3 +35,22 @@
 
 ### Deviations
 - `useTranslation` hook created as a passthrough stub (returns key as string) since Module 03 (i18n) has not been built yet. Will be replaced with full i18n implementation in Module 03.
+
+## Module 03 — i18n System
+**Date:** 2026-05-03  
+**Status:** ✅ Complete
+
+### Changes
+- Created `src/data/i18n/en.json` — master strings file covering all UI sections, nav labels, and 25 vocabulary entries
+- Created `src/data/i18n/hi.json` and `src/data/i18n/fr.json` as empty `{}` placeholders (populated at build-time via translation script)
+- Created `src/data/i18n/index.js` — real `useTranslation` hook with nested dot-notation key lookup, `{placeholder}` replacement, English fallback, and per-language selection via `LanguageContext`
+- Created `scripts/translate.js` — build-time OpenAI translation script (requires `OPENAI_API_KEY` in `.env`)
+- Added `"translate": "node --env-file=.env scripts/translate.js"` to `package.json` scripts
+- Updated `NavBar.jsx` — imports `useTranslation` from `../../data/i18n`; uses `t()` for app name, route labels, and "Get Started"
+- Updated `BottomNav.jsx` — replaced hardcoded labels with `t(labelKey)` using `nav.*` keys
+- Updated `SideNav.jsx` — replaced hardcoded labels with `t(labelKey)` using `nav.*` keys
+- Updated `StreakBadge.jsx` — corrected key from `t('days')` to `t('common.days')`
+- Updated `src/hooks/useTranslation.js` — now re-exports from `../data/i18n` for backward compatibility
+
+### Deviations
+- None — all keys referenced by components verified against `en.json` before build.
