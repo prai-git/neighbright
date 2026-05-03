@@ -22,3 +22,16 @@
 ### Deviations
 - `npm create vite` with "Remove existing files" deleted the `docs/` folder — user manually restored it. **Going forward: `docs/` must never be deleted.**
 - Replaced the default Vite-generated `index.css` entirely with Tailwind + theme tokens as specified.
+
+## Module 02 — Design System
+**Date:** 2026-05-03  
+**Status:** ✅ Complete
+
+### Changes
+- Created 18 reusable components in `src/components/common/`
+- Created `src/hooks/useTranslation.js` passthrough hook (upgraded in Module 03)
+- Created barrel export `src/components/common/index.js`
+- Wrapped all 7 app pages with `AppLayout`
+
+### Deviations
+- `useTranslation` hook created as a passthrough stub (returns key as string) since Module 03 (i18n) has not been built yet. Will be replaced with full i18n implementation in Module 03.
