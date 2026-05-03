@@ -74,3 +74,29 @@
 ### Deviations
 - `Card` `color` prop fixed to use CSS variable syntax (`var(--color-primary)` etc.) instead of string names, matching the component's `style` implementation
 - `Card` `padding="none"` used when custom padding applied via `className` to avoid double-padding
+
+## Module 05 — Onboarding & Profile
+**Date:** 2026-05-03  
+**Status:** ✅ Complete
+
+### Changes
+- Created `src/components/common/RequireProfile.jsx` — route guard redirecting to `/onboarding` if no profile in IndexedDB
+- Created `src/components/common/SmartRedirect.jsx` — redirects to `/home` if profile already exists (used on `/` and `/onboarding`)
+- Built full `Onboarding.jsx` multi-step wizard:
+  - Step 1: Language selection (3 tappable cards, calls `changeLanguage()` immediately, text re-renders)
+  - Step 2: Name input, 24-avatar emoji grid, 3-tier selector — all with inline validation
+  - AnimatePresence horizontal slide transition between steps
+  - Progress dots indicator
+  - Saves profile via `saveProfile()` → navigates to `/home`
+- Built full `Home.jsx` home screen:
+  - Personalized greeting with avatar + child's name
+  - StarCounter + StreakBadge from IndexedDB rewards table
+  - Word of the Day card (date-seeded, tap-to-hear via speechSynthesis)
+  - 5 module cards in responsive grid (1/2/3 col)
+  - Daily Goal progress bar (reads from IndexedDB progress + settings)
+- Updated `App.jsx` — all 7 app routes wrapped with `RequireProfile`; `/` and `/onboarding` wrapped with `SmartRedirect`
+- Added `RequireProfile` to barrel export in `index.js`
+
+### Deviations
+- `SmartRedirect` component added (not in original spec) — spec said to handle redirect in `App.jsx` conditionally; cleaner as a component
+- Dexie `progress` query uses `.filter()` instead of `.where().startsWith()` since `createdAt` is not an indexed range field

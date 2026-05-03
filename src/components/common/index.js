@@ -16,3 +16,4 @@ export { default as LanguageSwitcher } from './LanguageSwitcher';
 export { default as LoadingSpinner } from './LoadingSpinner';
 export { default as EmptyState } from './EmptyState';
 export { default as ConfettiEffect } from './ConfettiEffect';
+export { default as RequireProfile } from './RequireProfile';
