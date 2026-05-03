@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Nunito', sans-serif;
+  --font-hindi: 'Noto Sans Devanagari', sans-serif;
+
+  --color-primary: #FF6B6B;
+  --color-secondary: #74B9FF;
+  --color-accent: #FECA57;
+  --color-success: #55E6C1;
+  --color-background: #FFF9F0;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #2D3436;
+  --color-text-secondary: #636E72;
+  --color-error: #E17055;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
