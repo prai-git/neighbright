@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Bilabial stop: lips pressed together">
+  <!-- Head outline -->
+  <ellipse cx="100" cy="100" rx="80" ry="90" fill="#FFF5F0" stroke="#D1C4B8" stroke-width="2"/>
+  <!-- Upper lip -->
+  <path d="M60 108 Q80 102 100 104 Q120 102 140 108" fill="#FFAB91" stroke="#BF6B52" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Lower lip -->
+  <path d="M60 108 Q80 114 100 112 Q120 114 140 108" fill="#FFAB91" stroke="#BF6B52" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Lips pressed — highlight line -->
+  <path d="M65 108 Q100 107 135 108" stroke="#FF6B6B" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Teeth hints (hidden behind closed lips) -->
+  <!-- Nose -->
+  <ellipse cx="100" cy="82" rx="10" ry="7" fill="#FFCBB2" stroke="#D1997A" stroke-width="1.5"/>
+  <circle cx="96" cy="84" r="2" fill="#BF6B52"/>
+  <circle cx="104" cy="84" r="2" fill="#BF6B52"/>
+  <!-- Eye hints -->
+  <ellipse cx="76" cy="66" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="78" cy="67" r="3" fill="#4A3728"/>
+  <ellipse cx="124" cy="66" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="126" cy="67" r="3" fill="#4A3728"/>
+  <!-- Air pressure arrow (plosive release) -->
+  <path d="M148 108 L170 108" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" fill="none" stroke-dasharray="4 3"/>
+  <polygon points="170,104 178,108 170,112" fill="#FF6B6B"/>
+  <!-- Label -->
+  <text x="100" y="185" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#666">Lips closed → pop!</text>
+</svg>

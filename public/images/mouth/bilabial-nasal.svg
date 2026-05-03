@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Bilabial nasal: lips together, air through nose">
+  <!-- Head outline -->
+  <ellipse cx="100" cy="100" rx="80" ry="90" fill="#FFF5F0" stroke="#D1C4B8" stroke-width="2"/>
+  <!-- Upper lip -->
+  <path d="M60 108 Q80 102 100 104 Q120 102 140 108" fill="#FFAB91" stroke="#BF6B52" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Lower lip -->
+  <path d="M60 108 Q80 114 100 112 Q120 114 140 108" fill="#FFAB91" stroke="#BF6B52" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Lips pressed line -->
+  <path d="M65 108 Q100 107 135 108" stroke="#BF6B52" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Nose — highlighted for nasal airflow -->
+  <ellipse cx="100" cy="82" rx="12" ry="9" fill="#FF6B6B" stroke="#BF3A2E" stroke-width="2"/>
+  <circle cx="95" cy="85" r="2.5" fill="#BF3A2E"/>
+  <circle cx="105" cy="85" r="2.5" fill="#BF3A2E"/>
+  <!-- Nasal airflow arrows -->
+  <path d="M95 72 L88 55" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" fill="none"/>
+  <polygon points="84,56 88,48 92,56" fill="#FF6B6B"/>
+  <path d="M105 72 L112 55" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" fill="none"/>
+  <polygon points="108,56 112,48 116,56" fill="#FF6B6B"/>
+  <!-- Eyes -->
+  <ellipse cx="76" cy="66" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="78" cy="67" r="3" fill="#4A3728"/>
+  <ellipse cx="124" cy="66" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="126" cy="67" r="3" fill="#4A3728"/>
+  <!-- Label -->
+  <text x="100" y="185" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#666">Lips closed → hum through nose</text>
+</svg>

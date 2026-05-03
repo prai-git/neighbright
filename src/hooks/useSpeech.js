@@ -49,14 +49,14 @@ export function useSpeech() {
     });
   }, []);
 
-  const speak = useCallback((text) => {
+  const speak = useCallback((text, rateOverride) => {
     if (!window.speechSynthesis || !text) return;
     window.speechSynthesis.cancel();
 
     const utt = new SpeechSynthesisUtterance(text);
     utt.lang = `${LANG_MAP[language] || language}-`;
     if (selectedVoice) utt.voice = selectedVoice;
-    utt.rate = rateRef.current;
+    utt.rate = rateOverride !== undefined ? rateOverride : rateRef.current;
     utt.pitch = pitchRef.current;
 
     utt.onstart = () => setSpeaking(true);

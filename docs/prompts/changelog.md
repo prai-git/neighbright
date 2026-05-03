@@ -119,3 +119,27 @@
 
 ### Deviations
 - Bundle size warning emitted (>500KB) — expected for this phase; code-splitting can be added in Module 12 (PWA/deployment)
+
+## Module 07 — Sound Explorer
+**Date:** 2026-05-03  
+**Status:** ✅ Complete
+
+### Changes
+- Created `src/data/sounds.js` — all 24 consonant sounds across 7 articulation groups (bilabial, labiodental, dental, alveolar, palatal, velar, glottal), each with: symbol, mouthDescription, 3 examples per position (initial/medial/final), ageOfAcquisition, and all 5 level prompts (isolation/syllables/words/phrases/sentences)
+- Created 13 mouth-position SVG diagrams in `public/images/mouth/` — clean line art, active articulator highlighted in primary color: `bilabial-stop.svg`, `bilabial-nasal.svg`, `labiodental.svg`, `dental.svg`, `alveolar-stop.svg`, `alveolar-fricative.svg`, `alveolar-nasal.svg`, `alveolar-lateral.svg`, `palatal-fricative.svg`, `palatal-affricate.svg`, `palatal-r.svg`, `velar.svg`, `glottal.svg`
+- Extended `sounds` section in `src/data/i18n/en.json` with additional keys: `chooseSoundGroup`, `playSortingGame`, `sortDragPrompt`, `ageAcquisition`, `practiceLevel`, `levelComplete`, `roundResult`, `gameComplete`, `backToGroups`, `backToSounds`, `recordingNotSupported`, `micPermissionDenied`, `examples`, `initial`, `medial`, `final`
+- Created `src/hooks/useAudioRecorder.js` — `MediaRecorder` wrapper with mic permission handling, Blob URL management, `isSupported` flag, graceful permission-denied error handling
+- Updated `src/hooks/useSpeech.js` — `speak(text, rateOverride?)` now accepts optional rate override for slow/normal playback per level
+- Created `src/components/sounds/SoundGroupSelector.jsx` — 2–4 col grid of group cards with mouth diagram previews and phoneme symbol badges
+- Created `src/components/sounds/SoundCard.jsx` — individual sound card with phoneme symbol, example word, age badge, level progress dots
+- Created `src/components/sounds/PracticeView.jsx` — full 5-level practice interface per sound: mouth diagram, level tabs, level-appropriate content (isolation/syllables/words/phrases/sentences), RecordCompare per level, star animation on first attempt
+- Created `src/components/sounds/RecordCompare.jsx` — record/stop button, playback + hear-model side-by-side, handles unsupported/permission-denied gracefully
+- Created `src/components/sounds/SoundSortingGame.jsx` — 10-round game, auto-speaks word each round, two-bucket tap answer, correct/incorrect feedback animations, game-over score screen with restart
+- Replaced `src/pages/SoundExplorer.jsx` placeholder with full page assembly (groups → sound list → practice, + sorting game)
+- Progress written to IndexedDB for every practice attempt and on game completion
+- Stars written to IndexedDB `rewards.totalStars` on each completed attempt
+
+### Deviations
+- Bundle size ~559KB — still advisory only; code-splitting planned for Module 12
+- `w` and `y` glides placed in `glottal` group for simplicity; `zh` added as voiced palatal fricative companion to `sh`
+- Sound sorting game uses tap-on-bucket UX instead of drag (drag complex on mobile without additional library)

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Labiodental: upper teeth on lower lip">
+  <!-- Head outline -->
+  <ellipse cx="100" cy="100" rx="80" ry="90" fill="#FFF5F0" stroke="#D1C4B8" stroke-width="2"/>
+  <!-- Nose -->
+  <ellipse cx="100" cy="82" rx="10" ry="7" fill="#FFCBB2" stroke="#D1997A" stroke-width="1.5"/>
+  <circle cx="96" cy="84" r="2" fill="#BF6B52"/>
+  <circle cx="104" cy="84" r="2" fill="#BF6B52"/>
+  <!-- Upper lip (raised) -->
+  <path d="M65 103 Q82 97 100 99 Q118 97 135 103" fill="#FFAB91" stroke="#BF6B52" stroke-width="2" stroke-linecap="round"/>
+  <!-- Upper teeth (highlighted) -->
+  <rect x="72" y="103" width="56" height="9" rx="2" fill="#FF6B6B" stroke="#BF3A2E" stroke-width="1.5"/>
+  <line x1="84" y1="103" x2="84" y2="112" stroke="#BF3A2E" stroke-width="1"/>
+  <line x1="96" y1="103" x2="96" y2="112" stroke="#BF3A2E" stroke-width="1"/>
+  <line x1="108" y1="103" x2="108" y2="112" stroke="#BF3A2E" stroke-width="1"/>
+  <line x1="120" y1="103" x2="120" y2="112" stroke="#BF3A2E" stroke-width="1"/>
+  <!-- Lower lip (touching teeth) -->
+  <path d="M65 112 Q82 110 100 111 Q118 110 135 112 Q118 120 100 122 Q82 120 65 112" fill="#FFAB91" stroke="#BF6B52" stroke-width="2"/>
+  <!-- Air stream -->
+  <path d="M140 112 L162 112" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" fill="none"/>
+  <polygon points="162,108 170,112 162,116" fill="#FF6B6B"/>
+  <!-- Eyes -->
+  <ellipse cx="76" cy="66" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="78" cy="67" r="3" fill="#4A3728"/>
+  <ellipse cx="124" cy="66" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="126" cy="67" r="3" fill="#4A3728"/>
+  <!-- Label -->
+  <text x="100" y="185" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#666">Upper teeth on lower lip</text>
+</svg>

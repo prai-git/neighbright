@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Alveolar lateral: tongue on ridge, air flows around sides">
+  <!-- Head outline -->
+  <ellipse cx="100" cy="100" rx="80" ry="90" fill="#FFF5F0" stroke="#D1C4B8" stroke-width="2"/>
+  <!-- Nose -->
+  <ellipse cx="100" cy="80" rx="10" ry="7" fill="#FFCBB2" stroke="#D1997A" stroke-width="1.5"/>
+  <circle cx="96" cy="82" r="2" fill="#BF6B52"/>
+  <circle cx="104" cy="82" r="2" fill="#BF6B52"/>
+  <!-- Upper lip -->
+  <path d="M65 100 Q82 94 100 96 Q118 94 135 100" fill="#FFAB91" stroke="#BF6B52" stroke-width="2"/>
+  <!-- Upper teeth -->
+  <rect x="72" y="100" width="56" height="9" rx="2" fill="#F5F5F5" stroke="#BDBDBD" stroke-width="1.5"/>
+  <!-- Alveolar ridge (highlighted) -->
+  <path d="M72 109 Q100 106 128 109" fill="#FF6B6B" stroke="#BF3A2E" stroke-width="2" stroke-linecap="round"/>
+  <!-- Lower teeth -->
+  <rect x="72" y="120" width="56" height="8" rx="2" fill="#F5F5F5" stroke="#BDBDBD" stroke-width="1.5"/>
+  <!-- Tongue tip touching ridge (highlighted) -->
+  <path d="M85 140 Q95 128 108 115 Q113 112 118 115 Q113 120 106 125 Q95 135 82 148 Z" fill="#FF6B6B" stroke="#BF3A2E" stroke-width="1.5"/>
+  <!-- Tongue body -->
+  <path d="M55 165 Q68 152 82 148 Q95 135 106 125 Q116 118 122 120 Q126 130 116 140 Q104 150 88 158 Q70 165 55 165 Z" fill="#FFAB91" stroke="#BF6B52" stroke-width="1.5"/>
+  <!-- Lateral airflow arrows (around sides) -->
+  <path d="M68 118 L48 112" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" fill="none"/>
+  <polygon points="48,109 40,112 48,115" fill="#FF6B6B"/>
+  <path d="M132 118 L152 112" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3" fill="none"/>
+  <polygon points="152,109 160,112 152,115" fill="#FF6B6B"/>
+  <!-- Lower lip -->
+  <path d="M65 128 Q82 133 100 134 Q118 133 135 128" fill="#FFAB91" stroke="#BF6B52" stroke-width="2"/>
+  <!-- Eyes -->
+  <ellipse cx="76" cy="63" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="78" cy="64" r="3" fill="#4A3728"/>
+  <ellipse cx="124" cy="63" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="126" cy="64" r="3" fill="#4A3728"/>
+  <!-- Label -->
+  <text x="100" y="185" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#666">Tongue on ridge → air flows sides</text>
+</svg>

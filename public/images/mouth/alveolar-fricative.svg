@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" aria-label="Alveolar fricative: tongue near ridge, air forced through gap">
+  <!-- Head outline -->
+  <ellipse cx="100" cy="100" rx="80" ry="90" fill="#FFF5F0" stroke="#D1C4B8" stroke-width="2"/>
+  <!-- Nose -->
+  <ellipse cx="100" cy="80" rx="10" ry="7" fill="#FFCBB2" stroke="#D1997A" stroke-width="1.5"/>
+  <circle cx="96" cy="82" r="2" fill="#BF6B52"/>
+  <circle cx="104" cy="82" r="2" fill="#BF6B52"/>
+  <!-- Upper lip (slightly open) -->
+  <path d="M65 100 Q82 94 100 96 Q118 94 135 100" fill="#FFAB91" stroke="#BF6B52" stroke-width="2"/>
+  <!-- Upper teeth (highlighted for /s/ and /z/) -->
+  <rect x="72" y="100" width="56" height="9" rx="2" fill="#FF6B6B" stroke="#BF3A2E" stroke-width="1.5"/>
+  <line x1="84" y1="100" x2="84" y2="109" stroke="#BF3A2E" stroke-width="1"/>
+  <line x1="96" y1="100" x2="96" y2="109" stroke="#BF3A2E" stroke-width="1"/>
+  <line x1="108" y1="100" x2="108" y2="109" stroke="#BF3A2E" stroke-width="1"/>
+  <line x1="120" y1="100" x2="120" y2="109" stroke="#BF3A2E" stroke-width="1"/>
+  <!-- Gap line -->
+  <path d="M72 116 Q100 114 128 116" stroke="#888" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
+  <!-- Lower teeth -->
+  <rect x="72" y="118" width="56" height="8" rx="2" fill="#FF6B6B" stroke="#BF3A2E" stroke-width="1.5"/>
+  <!-- Tongue near (not touching) ridge -->
+  <path d="M78 145 Q95 132 110 118 Q114 115 118 118 Q114 125 105 130 Q92 140 78 152 Z" fill="#FFCBB2" stroke="#BF6B52" stroke-width="1.5"/>
+  <!-- Tongue body -->
+  <path d="M50 168 Q65 155 78 152 Q92 140 105 130 Q116 122 120 124 Q124 132 116 140 Q104 150 86 158 Q68 165 50 168 Z" fill="#FFAB91" stroke="#BF6B52" stroke-width="1.5"/>
+  <!-- Air stream through gap -->
+  <path d="M128 113 L155 113" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3" fill="none"/>
+  <polygon points="155,109 163,113 155,117" fill="#FF6B6B"/>
+  <!-- Lower lip -->
+  <path d="M65 126 Q82 131 100 132 Q118 131 135 126" fill="#FFAB91" stroke="#BF6B52" stroke-width="2"/>
+  <!-- Eyes -->
+  <ellipse cx="76" cy="63" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="78" cy="64" r="3" fill="#4A3728"/>
+  <ellipse cx="124" cy="63" rx="9" ry="6" fill="white" stroke="#D1C4B8" stroke-width="1"/>
+  <circle cx="126" cy="64" r="3" fill="#4A3728"/>
+  <!-- Label -->
+  <text x="100" y="185" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#666">Tongue near ridge → hiss</text>
+</svg>
