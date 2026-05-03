@@ -499,6 +499,14 @@
       "word": "play",
       "phrase": "I want to play"
     },
+    "go": {
+      "word": "go",
+      "phrase": "I want to go"
+    },
+    "help": {
+      "word": "help",
+      "phrase": "I need help"
+    },
     "sleep": {
       "word": "sleep",
       "phrase": "I want to sleep"
