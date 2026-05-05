@@ -30,7 +30,7 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen((o) => !o)}
         aria-label="Switch language"
         aria-expanded={open}
-        className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 active:bg-gray-100 transition-colors cursor-pointer text-lg"
+        className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-black/5 active:bg-black/5 transition-colors cursor-pointer text-lg"
       >
         🌐
       </button>
@@ -38,11 +38,11 @@ export default function LanguageSwitcher() {
       <AnimatePresence>
         {open && (
           <motion.ul
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
+            initial={{ opacity: 0, y: -6, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 mt-1 bg-surface rounded-2xl shadow-lg border border-gray-100 overflow-hidden w-40 z-50"
+            className="absolute right-0 mt-2 bg-white rounded-xl shadow-lg shadow-black/8 border border-border/60 overflow-hidden w-44 z-50"
             role="listbox"
             aria-label="Select language"
           >
@@ -50,11 +50,15 @@ export default function LanguageSwitcher() {
               <li key={lang.code} role="option" aria-selected={language === lang.code}>
                 <button
                   onClick={() => { changeLanguage(lang.code); setOpen(false); }}
-                  className="w-full flex items-center gap-2 px-4 py-2.5 text-sm font-display font-semibold text-text-primary hover:bg-gray-50 active:bg-gray-50 transition-colors cursor-pointer"
+                  className={`w-full flex items-center gap-2.5 px-4 py-2.5 text-sm font-display font-semibold transition-colors cursor-pointer ${
+                    language === lang.code
+                      ? 'bg-primary/5 text-primary'
+                      : 'text-text-primary hover:bg-background active:bg-background'
+                  }`}
                 >
                   <span>{lang.flag}</span>
                   <span className="flex-1 text-left">{lang.label}</span>
-                  {language === lang.code && <span className="text-primary">✓</span>}
+                  {language === lang.code && <span className="text-primary text-xs">✓</span>}
                 </button>
               </li>
             ))}

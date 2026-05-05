@@ -6,7 +6,7 @@ import db from '../../db';
 
 const LEVEL_COUNT = 5;
 
-export default function PracticeView({ sound, speak, onStarEarned, onBack }) {
+export default function PracticeView({ sound, speak, onStarEarned }) {
   const { t } = useTranslation();
   const [activeLevel, setActiveLevel] = useState(1);
   const [completedLevels, setCompletedLevels] = useState([]);
@@ -14,6 +14,7 @@ export default function PracticeView({ sound, speak, onStarEarned, onBack }) {
   const startTimeRef = useRef(Date.now());
 
   const levelData = sound.levels[activeLevel];
+  const displaySymbol = sound.symbol.replace(/\//g, '');
 
   const handleLevelSelect = useCallback(n => {
     setActiveLevel(n);
@@ -22,7 +23,6 @@ export default function PracticeView({ sound, speak, onStarEarned, onBack }) {
 
   const handleAttempt = useCallback(async (wordAttempted = '') => {
     const elapsed = Math.round((Date.now() - startTimeRef.current) / 1000);
-    // Log to IndexedDB
     await db.progress.add({
       module: 'sounds',
       activityType: 'sound-practice',
@@ -31,7 +31,6 @@ export default function PracticeView({ sound, speak, onStarEarned, onBack }) {
       durationSecs: elapsed,
       createdAt: new Date().toISOString(),
     });
-    // Award star for first attempt at each level
     if (!completedLevels.includes(activeLevel)) {
       setCompletedLevels(prev => [...prev, activeLevel]);
       setShowStar(true);
@@ -47,50 +46,42 @@ export default function PracticeView({ sound, speak, onStarEarned, onBack }) {
   }, [speak, handleAttempt]);
 
   return (
-    <div className="flex flex-col h-full relative">
-      {/* Back button */}
-      <button
-        onClick={onBack}
-        className="flex items-center gap-1 text-sm text-text-secondary hover:text-primary transition px-4 pt-3 pb-1 w-fit"
-      >
-        ← {t('sounds.backToSounds')}
-      </button>
-
+    <div className="flex flex-col relative">
       {/* Sound header */}
-      <div className="flex items-center gap-4 px-4 py-2">
-        <div className="text-5xl font-mono font-bold text-primary">{sound.symbol}</div>
-        <div>
-          <div className="text-xs text-text-secondary">{t('sounds.ageAcquisition', { age: sound.ageOfAcquisition })}</div>
+      <div className="flex items-center gap-4 mb-4">
+        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+          <span className="text-3xl font-display font-extrabold text-primary">{displaySymbol}</span>
+        </div>
+        <div className="min-w-0">
+          <p className="text-xs text-text-secondary mb-1">{t('sounds.ageAcquisition', { age: sound.ageOfAcquisition })}</p>
+          <p className="text-sm text-text-secondary leading-relaxed">{sound.mouthDescription}</p>
         </div>
       </div>
 
-      {/* Mouth diagram + description */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 px-4 pb-2">
+      {/* Mouth diagram */}
+      <div className="flex justify-center mb-4">
         <img
           src={`/images/mouth/${sound.mouthDiagramKey}.svg`}
           alt={t('sounds.mouthGuide')}
-          className="w-28 h-28 rounded-2xl border border-border bg-surface"
+          className="w-32 h-32 rounded-2xl bg-white border border-border p-2"
         />
-        <p className="text-sm text-text-secondary leading-relaxed max-w-xs">
-          {sound.mouthDescription}
-        </p>
       </div>
 
       {/* Level tabs */}
-      <div className="flex gap-1 px-4 pb-3 overflow-x-auto">
+      <div className="flex gap-1.5 mb-4 overflow-x-auto hide-scrollbar">
         {Array.from({ length: LEVEL_COUNT }, (_, i) => i + 1).map(n => (
           <button
             key={n}
             onClick={() => handleLevelSelect(n)}
-            className={`flex-shrink-0 px-3 py-1.5 rounded-xl text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-display font-bold transition cursor-pointer ${
               activeLevel === n
-                ? 'bg-primary text-white shadow'
+                ? 'bg-primary text-white shadow-sm'
                 : completedLevels.includes(n)
-                ? 'bg-primary/20 text-primary'
-                : 'bg-surface text-text-secondary border border-border'
+                ? 'bg-primary/10 text-primary'
+                : 'bg-white text-text-secondary border border-border'
             }`}
           >
-            {completedLevels.includes(n) ? '⭐' : ''} {t('sounds.level', { n })}
+            {completedLevels.includes(n) && '⭐ '}{t('sounds.level', { n })}
           </button>
         ))}
       </div>
@@ -103,42 +94,32 @@ export default function PracticeView({ sound, speak, onStarEarned, onBack }) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.2 }}
-          className="flex-1 px-4 pb-4 overflow-y-auto"
         >
-          <div className="text-xs font-semibold text-text-secondary uppercase tracking-wide mb-2">
+          <p className="text-[10px] font-display font-bold text-text-secondary uppercase tracking-widest mb-3">
             {t(`sounds.levels.${activeLevel}`)}
-          </div>
+          </p>
 
-          {/* Level 1: Isolation */}
           {activeLevel === 1 && levelData && (
             <LevelIsolation levelData={levelData} onSpeak={handleSpeak} t={t} />
           )}
-
-          {/* Level 2: Syllables */}
           {activeLevel === 2 && levelData && (
             <LevelSyllables levelData={levelData} onSpeak={handleSpeak} t={t} />
           )}
-
-          {/* Level 3: Words */}
           {activeLevel === 3 && levelData && (
             <LevelWords levelData={levelData} onSpeak={handleSpeak} t={t} />
           )}
-
-          {/* Level 4: Phrases */}
           {activeLevel === 4 && levelData && (
             <LevelPhrases levelData={levelData} onSpeak={handleSpeak} t={t} />
           )}
-
-          {/* Level 5: Sentences */}
           {activeLevel === 5 && levelData && (
             <LevelSentences levelData={levelData} onSpeak={handleSpeak} t={t} />
           )}
 
           {/* Record & compare */}
-          <div className="mt-4 bg-surface rounded-2xl p-4 border border-border">
-            <div className="text-xs font-semibold text-text-secondary uppercase tracking-wide mb-2">
+          <div className="mt-5 bg-white rounded-2xl p-4 border border-border">
+            <p className="text-[10px] font-display font-bold text-text-secondary uppercase tracking-widest mb-3">
               {t('sounds.yourTurn')}
-            </div>
+            </p>
             <RecordCompare
               speak={speak}
               modelText={levelData?.model || levelData?.syllables?.[0] || levelData?.words?.[0]?.word || levelData?.phrases?.[0] || levelData?.sentences?.[0] || sound.symbol}
@@ -155,7 +136,7 @@ export default function PracticeView({ sound, speak, onStarEarned, onBack }) {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1.2, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            className="fixed inset-0 flex items-center justify-center pointer-events-none z-50"
           >
             <div className="text-7xl drop-shadow-lg">⭐</div>
           </motion.div>
@@ -170,16 +151,16 @@ export default function PracticeView({ sound, speak, onStarEarned, onBack }) {
 function LevelIsolation({ levelData, onSpeak, t }) {
   return (
     <div className="flex flex-col items-center gap-4 py-4">
-      <p className="text-2xl font-display font-bold text-text-primary text-center">
+      <p className="text-xl font-display font-bold text-text-primary text-center">
         {levelData.prompt}
       </p>
       <button
         onClick={() => onSpeak(levelData.model, 0.5)}
-        className="flex items-center gap-2 px-5 py-3 bg-primary text-white rounded-2xl font-medium shadow hover:opacity-90 transition text-lg"
+        className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-display font-bold shadow-sm hover:shadow-md transition cursor-pointer text-base"
       >
         🔊 {t('sounds.tapToHear')}
       </button>
-      <p className="text-sm text-text-secondary">{t('sounds.listenFirst')}</p>
+      <p className="text-xs text-text-secondary">{t('sounds.listenFirst')}</p>
     </div>
   );
 }
@@ -187,13 +168,13 @@ function LevelIsolation({ levelData, onSpeak, t }) {
 function LevelSyllables({ levelData, onSpeak, t }) {
   return (
     <div className="flex flex-col gap-4 py-2">
-      <p className="text-base font-medium text-text-secondary text-center">{levelData.prompt}</p>
+      <p className="text-sm font-medium text-text-secondary text-center">{levelData.prompt}</p>
       <div className="flex flex-wrap gap-2 justify-center">
         {levelData.syllables?.map(syl => (
           <button
             key={syl}
             onClick={() => onSpeak(syl, 0.65)}
-            className="px-5 py-3 bg-surface border border-primary text-primary rounded-2xl font-mono text-lg font-bold shadow hover:bg-primary/10 transition"
+            className="px-5 py-3 bg-white border-2 border-primary/20 text-primary rounded-2xl font-display text-lg font-bold hover:bg-primary/5 hover:border-primary/40 transition cursor-pointer"
           >
             {syl}
           </button>
@@ -211,11 +192,10 @@ function LevelWords({ levelData, onSpeak, t }) {
         <button
           key={word}
           onClick={() => onSpeak(word, 0.75)}
-          className="bg-surface border border-border rounded-2xl p-3 flex flex-col items-center gap-1 shadow hover:border-primary hover:bg-primary/5 transition"
+          className="bg-white border border-border rounded-2xl p-4 flex flex-col items-center gap-1.5 hover:shadow-md hover:border-primary/20 transition cursor-pointer"
         >
-          <span className="text-3xl">{emoji}</span>
-          <span className="text-sm font-semibold text-text-primary capitalize">{word}</span>
-          <span className="text-xs text-primary">🔊</span>
+          <span className="text-4xl">{emoji}</span>
+          <span className="text-sm font-display font-bold text-text-primary capitalize">{word}</span>
         </button>
       ))}
     </div>
@@ -229,10 +209,10 @@ function LevelPhrases({ levelData, onSpeak, t }) {
         <button
           key={phrase}
           onClick={() => onSpeak(phrase, 0.8)}
-          className="w-full text-left bg-surface border border-border rounded-2xl px-4 py-3 text-text-primary font-medium hover:border-primary hover:bg-primary/5 transition flex items-center justify-between gap-2"
+          className="w-full text-left bg-white border border-border rounded-2xl px-4 py-3 text-text-primary font-display font-medium hover:shadow-sm hover:border-primary/20 transition flex items-center justify-between gap-2 cursor-pointer"
         >
           <span>{phrase}</span>
-          <span className="text-primary flex-shrink-0">🔊</span>
+          <span className="text-primary flex-shrink-0 opacity-50">🔊</span>
         </button>
       ))}
     </div>
@@ -241,16 +221,16 @@ function LevelPhrases({ levelData, onSpeak, t }) {
 
 function LevelSentences({ levelData, onSpeak, t }) {
   return (
-    <div className="flex flex-col gap-4 py-4 items-center">
+    <div className="flex flex-col gap-4 py-2">
       {levelData.sentences?.map(sentence => (
-        <div key={sentence} className="bg-surface border border-border rounded-2xl p-4 w-full">
-          <p className="text-lg font-medium text-text-primary text-center mb-3 leading-relaxed">
-            "{sentence}"
+        <div key={sentence} className="bg-white border border-border rounded-2xl p-5">
+          <p className="text-lg font-display font-medium text-text-primary text-center mb-4 leading-relaxed">
+            &ldquo;{sentence}&rdquo;
           </p>
           <div className="flex justify-center">
             <button
               onClick={() => onSpeak(sentence, 0.85)}
-              className="flex items-center gap-2 px-5 py-2 bg-primary text-white rounded-xl font-medium shadow hover:opacity-90 transition"
+              className="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-full font-display font-bold shadow-sm hover:shadow-md transition cursor-pointer"
             >
               🔊 {t('sounds.tapToHear')}
             </button>

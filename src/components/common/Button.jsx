@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion';
 
 const variantClasses = {
-  primary: 'bg-primary text-white hover:brightness-90 active:brightness-90',
-  secondary: 'bg-secondary text-white hover:brightness-90 active:brightness-90',
-  ghost: 'bg-transparent text-text-primary border border-gray-200 hover:bg-gray-50 active:bg-gray-50',
-  danger: 'bg-error text-white hover:brightness-90 active:brightness-90',
+  primary: 'bg-primary text-white shadow-sm shadow-primary/25 hover:shadow-md hover:shadow-primary/30 hover:brightness-105 active:brightness-95',
+  secondary: 'bg-secondary text-white shadow-sm shadow-secondary/25 hover:shadow-md hover:shadow-secondary/30 hover:brightness-105 active:brightness-95',
+  ghost: 'bg-transparent text-text-primary border border-border hover:bg-white/80 active:bg-white/60',
+  danger: 'bg-error text-white shadow-sm shadow-error/25 hover:brightness-105 active:brightness-95',
 };
 
 const sizeClasses = {
-  sm: 'h-8 px-3 text-sm rounded-lg',
-  md: 'h-10 px-4 text-base rounded-xl',
-  lg: 'h-12 px-6 text-lg rounded-xl',
-  xl: 'h-16 px-8 text-xl rounded-2xl',
+  sm: 'h-8 px-3.5 text-sm rounded-lg',
+  md: 'h-10 px-5 text-sm rounded-xl',
+  lg: 'h-12 px-6 text-base rounded-xl',
+  xl: 'h-14 px-8 text-lg rounded-2xl',
 };
 
 export default function Button({
@@ -26,11 +26,11 @@ export default function Button({
 }) {
   return (
     <motion.button
-      whileTap={disabled ? {} : { scale: 0.95 }}
+      whileTap={disabled ? {} : { scale: 0.96 }}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
       className={[
-        'inline-flex items-center justify-center gap-2 font-display font-semibold transition-all select-none',
+        'inline-flex items-center justify-center gap-2 font-display font-bold transition-all select-none',
         variantClasses[variant],
         sizeClasses[size],
         fullWidth ? 'w-full' : '',

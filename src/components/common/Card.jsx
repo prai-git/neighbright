@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 
 const variantClasses = {
-  elevated: 'bg-surface rounded-2xl shadow-md',
-  outlined: 'bg-surface rounded-2xl border border-gray-200',
-  flat: 'bg-surface rounded-2xl',
+  elevated: 'bg-white rounded-2xl border border-border',
+  outlined: 'bg-white rounded-2xl border border-border',
+  flat: 'bg-white/60 rounded-2xl',
 };
 
 const paddingClasses = {
@@ -25,14 +25,14 @@ export default function Card({
 
   return (
     <motion.div
-      whileHover={interactive ? { y: -2 } : {}}
+      whileHover={interactive ? { y: -1 } : {}}
       whileTap={interactive ? { scale: 0.98 } : {}}
       onClick={onClick}
       className={[
         variantClasses[variant],
         paddingClasses[padding],
-        interactive ? 'cursor-pointer' : '',
-        color ? 'border-t-4' : '',
+        interactive ? 'cursor-pointer hover:shadow-md transition-shadow' : '',
+        color ? 'border-t-[3px]' : '',
       ].join(' ')}
       style={color ? { borderTopColor: color } : {}}
       {...props}

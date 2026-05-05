@@ -6,15 +6,14 @@ export default function StarCounter({ count = 0, animate = false }) {
   const prevCount = useRef(count);
 
   useEffect(() => {
-    if (animate && count !== prevCount.current) {
+    if (count !== prevCount.current) {
       controls.start({
-        scale: [1, 1.4, 1],
-        color: ['#FECA57', '#FFD700', '#FECA57'],
+        scale: [1, 1.3, 1],
         transition: { duration: 0.4 },
       });
       prevCount.current = count;
     }
-  }, [count, animate, controls]);
+  }, [count, controls]);
 
   return (
     <span className="inline-flex items-center gap-1 text-lg font-display font-bold text-accent">

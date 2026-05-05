@@ -6,9 +6,7 @@ import db from '../../db';
 
 const ROUNDS = 10;
 
-// Build a pool of (word, correctSound, distractorSound) tuples
 function buildRounds() {
-  // Gather all words with known initial position
   const pool = [];
   allSounds.forEach(sound => {
     (sound.examples?.initial ?? []).forEach(word => {
@@ -16,17 +14,14 @@ function buildRounds() {
     });
   });
 
-  // Shuffle
   const shuffled = [...pool].sort(() => Math.random() - 0.5);
   const rounds = [];
 
   for (const item of shuffled) {
     if (rounds.length >= ROUNDS) break;
-    // Pick a distractor sound (different group preferred)
     const distractors = allSounds.filter(s => s.id !== item.sound.id);
     const distractor = distractors[Math.floor(Math.random() * distractors.length)];
     if (!distractor) continue;
-    // Randomly place correct sound in left or right bucket
     const correctSide = Math.random() < 0.5 ? 'left' : 'right';
     rounds.push({
       word: item.word,
@@ -44,14 +39,14 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
   const [rounds, setRounds] = useState(() => buildRounds());
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
-  const [feedback, setFeedback] = useState(null); // 'correct' | 'incorrect'
+  const [feedback, setFeedback] = useState(null);
   const [gameOver, setGameOver] = useState(false);
   const startTimeRef = useRef(Date.now());
 
   const round = rounds[current];
 
   const handleAnswer = useCallback(async (chosenSound) => {
-    if (feedback) return; // prevent double-tap
+    if (feedback) return;
     const isCorrect = chosenSound.id === round.correctSound.id;
     setFeedback(isCorrect ? 'correct' : 'incorrect');
     if (isCorrect) setScore(s => s + 1);
@@ -59,7 +54,6 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
     setTimeout(async () => {
       setFeedback(null);
       if (current + 1 >= ROUNDS) {
-        // Game over — log and show result
         const newScore = isCorrect ? score + 1 : score;
         const elapsed = Math.round((Date.now() - startTimeRef.current) / 1000);
         await db.progress.add({
@@ -91,7 +85,6 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
     startTimeRef.current = Date.now();
   }, []);
 
-  // Auto-speak word on each new round
   useEffect(() => {
     if (!gameOver && round?.word) {
       const timer = setTimeout(() => speak(round.word, 0.8), 300);
@@ -104,20 +97,20 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center gap-6 py-10 px-4"
+        className="flex flex-col items-center gap-6 py-12"
       >
         <div className="text-6xl">🎉</div>
-        <p className="text-2xl font-display font-bold text-text-primary text-center">
+        <p className="text-2xl font-display font-extrabold text-text-primary text-center">
           {t('sounds.gameComplete', { correct: score })}
         </p>
         <div className="flex gap-1">
           {Array.from({ length: ROUNDS }, (_, i) => (
-            <span key={i} className={`text-2xl ${i < score ? '' : 'opacity-30'}`}>⭐</span>
+            <span key={i} className={`text-xl ${i < score ? '' : 'opacity-20'}`}>⭐</span>
           ))}
         </div>
         <button
           onClick={restart}
-          className="px-6 py-3 bg-primary text-white rounded-2xl font-semibold shadow hover:opacity-90 transition"
+          className="px-6 py-3 bg-primary text-white rounded-full font-display font-bold shadow-sm hover:shadow-md transition cursor-pointer"
         >
           {t('sounds.tryAgain')}
         </button>
@@ -126,17 +119,17 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
   }
 
   return (
-    <div className="flex flex-col gap-4 px-4 pb-6">
+    <div className="flex flex-col gap-5">
       {/* Progress bar */}
-      <div className="flex items-center gap-2 pt-2">
+      <div className="flex items-center gap-3">
         <div className="flex-1 h-2 bg-border rounded-full overflow-hidden">
           <div
             className="h-2 bg-primary rounded-full transition-all duration-300"
             style={{ width: `${(current / ROUNDS) * 100}%` }}
           />
         </div>
-        <span className="text-sm text-text-secondary whitespace-nowrap">
-          {t('sounds.roundResult', { n: current + 1 })}
+        <span className="text-xs font-display font-bold text-text-secondary whitespace-nowrap">
+          {current + 1}/{ROUNDS}
         </span>
       </div>
 
@@ -150,24 +143,24 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
           transition={{ duration: 0.2 }}
           className="flex flex-col items-center gap-3"
         >
-          <p className="text-sm text-text-secondary">{t('sounds.sortDragPrompt')}</p>
+          <p className="text-xs text-text-secondary">{t('sounds.sortDragPrompt')}</p>
           <button
             onClick={() => speak(round.word, 0.8)}
-            className="text-4xl font-display font-bold text-text-primary px-6 py-3 bg-surface rounded-2xl border border-border shadow hover:border-primary transition"
+            className="text-3xl font-display font-extrabold text-text-primary px-8 py-4 bg-white rounded-2xl border border-border shadow-sm hover:shadow-md transition cursor-pointer"
           >
             {round.word}
           </button>
         </motion.div>
       </AnimatePresence>
 
-      {/* Feedback overlay */}
+      {/* Feedback */}
       <AnimatePresence>
         {feedback && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            className={`text-center text-lg font-bold py-2 rounded-xl ${
+            className={`text-center text-base font-display font-bold py-2.5 rounded-xl ${
               feedback === 'correct'
                 ? 'text-success bg-success/10'
                 : 'text-error bg-error/10'
@@ -175,12 +168,12 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
           >
             {feedback === 'correct'
               ? t('sounds.correct')
-              : t('sounds.incorrect', { answer: round.correctSound.symbol })}
+              : t('sounds.incorrect', { answer: round.correctSound.symbol.replace(/\//g, '') })}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Sound buckets */}
+      {/* Sound buckets — big, colorful */}
       <div className="grid grid-cols-2 gap-4">
         {[round.leftSound, round.rightSound].map((bucketSound, idx) => (
           <motion.button
@@ -189,15 +182,19 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
             animate={
               feedback
                 ? bucketSound.id === round.correctSound.id
-                  ? { scale: [1, 1.08, 1], backgroundColor: ['#ffffff', '#bbf7d0', '#ffffff'] }
+                  ? { scale: [1, 1.06, 1], backgroundColor: ['#ffffff', '#d1fae5', '#ffffff'] }
                   : { x: [0, -6, 6, -6, 0] }
                 : {}
             }
             onClick={() => handleAnswer(bucketSound)}
-            className="bg-surface rounded-2xl border-2 border-border flex flex-col items-center gap-2 p-5 shadow hover:border-primary transition focus:outline-none focus:ring-2 focus:ring-primary"
+            className="bg-white rounded-3xl border-2 border-border flex flex-col items-center gap-2 p-6 hover:border-primary/30 hover:shadow-md transition cursor-pointer"
           >
-            <span className="text-4xl font-mono font-bold text-primary">{bucketSound.symbol}</span>
-            <span className="text-xs text-text-secondary">tap if word starts here</span>
+            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <span className="text-2xl font-display font-extrabold text-primary">
+                {bucketSound.symbol.replace(/\//g, '')}
+              </span>
+            </div>
+            <span className="text-xs text-text-secondary font-display">tap if word starts here</span>
           </motion.button>
         ))}
       </div>

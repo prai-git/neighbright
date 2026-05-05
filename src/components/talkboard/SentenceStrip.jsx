@@ -1,7 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from '../../data/i18n';
-import EmojiCard from '../common/EmojiCard';
-import IconButton from '../common/IconButton';
 
 const MAX_WORDS = 8;
 
@@ -9,31 +7,28 @@ export default function SentenceStrip({ words, onSpeak, onClear, onRemoveWord, f
   const { t } = useTranslation();
 
   return (
-    <div className="mx-4 mt-3 bg-surface rounded-2xl shadow-md border border-gray-100 p-3 min-h-[72px] flex items-center gap-2">
+    <div className="bg-white rounded-2xl border border-border p-3 min-h-[64px] flex items-center gap-2">
       {/* Word chips */}
-      <div className="flex-1 flex items-center gap-2 overflow-x-auto min-w-0">
+      <div className="flex-1 flex items-center gap-1.5 overflow-x-auto hide-scrollbar min-w-0">
         {words.length === 0 ? (
-          <p className="text-sm text-text-secondary font-display px-1 whitespace-nowrap">
+          <p className="text-sm text-text-secondary/50 font-display px-1 whitespace-nowrap select-none">
             {t('talkBoard.sentenceStrip')}
           </p>
         ) : (
           <AnimatePresence mode="popLayout">
             {words.map((word, i) => (
-              <motion.div
+              <motion.button
                 key={`${word.id}-${i}`}
                 initial={{ scale: 0.6, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.6, opacity: 0 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                onClick={() => onRemoveWord(i)}
+                className="flex items-center gap-1 bg-primary/8 rounded-full px-2.5 py-1.5 shrink-0 cursor-pointer hover:bg-primary/15 transition-colors"
               >
-                <EmojiCard
-                  emoji={word.emoji}
-                  label={word.label}
-                  size="sm"
-                  onClick={() => onRemoveWord(i)}
-                  showLabel
-                />
-              </motion.div>
+                <span className="text-lg">{word.emoji}</span>
+                <span className="text-xs font-display font-bold text-text-primary">{word.label}</span>
+              </motion.button>
             ))}
           </AnimatePresence>
         )}
@@ -51,20 +46,23 @@ export default function SentenceStrip({ words, onSpeak, onClear, onRemoveWord, f
 
       {/* Actions */}
       <div className="flex items-center gap-1 shrink-0">
-        <IconButton
-          icon="🔊"
-          label={t('talkBoard.speak')}
+        <button
           onClick={onSpeak}
           disabled={words.length === 0}
-          size="md"
-        />
-        <IconButton
-          icon="❌"
-          label={t('talkBoard.clear')}
-          onClick={onClear}
-          disabled={words.length === 0}
-          size="md"
-        />
+          className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center text-lg disabled:opacity-30 cursor-pointer disabled:cursor-default transition-opacity"
+          aria-label={t('talkBoard.speak')}
+        >
+          🔊
+        </button>
+        {words.length > 0 && (
+          <button
+            onClick={onClear}
+            className="w-8 h-8 rounded-full text-text-secondary/40 hover:text-text-secondary flex items-center justify-center text-sm cursor-pointer transition-colors"
+            aria-label={t('talkBoard.clear')}
+          >
+            ✕
+          </button>
+        )}
       </div>
     </div>
   );

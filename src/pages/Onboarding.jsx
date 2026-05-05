@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from '../data/i18n';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useProfile } from '../contexts/ProfileContext';
-import { Button, Input, Card } from '../components/common';
+import { Button, Input } from '../components/common';
 
 const AVATARS = ['🐶','🐱','🐰','🐻','🦊','🐼','🦁','🐸','🐵','🐧','🦄','🐲','🐮','🐷','🐯','🐨','🐹','🐝','🐢','🦋','🐙','🐠','🦕','🐳'];
 
@@ -35,7 +35,6 @@ export default function Onboarding() {
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
 
-  // Step 2 form state
   const [name, setName] = useState('');
   const [avatarKey, setAvatarKey] = useState('');
   const [tier, setTier] = useState(null);
@@ -43,15 +42,8 @@ export default function Onboarding() {
   const [avatarShake, setAvatarShake] = useState(false);
   const [tierShake, setTierShake] = useState(false);
 
-  const goNext = () => {
-    setDirection(1);
-    setStep(1);
-  };
-
-  const goBack = () => {
-    setDirection(-1);
-    setStep(0);
-  };
+  const goNext = () => { setDirection(1); setStep(1); };
+  const goBack = () => { setDirection(-1); setStep(0); };
 
   const validate = () => {
     const errs = {};
@@ -82,13 +74,13 @@ export default function Onboarding() {
         {[0, 1].map((i) => (
           <div
             key={i}
-            className={`w-3 h-3 rounded-full transition-colors duration-300 ${i === step ? 'bg-primary' : 'bg-gray-200'}`}
+            className={`h-2 rounded-full transition-all duration-300 ${i === step ? 'bg-primary w-8' : 'bg-border w-2'}`}
             aria-current={i === step ? 'step' : undefined}
           />
         ))}
       </div>
 
-      <div className="w-full max-w-lg overflow-hidden">
+      <div className="w-full max-w-md overflow-hidden">
         <AnimatePresence mode="wait" custom={direction}>
           {step === 0 ? (
             <motion.div
@@ -101,25 +93,25 @@ export default function Onboarding() {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="flex flex-col items-center gap-8"
             >
-              <h1 className="text-3xl md:text-4xl font-display font-extrabold text-text-primary text-center">
+              <h1 className="text-2xl md:text-3xl font-display font-extrabold text-text-primary text-center">
                 {t('onboarding.languageStep')}
               </h1>
 
-              <div className="flex flex-col md:flex-row gap-4 w-full">
+              <div className="flex flex-col md:flex-row gap-3 w-full">
                 {LANGUAGES.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
                     className={[
-                      'flex-1 flex flex-col items-center gap-2 p-6 rounded-2xl border-2 bg-surface transition-all cursor-pointer',
+                      'flex-1 flex flex-col items-center gap-2 p-5 rounded-2xl border-2 bg-white transition-all cursor-pointer',
                       language === lang.code
-                        ? 'border-primary ring-2 ring-primary/30 shadow-md'
-                        : 'border-gray-200 hover:border-gray-300',
+                        ? 'border-primary shadow-sm'
+                        : 'border-border hover:border-text-secondary/30',
                     ].join(' ')}
                     aria-pressed={language === lang.code}
                   >
-                    <span className="text-5xl">{lang.flag}</span>
-                    <span className="font-display font-bold text-lg text-text-primary">{lang.label}</span>
+                    <span className="text-4xl">{lang.flag}</span>
+                    <span className="font-display font-bold text-sm text-text-primary">{lang.label}</span>
                   </button>
                 ))}
               </div>
@@ -137,9 +129,9 @@ export default function Onboarding() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.35, ease: 'easeInOut' }}
-              className="flex flex-col gap-8"
+              className="flex flex-col gap-6"
             >
-              <h1 className="text-3xl md:text-4xl font-display font-extrabold text-text-primary text-center">
+              <h1 className="text-2xl md:text-3xl font-display font-extrabold text-text-primary text-center">
                 {t('onboarding.profileStep')}
               </h1>
 
@@ -155,13 +147,13 @@ export default function Onboarding() {
 
               {/* Avatar */}
               <div>
-                <p className="text-sm font-display font-semibold text-text-secondary mb-3">
+                <p className="text-xs font-display font-bold text-text-secondary uppercase tracking-wider mb-3">
                   {t('onboarding.avatarLabel')}
                 </p>
                 <motion.div
                   animate={avatarShake ? { x: [-6, 6, -4, 4, 0] } : {}}
                   transition={{ duration: 0.4 }}
-                  className="grid grid-cols-6 gap-3"
+                  className="grid grid-cols-8 gap-2"
                   role="group"
                   aria-label={t('onboarding.avatarLabel')}
                 >
@@ -170,10 +162,10 @@ export default function Onboarding() {
                       key={emoji}
                       onClick={() => setAvatarKey(emoji)}
                       className={[
-                        'w-12 h-12 rounded-full bg-surface border-2 flex items-center justify-center text-2xl transition-all cursor-pointer hover:scale-110',
+                        'w-10 h-10 rounded-xl bg-white border-2 flex items-center justify-center text-xl transition-all cursor-pointer hover:scale-105',
                         avatarKey === emoji
-                          ? 'border-primary ring-2 ring-primary/30 scale-110'
-                          : 'border-gray-200',
+                          ? 'border-primary scale-105'
+                          : 'border-border',
                       ].join(' ')}
                       aria-pressed={avatarKey === emoji}
                       aria-label={`Avatar ${emoji}`}
@@ -189,35 +181,34 @@ export default function Onboarding() {
 
               {/* Tier */}
               <div>
-                <p className="text-sm font-display font-semibold text-text-secondary mb-3">
+                <p className="text-xs font-display font-bold text-text-secondary uppercase tracking-wider mb-3">
                   {t('onboarding.tierLabel')}
                 </p>
                 <motion.div
                   animate={tierShake ? { x: [-6, 6, -4, 4, 0] } : {}}
                   transition={{ duration: 0.4 }}
-                  className="flex flex-col gap-3"
+                  className="flex flex-col gap-2"
                   role="group"
                   aria-label={t('onboarding.tierLabel')}
                 >
                   {TIERS.map((tierItem) => (
-                    <Card
+                    <button
                       key={tierItem.value}
                       onClick={() => setTier(tierItem.value)}
-                      padding="md"
                       className={[
-                        'flex items-center gap-4 transition-all',
+                        'flex items-center gap-3 p-4 rounded-2xl bg-white border-2 transition-all cursor-pointer text-left',
                         tier === tierItem.value
-                          ? 'ring-2 ring-primary border-primary'
-                          : '',
+                          ? 'border-primary'
+                          : 'border-border hover:border-text-secondary/30',
                       ].join(' ')}
                       aria-pressed={tier === tierItem.value}
                     >
-                      <span className="text-3xl" role="img" aria-hidden="true">{tierItem.emoji}</span>
+                      <span className="text-2xl">{tierItem.emoji}</span>
                       <div>
-                        <p className="font-display font-bold text-text-primary">{t(tierItem.nameKey)}</p>
+                        <p className="font-display font-bold text-sm text-text-primary">{t(tierItem.nameKey)}</p>
                         <p className="text-xs text-text-secondary">{t(tierItem.descKey)}</p>
                       </div>
-                    </Card>
+                    </button>
                   ))}
                 </motion.div>
               </div>
@@ -238,4 +229,3 @@ export default function Onboarding() {
     </div>
   );
 }
-

@@ -8,38 +8,35 @@ export default function SoundCard({ sound, completedLevels = [], onSelect }) {
 
   // First initial-position example word
   const exampleWord = sound.examples?.initial?.[0] ?? '';
+  // Strip slashes from symbol for display
+  const displaySymbol = sound.symbol.replace(/\//g, '');
 
   return (
     <motion.button
       whileTap={{ scale: 0.95 }}
       onClick={() => onSelect(sound)}
-      className="bg-surface rounded-2xl p-4 text-left shadow-sm border border-border hover:border-primary transition-colors w-full focus:outline-none focus:ring-2 focus:ring-primary"
+      className="bg-white rounded-2xl p-4 text-center border border-border hover:shadow-md transition-shadow w-full cursor-pointer"
     >
-      {/* Phoneme symbol */}
-      <div className="text-4xl font-mono font-bold text-primary mb-1 text-center">
-        {sound.symbol}
+      {/* Phoneme symbol — big and bold, no slashes */}
+      <div className="w-14 h-14 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center mb-2">
+        <span className="text-2xl font-display font-extrabold text-primary">
+          {displaySymbol}
+        </span>
       </div>
 
       {/* Example word */}
       {exampleWord && (
-        <div className="text-sm text-text-secondary text-center mb-2 capitalize">
-          e.g. <em>{exampleWord}</em>
-        </div>
+        <p className="text-sm text-text-secondary capitalize mb-2">
+          {exampleWord}
+        </p>
       )}
 
-      {/* Age of acquisition badge */}
-      <div className="flex justify-center mb-3">
-        <span className="text-xs bg-secondary/20 text-text-secondary rounded-full px-2 py-0.5">
-          {t('sounds.ageAcquisition', { age: sound.ageOfAcquisition })}
-        </span>
-      </div>
-
       {/* Level progress dots */}
-      <div className="flex gap-1.5 justify-center">
+      <div className="flex gap-1 justify-center">
         {Array.from({ length: totalLevels }, (_, i) => (
           <span
             key={i}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-2 h-2 rounded-full ${
               i < done ? 'bg-primary' : 'bg-border'
             }`}
           />

@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 
 const sizeMap = {
-  sm: { card: 'w-20 h-20', emoji: 'text-3xl', label: 'text-xs' },
-  md: { card: 'w-[100px] h-[100px]', emoji: 'text-4xl', label: 'text-sm' },
-  lg: { card: 'w-[120px] h-[120px]', emoji: 'text-5xl', label: 'text-sm' },
+  sm: { card: 'w-16 h-16', emoji: 'text-2xl', label: 'text-[9px]' },
+  md: { card: 'w-full aspect-square', emoji: 'text-4xl sm:text-5xl', label: 'text-xs' },
+  lg: { card: 'w-full aspect-square', emoji: 'text-5xl', label: 'text-sm' },
 };
 
 export default function EmojiCard({
@@ -25,12 +25,12 @@ export default function EmojiCard({
       aria-label={label}
       aria-pressed={selected}
       className={[
-        'bg-surface rounded-2xl shadow-sm border flex flex-col items-center justify-center gap-1 select-none transition-all',
+        'bg-white rounded-2xl border flex flex-col items-center justify-center gap-1 select-none transition-all',
         card,
         selected
           ? 'ring-2 ring-primary border-primary bg-primary/5'
-          : 'border-gray-100',
-        disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer',
+          : 'border-border',
+        disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:shadow-sm',
       ].join(' ')}
     >
       <span className={emojiSize}>{emoji}</span>

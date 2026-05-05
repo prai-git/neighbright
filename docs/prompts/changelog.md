@@ -143,3 +143,215 @@
 - Bundle size ~559KB — still advisory only; code-splitting planned for Module 12
 - `w` and `y` glides placed in `glottal` group for simplicity; `zh` added as voiced palatal fricative companion to `sh`
 - Sound sorting game uses tap-on-bucket UX instead of drag (drag complex on mobile without additional library)
+
+## Design Overhaul — Visual Polish
+**Date:** 2026-05-03
+**Status:** ✅ Complete
+
+### Summary
+Comprehensive design refresh aligning the entire UI with the project plan's warm color palette and significantly improving visual polish, hierarchy, and professionalism across all existing pages and components.
+
+### Color Palette (reverted to project plan spec)
+- Primary: `#FF6B6B` (Warm Coral) — was `#6366F1` (Indigo)
+- Secondary: `#74B9FF` (Soft Sky) — was `#0EA5E9`
+- Accent: `#FECA57` (Sunshine) — unchanged
+- Success: `#55E6C1` (Mint) — was `#10B981`
+- Background: `#FFF9F0` (Cream) — was `#F0F2FF`
+- Text Primary: `#2D3436` (Charcoal) — was `#1E1B4B`
+- Text Secondary: `#636E72` (Slate) — was `#6B7280`
+- Error: `#E17055` (Soft Red) — was `#EF4444`
+- Border: `#F0E6D8` (Warm) — was `#E5E7EB`
+
+### Files Changed
+
+**Foundation:**
+- `src/index.css` — New warm color tokens, softer mesh gradient background, improved glassmorphism with warmer tones, new `.section-divider` utility, updated scrollbar/selection colors, added `--color-primary-dark` and `--color-border` tokens
+
+**Common Components (src/components/common/):**
+- `NavBar.jsx` — Max-width constraint for landing mode, hover effect on logo, better border treatment, consistent spacing
+- `SideNav.jsx` — Warm background (`bg-white/60`), rounded avatar container with gradient background, cleaner active state (`bg-primary/10` instead of gradient), consistent icon widths
+- `BottomNav.jsx` — Safe area inset padding, top-bar active indicator instead of bottom dot, smaller label text, better height structure
+- `AppLayout.jsx` — Added `max-w-5xl` content wrapper with consistent padding, removed per-page max-width responsibility
+- `Card.jsx` — Better hover shadow animation, thinner top-border accent (`border-t-[3px]`), responsive padding (`p-4 md:p-5`)
+- `Button.jsx` — Added shadow treatment per variant (`shadow-primary/25`), changed `font-semibold` to `font-bold`, adjusted padding
+- `LanguageSwitcher.jsx` — Dropdown uses warm borders, active item uses `bg-primary/5`, scale animation on open
+- `StarCounter.jsx` — Simplified animation (removed color flash)
+- `StreakBadge.jsx` — Added border, changed text color to `text-text-primary`
+
+**Landing Page (src/components/landing/):**
+- `LandingHero.jsx` — Reduced height to 90vh, gradient text on logo, larger/softer blurs, better spacing
+- `LandingFeatures.jsx` — Replaced Card component with custom gradient cards per feature, icon containers with colored backgrounds, added section dividers
+- `LandingHowItWorks.jsx` — Gradient connector line instead of dashed, warm section background, better spacing
+- `LandingAudience.jsx` — Circular icon containers, warm card backgrounds, section dividers
+- `LandingEvidence.jsx` — Section dividers, warm disclaimer box, interactive flag hover
+- `LandingFeedback.jsx` — Wrapped in gradient card with rounded-3xl, warm border
+- `LandingFooter.jsx` — Column headers with uppercase tracking, better link spacing, explicit Charcoal bg color
+
+**Pages:**
+- `Home.jsx` — Gradient avatar container, gradient module cards (no longer using Card component for modules), warm Word of the Day with accent gradient, keyboard accessibility on interactive elements
+- `Onboarding.jsx` — Warm borders, animated progress dots (active dot widens), updated selection rings
+- `SoundExplorer.jsx` — Updated header border styling
+
+### Deviations
+- Landing section backgrounds changed from alternating `bg-surface`/`bg-background` to alternating `bg-white/40`/transparent for subtler separation
+- Home module cards use native divs with gradient classes instead of Card component for more color variety
+- Added `primary-dark` token not in original spec — useful for hover states
+
+## Design Overhaul v2 — Layout & Consistency
+**Date:** 2026-05-04
+**Status:** ✅ Complete
+
+### Summary
+Major layout and navigation overhaul inspired by Khan Academy Kids (full-width content, big colorful badge cards) and Duolingo (clean, minimal nav, bold rounded UI). Removed sidebar, removed top nav links, widened content area, and established consistent page header pattern across all pages.
+
+### Design Reference
+- **Khan Academy Kids**: Full-width content, large colorful module cards as navigation hub, character-centric home screen
+- **Duolingo**: Clean minimal nav (just logo + avatar), bold rounded UI, path-based navigation
+
+### Key Changes
+
+**Layout — content no longer squished:**
+- `AppLayout.jsx` — Removed SideNav import entirely. Content area widened from `max-w-3xl` (768px) to `max-w-5xl` (1024px). Full-width centered layout.
+- `SideNav.jsx` — No longer imported or rendered (file kept for potential future use)
+- `index.css` — Background changed from warm cream (`#FFF9F0`) to clean neutral (`#FAFAFA`). Removed mesh gradient background — cleaner look. Simplified glassmorphism. Added `.hide-scrollbar` utility class.
+
+**Navigation — Home badges are the hub:**
+- `NavBar.jsx` — Removed all desktop nav links (Home, Sounds, etc.). NavBar now only contains: logo (left), language switcher + avatar (right). Clean and minimal.
+- `BottomNav.jsx` — Mobile-only, unchanged. Serves as secondary nav on small screens.
+- Home page module cards serve as the primary navigation hub with big colorful badges.
+
+**Consistent page headers — every page follows same pattern:**
+- **Home** — Greeting with avatar + stats, "Modules" section label, badge grid (2 cols mobile, 3 cols tablet, 5 cols desktop)
+- **TalkBoard** — `← Home` back link + `💬 Talk Board` title + `+ Add Card` action button
+- **SoundExplorer** — `← Home` back link + `🔊 Sound Explorer` title + `🎮 Play Sorting Game` action button
+- **WordBuilder, MatchAndLearn, Puzzles, ParentDashboard** — All placeholder pages updated with same `← Home` + emoji title pattern + "Coming Soon" centered content
+
+**Talk Board improvements:**
+- `+ Add Card` moved from bottom text link to top-right action button (pill badge style)
+- `QuickPhrases.jsx` — Removed collapsible accordion. Now always-visible horizontal pill bar.
+- `PictureCardGrid.jsx` — Larger emoji (text-4xl/5xl), responsive columns (3/4/5), aspect-square cards
+- `SentenceStrip.jsx` — Cleaner word chips (pill style), simplified clear button
+- `CategorySelector.jsx` — Full-rounded pill tabs, active = primary fill
+
+**Sound Explorer improvements:**
+- `SoundGroupSelector.jsx` — Wider grid (2/3/4 cols), bigger cards with colored icon containers, sound symbols without `/` slashes
+- `SoundCard.jsx` — Bigger phoneme display in colored container, removed age-of-acquisition badge from grid view, cleaner progress dots
+- `SoundSortingGame.jsx` — Stripped `/` from all symbol displays, bigger bucket cards with icon containers
+- `PracticeView.jsx` — Stripped `/` from symbol display, pill-shaped level tabs, rounded-full buttons
+- `RecordCompare.jsx` — Pill-shaped playback buttons
+
+**Landing page — cleaner sections:**
+- All sections: removed `bg-surface`/`bg-background` alternation, use clean white sections
+- `LandingHero.jsx` — Removed decorative blobs, cleaner minimal layout
+- `LandingFeatures.jsx` — Same colorful badge card style as Home modules
+- `LandingFooter.jsx` — Simplified to flex row links
+- All sections use consistent `max-w` constraints matching app pages
+
+**Onboarding:**
+- Wider avatar grid (8 cols), cleaner tier selection cards, consistent border treatment
+
+### Files Changed (25 files)
+- `src/index.css`
+- `src/components/common/AppLayout.jsx`
+- `src/components/common/NavBar.jsx`
+- `src/components/common/BottomNav.jsx`
+- `src/components/common/Card.jsx`
+- `src/components/common/Button.jsx`
+- `src/components/common/EmojiCard.jsx`
+- `src/components/common/LanguageSwitcher.jsx`
+- `src/components/landing/LandingHero.jsx`
+- `src/components/landing/LandingFeatures.jsx`
+- `src/components/landing/LandingHowItWorks.jsx`
+- `src/components/landing/LandingAudience.jsx`
+- `src/components/landing/LandingEvidence.jsx`
+- `src/components/landing/LandingFeedback.jsx`
+- `src/components/landing/LandingFooter.jsx`
+- `src/components/talkboard/SentenceStrip.jsx`
+- `src/components/talkboard/CategorySelector.jsx`
+- `src/components/talkboard/PictureCardGrid.jsx`
+- `src/components/talkboard/QuickPhrases.jsx`
+- `src/components/sounds/SoundGroupSelector.jsx`
+- `src/components/sounds/SoundCard.jsx`
+- `src/components/sounds/PracticeView.jsx`
+- `src/components/sounds/SoundSortingGame.jsx`
+- `src/components/sounds/RecordCompare.jsx`
+- `src/pages/Home.jsx`
+- `src/pages/TalkBoard.jsx`
+- `src/pages/SoundExplorer.jsx`
+- `src/pages/Onboarding.jsx`
+- `src/pages/WordBuilder.jsx`
+- `src/pages/MatchAndLearn.jsx`
+- `src/pages/Puzzles.jsx`
+- `src/pages/ParentDashboard.jsx`
+
+### Deviations
+- SideNav file kept but no longer imported — available for future desktop dashboard if needed
+- Background changed from warm cream to neutral gray (`#FAFAFA`) — cleaner, more professional per reference apps
+- Border color changed from warm `#F0E6D8` to neutral `#EEEEEE` — better contrast on neutral background
+
+---
+
+## Design Overhaul v3 — Navigation Refinement
+**Date:** 2026-05-04
+**Status:** ✅ Complete
+
+### Summary
+Consolidated navigation: single "← Back" button per sub-page positioned top-right of page content area. NavBar simplified to logo, language switcher, Home icon (🏠), and avatar only. Removed all duplicate/internal back buttons from Sound Explorer. Removed redundant "Choose a Sound Group" heading.
+
+### Key Changes
+
+**NavBar.jsx — simplified top bar:**
+- Removed Back button from NavBar entirely
+- NavBar retains: logo, language switcher, 🏠 Home icon, avatar
+
+**Single Back button (top-right) on all sub-pages:**
+- Each sub-page has exactly one "← Back" button, positioned top-right via `justify-between`
+- Uses `navigate(-1)` for browser-history-based navigation
+- Pages updated: TalkBoard, SoundExplorer, WordBuilder, MatchAndLearn, Puzzles, ParentDashboard
+
+**SoundExplorer — context-aware single Back button:**
+- Single "← Back" button in top-right handles all navigation levels
+- Steps back through internal views: practice → sounds → groups → browser history
+- Removed all internal "← Back to Groups" and "← Back to Sounds" buttons
+- `PracticeView.jsx` — Removed `onBack` prop and its internal back button
+
+**Sound Explorer cleanup:**
+- `SoundGroupSelector.jsx` — Removed "Choose a Sound Group" heading (redundant with page title)
+
+### Files Changed (36 files)
+- `docs/prompts/changelog.md`
+- `src/index.css`
+- `src/components/common/AppLayout.jsx`
+- `src/components/common/BottomNav.jsx`
+- `src/components/common/Button.jsx`
+- `src/components/common/Card.jsx`
+- `src/components/common/EmojiCard.jsx`
+- `src/components/common/LanguageSwitcher.jsx`
+- `src/components/common/NavBar.jsx`
+- `src/components/common/SideNav.jsx`
+- `src/components/common/StarCounter.jsx`
+- `src/components/common/StreakBadge.jsx`
+- `src/components/landing/LandingAudience.jsx`
+- `src/components/landing/LandingEvidence.jsx`
+- `src/components/landing/LandingFeatures.jsx`
+- `src/components/landing/LandingFeedback.jsx`
+- `src/components/landing/LandingFooter.jsx`
+- `src/components/landing/LandingHero.jsx`
+- `src/components/landing/LandingHowItWorks.jsx`
+- `src/components/sounds/PracticeView.jsx`
+- `src/components/sounds/RecordCompare.jsx`
+- `src/components/sounds/SoundCard.jsx`
+- `src/components/sounds/SoundGroupSelector.jsx`
+- `src/components/sounds/SoundSortingGame.jsx`
+- `src/components/talkboard/CategorySelector.jsx`
+- `src/components/talkboard/PictureCardGrid.jsx`
+- `src/components/talkboard/QuickPhrases.jsx`
+- `src/components/talkboard/SentenceStrip.jsx`
+- `src/pages/Home.jsx`
+- `src/pages/MatchAndLearn.jsx`
+- `src/pages/Onboarding.jsx`
+- `src/pages/ParentDashboard.jsx`
+- `src/pages/Puzzles.jsx`
+- `src/pages/SoundExplorer.jsx`
+- `src/pages/TalkBoard.jsx`
+- `src/pages/WordBuilder.jsx`

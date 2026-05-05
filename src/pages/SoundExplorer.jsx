@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import AppLayout from '../components/common/AppLayout';
 import SoundGroupSelector from '../components/sounds/SoundGroupSelector';
@@ -19,6 +20,7 @@ const VIEW = {
 
 export default function SoundExplorer() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { speak } = useSpeech();
 
   const [view, setView] = useState(VIEW.GROUPS);
@@ -45,80 +47,74 @@ export default function SoundExplorer() {
     }
   }, []);
 
+  const handleBack = () => {
+    if (view === VIEW.PRACTICE) { setSelectedSound(null); setView(VIEW.SOUNDS); }
+    else if (view === VIEW.SOUNDS) { setSelectedGroup(null); setView(VIEW.GROUPS); }
+    else if (view === VIEW.GAME) { setView(VIEW.GROUPS); }
+    else { navigate(-1); }
+  };
+
   return (
     <AppLayout>
-      {/* Header bar */}
-      <div className="flex items-center justify-between px-4 pt-4 pb-2 border-b border-border">
-        <h1 className="text-xl font-display font-bold text-text-primary">
-          {t('sounds.title')}
-        </h1>
-        <button
-          onClick={() => setView(VIEW.GAME)}
-          className="text-sm text-primary font-medium hover:underline"
-        >
-          🎮 {t('sounds.playSortingGame')}
-        </button>
-      </div>
+      <div className="flex flex-col gap-5">
+        {/* Page header */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl md:text-2xl font-display font-extrabold text-text-primary">
+            🔊 {t('sounds.title')}
+          </h1>
+          <button
+            onClick={handleBack}
+            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white border border-border text-sm font-display font-bold text-text-secondary hover:text-primary hover:border-primary/30 transition-colors cursor-pointer"
+          >
+            ← Back
+          </button>
+        </div>
 
-      <AnimatePresence mode="wait">
-        {view === VIEW.GROUPS && (
-          <motion.div key="groups" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <SoundGroupSelector groups={soundGroups} onSelectGroup={handleSelectGroup} />
-          </motion.div>
-        )}
+        <AnimatePresence mode="wait">
+          {view === VIEW.GROUPS && (
+            <motion.div key="groups" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+              <SoundGroupSelector groups={soundGroups} onSelectGroup={handleSelectGroup} />
+            </motion.div>
+          )}
 
-        {view === VIEW.SOUNDS && selectedGroup && (
-          <motion.div key="sounds" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} className="p-4">
-            <button
-              onClick={() => { setSelectedGroup(null); setView(VIEW.GROUPS); }}
-              className="flex items-center gap-1 text-sm text-text-secondary hover:text-primary transition mb-3"
-            >
-              ← {t('sounds.backToGroups')}
-            </button>
-            <h2 className="text-lg font-display font-bold text-text-primary mb-4">
-              {t(selectedGroup.i18nKey)}
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {selectedGroup.sounds.map(sound => (
-                <SoundCard
-                  key={sound.id}
-                  sound={sound}
-                  completedLevels={completedMap[sound.id] || []}
-                  onSelect={handleSelectSound}
-                />
-              ))}
-            </div>
-          </motion.div>
-        )}
+          {view === VIEW.SOUNDS && selectedGroup && (
+            <motion.div key="sounds" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
+              <h2 className="text-lg font-display font-bold text-text-primary mb-4">
+                {t(selectedGroup.i18nKey)}
+              </h2>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+                {selectedGroup.sounds.map(sound => (
+                  <SoundCard
+                    key={sound.id}
+                    sound={sound}
+                    completedLevels={completedMap[sound.id] || []}
+                    onSelect={handleSelectSound}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          )}
 
-        {view === VIEW.PRACTICE && selectedSound && (
-          <motion.div key="practice" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
-            <PracticeView
-              sound={selectedSound}
-              speak={speak}
-              onStarEarned={handleStarEarned}
-              onBack={() => { setSelectedSound(null); setView(VIEW.SOUNDS); }}
-            />
-          </motion.div>
-        )}
+          {view === VIEW.PRACTICE && selectedSound && (
+            <motion.div key="practice" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
+              <PracticeView
+                sound={selectedSound}
+                speak={speak}
+                onStarEarned={handleStarEarned}
+              />
+            </motion.div>
+          )}
 
-        {view === VIEW.GAME && (
-          <motion.div key="game" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
-            <div className="flex items-center gap-3 px-4 pt-4 pb-2">
-              <button
-                onClick={() => setView(VIEW.GROUPS)}
-                className="text-sm text-text-secondary hover:text-primary transition"
-              >
-                ← {t('sounds.backToGroups')}
-              </button>
-              <span className="text-lg font-display font-bold text-text-primary">
+          {view === VIEW.GAME && (
+            <motion.div key="game" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
+              <h2 className="text-lg font-display font-bold text-text-primary mb-4">
                 🎮 {t('sounds.sortingGame')}
-              </span>
-            </div>
-            <SoundSortingGame speak={speak} onStarEarned={handleStarEarned} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </h2>
+              <SoundSortingGame speak={speak} onStarEarned={handleStarEarned} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </AppLayout>
   );
 }

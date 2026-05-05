@@ -4,15 +4,18 @@
   --font-display: 'Nunito', sans-serif;
   --font-hindi: 'Noto Sans Devanagari', sans-serif;
 
+  /* ── Warm, child-friendly palette (project plan) ── */
   --color-primary: #FF6B6B;
+  --color-primary-dark: #E85D5D;
   --color-secondary: #74B9FF;
   --color-accent: #FECA57;
   --color-success: #55E6C1;
-  --color-background: #FFF9F0;
+  --color-background: #FAFAFA;
   --color-surface: #FFFFFF;
   --color-text-primary: #2D3436;
   --color-text-secondary: #636E72;
   --color-error: #E17055;
+  --color-border: #EEEEEE;
 }
 
 *, *::before, *::after {
@@ -21,10 +24,61 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-display);
-  background-color: var(--color-background);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-background);
+  min-height: 100vh;
 }
+
+/* ── Glassmorphism — NavBar / BottomNav ─────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* ── Elevated card ───────────────────────────────────── */
+.card-elevated {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* ── Gradient text — coral to sky ─────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B6B 0%, #74B9FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section divider ──────────────────────────────────── */
+.section-divider {
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  height: 1px;
+}
+
+/* ── Custom scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
+
+/* ── Selection ────────────────────────────────────────── */
+::selection {
+  background: rgba(255, 107, 107, 0.15);
+  color: var(--color-text-primary);
+}
+
+/* Hide scrollbar for horizontal scroll areas */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

@@ -19,12 +19,12 @@ export default function SideNav() {
 
   return (
     <nav
-      className="hidden md:flex flex-col w-56 lg:w-64 bg-surface border-r border-gray-100 min-h-full shrink-0"
+      className="hidden md:flex flex-col w-56 lg:w-64 bg-white/60 backdrop-blur-sm border-r border-border/40 min-h-full shrink-0"
       aria-label="Sidebar navigation"
     >
       {/* Profile summary */}
-      <div className="flex items-center gap-3 px-4 py-4 border-b border-gray-100">
-        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-xl shrink-0">
+      <div className="flex items-center gap-3 px-5 py-5 border-b border-border/40">
+        <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-primary/15 to-accent/15 border border-primary/10 flex items-center justify-center text-xl shrink-0">
           {profile?.avatarKey || '👤'}
         </div>
         <div className="min-w-0">
@@ -40,21 +40,21 @@ export default function SideNav() {
       </div>
 
       {/* Nav items */}
-      <ul className="flex-1 px-3 py-3 space-y-1">
+      <ul className="flex-1 px-3 py-4 space-y-1">
         {navItems.map((item) => (
           <li key={item.to}>
             <NavLink
               to={item.to}
               aria-label={t(item.labelKey)}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3 py-2.5 rounded-xl font-display text-sm font-semibold transition-colors ${
+                `flex items-center gap-3 px-3 py-2.5 rounded-xl font-display text-sm font-semibold transition-all ${
                   isActive
-                    ? 'bg-primary/10 text-primary font-bold'
-                    : 'text-text-secondary hover:bg-gray-50 active:bg-gray-50'
+                    ? 'bg-primary/10 text-primary shadow-sm'
+                    : 'text-text-secondary hover:bg-white/80 hover:text-text-primary'
                 }`
               }
             >
-              <span className="text-lg">{item.emoji}</span>
+              <span className="text-lg w-6 text-center">{item.emoji}</span>
               <span>{t(item.labelKey)}</span>
             </NavLink>
           </li>

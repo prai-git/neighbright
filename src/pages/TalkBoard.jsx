@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AppLayout from '../components/common/AppLayout';
-import { IconButton } from '../components/common';
 import CategorySelector from '../components/talkboard/CategorySelector';
 import SentenceStrip from '../components/talkboard/SentenceStrip';
 import PictureCardGrid from '../components/talkboard/PictureCardGrid';
@@ -15,6 +15,7 @@ const MAX = SentenceStrip.MAX_WORDS;
 
 export default function TalkBoard() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { speak, voiceUnavailable } = useSpeech();
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [sentenceWords, setSentenceWords] = useState([]);
@@ -64,50 +65,66 @@ export default function TalkBoard() {
 
   return (
     <AppLayout>
-      {voiceUnavailable && (
-        <div className="mx-4 mt-2 bg-accent/10 rounded-xl px-4 py-2 text-sm text-text-secondary font-display text-center">
-          ⚠️ Speech not available for this language on your device
+      <div className="flex flex-col gap-5">
+        {/* Page header */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl md:text-2xl font-display font-extrabold text-text-primary">
+            💬 {t('nav.talkBoard')}
+          </h1>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowCustomForm(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-display font-bold cursor-pointer hover:bg-primary/15 transition-colors"
+            >
+              + {t('talkBoard.addCard')}
+            </button>
+            <button
+              onClick={() => navigate(-1)}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white border border-border text-sm font-display font-bold text-text-secondary hover:text-primary hover:border-primary/30 transition-colors cursor-pointer"
+            >
+              ← Back
+            </button>
+          </div>
         </div>
-      )}
 
-      <SentenceStrip
-        words={sentenceWords}
-        onSpeak={handleSpeak}
-        onClear={() => setSentenceWords([])}
-        onRemoveWord={handleRemoveWord}
-        flash={flash}
-      />
+        {voiceUnavailable && (
+          <div className="bg-accent/10 rounded-xl px-4 py-2 text-sm text-text-secondary font-display text-center">
+            ⚠️ Speech not available for this language on your device
+          </div>
+        )}
 
-      <CategorySelector
-        categories={categories}
-        active={selectedCategory}
-        onSelect={setSelectedCategory}
-      />
+        {/* Sentence strip */}
+        <SentenceStrip
+          words={sentenceWords}
+          onSpeak={handleSpeak}
+          onClear={() => setSentenceWords([])}
+          onRemoveWord={handleRemoveWord}
+          flash={flash}
+        />
 
-      <PictureCardGrid
-        key={`${selectedCategory.id}-${gridKey}`}
-        category={selectedCategory}
-        onWordTap={handleWordTap}
-      />
+        {/* Quick phrases */}
+        <QuickPhrases onPhraseTap={(phrase) => { speak(phrase); logProgress('quick-phrase', { phrase }); }} />
 
-      <QuickPhrases onPhraseTap={(phrase) => { speak(phrase); logProgress('quick-phrase', { phrase }); }} />
+        {/* Category selector */}
+        <CategorySelector
+          categories={categories}
+          active={selectedCategory}
+          onSelect={setSelectedCategory}
+        />
 
-      {/* Add custom card button */}
-      <div className="px-4 pb-4">
-        <button
-          onClick={() => setShowCustomForm(true)}
-          className="text-sm font-display font-semibold text-primary underline cursor-pointer"
-        >
-          + {t('talkBoard.addCard')}
-        </button>
+        {/* Picture card grid */}
+        <PictureCardGrid
+          key={`${selectedCategory.id}-${gridKey}`}
+          category={selectedCategory}
+          onWordTap={handleWordTap}
+        />
+
+        <CustomCardForm
+          isOpen={showCustomForm}
+          onClose={() => setShowCustomForm(false)}
+          onSaved={() => setGridKey((k) => k + 1)}
+        />
       </div>
-
-      <CustomCardForm
-        isOpen={showCustomForm}
-        onClose={() => setShowCustomForm(false)}
-        onSaved={() => setGridKey((k) => k + 1)}
-      />
     </AppLayout>
   );
 }
-

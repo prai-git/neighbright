@@ -1,17 +1,15 @@
 import NavBar from './NavBar';
-import SideNav from './SideNav';
 import BottomNav from './BottomNav';
 
 export default function AppLayout({ children }) {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <NavBar mode="app" />
-      <div className="flex flex-1 overflow-hidden">
-        <SideNav />
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8 pb-20 md:pb-0">
+      <main className="flex-1 overflow-y-auto pb-24 md:pb-8">
+        <div className="px-5 py-5 md:px-10 md:py-8 lg:px-16">
           {children}
-        </main>
-      </div>
+        </div>
+      </main>
       <BottomNav />
     </div>
   );

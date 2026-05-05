@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '../../data/i18n';
-import EmojiCard from '../common/EmojiCard';
 import db from '../../db';
 
 export default function PictureCardGrid({ category, onWordTap }) {
@@ -38,25 +37,27 @@ export default function PictureCardGrid({ category, onWordTap }) {
 
   return (
     <div
-      className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 px-4 py-3"
+      className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2.5"
       role="grid"
       aria-label={t(category.i18nKey)}
     >
       {allWords.map((word) => {
         const label = word.i18nWord ? t(word.i18nWord) : word.customWord;
         return (
-          <motion.div
+          <motion.button
             key={word.id}
-            animate={tappedId === word.id ? { scale: [1, 1.15, 1] } : {}}
-            transition={{ duration: 0.3 }}
+            animate={tappedId === word.id ? { scale: [1, 1.1, 1] } : {}}
+            transition={{ duration: 0.25 }}
+            whileTap={{ scale: 0.92 }}
+            onClick={() => handleTap(word)}
+            aria-label={label}
+            className="flex flex-col items-center justify-center gap-1 p-3 rounded-2xl bg-white border border-border cursor-pointer hover:shadow-sm transition-shadow aspect-square"
           >
-            <EmojiCard
-              emoji={word.emoji}
-              label={label}
-              size="md"
-              onClick={() => handleTap(word)}
-            />
-          </motion.div>
+            <span className="text-4xl sm:text-5xl">{word.emoji}</span>
+            <span className="text-xs font-display font-bold text-text-primary truncate max-w-full">
+              {label}
+            </span>
+          </motion.button>
         );
       })}
     </div>
