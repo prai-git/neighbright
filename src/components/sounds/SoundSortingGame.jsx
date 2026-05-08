@@ -99,18 +99,18 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
         animate={{ opacity: 1, scale: 1 }}
         className="flex flex-col items-center gap-6 py-12"
       >
-        <div className="text-6xl">🎉</div>
-        <p className="text-2xl font-display font-extrabold text-text-primary text-center">
+        <div className="text-7xl">🎉</div>
+        <p className="text-2xl font-display font-extrabold text-white text-center">
           {t('sounds.gameComplete', { correct: score })}
         </p>
-        <div className="flex gap-1">
+        <div className="flex gap-1.5">
           {Array.from({ length: ROUNDS }, (_, i) => (
             <span key={i} className={`text-xl ${i < score ? '' : 'opacity-20'}`}>⭐</span>
           ))}
         </div>
         <button
           onClick={restart}
-          className="px-6 py-3 bg-primary text-white rounded-full font-display font-bold shadow-sm hover:shadow-md transition cursor-pointer"
+          className="px-8 py-4 bg-primary text-white rounded-2xl font-display font-extrabold shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:brightness-110 transition cursor-pointer uppercase tracking-wide active:translate-y-[2px] active:shadow-[0_1px_0_rgba(0,0,0,0.2)]"
         >
           {t('sounds.tryAgain')}
         </button>
@@ -122,13 +122,13 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
     <div className="flex flex-col gap-5">
       {/* Progress bar */}
       <div className="flex items-center gap-3">
-        <div className="flex-1 h-2 bg-border rounded-full overflow-hidden">
+        <div className="flex-1 h-3 bg-border rounded-full overflow-hidden">
           <div
-            className="h-2 bg-primary rounded-full transition-all duration-300"
+            className="h-3 bg-primary rounded-full transition-all duration-300"
             style={{ width: `${(current / ROUNDS) * 100}%` }}
           />
         </div>
-        <span className="text-xs font-display font-bold text-text-secondary whitespace-nowrap">
+        <span className="text-xs font-display font-extrabold text-text-secondary whitespace-nowrap">
           {current + 1}/{ROUNDS}
         </span>
       </div>
@@ -143,10 +143,10 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
           transition={{ duration: 0.2 }}
           className="flex flex-col items-center gap-3"
         >
-          <p className="text-xs text-text-secondary">{t('sounds.sortDragPrompt')}</p>
+          <p className="text-xs text-text-secondary font-display font-bold">{t('sounds.sortDragPrompt')}</p>
           <button
             onClick={() => speak(round.word, 0.8)}
-            className="text-3xl font-display font-extrabold text-text-primary px-8 py-4 bg-white rounded-2xl border border-border shadow-sm hover:shadow-md transition cursor-pointer"
+            className="text-3xl font-display font-extrabold text-white px-10 py-5 bg-surface rounded-2xl border-2 border-border shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:border-secondary/50 transition cursor-pointer active:translate-y-[2px] active:shadow-[0_1px_0_rgba(0,0,0,0.2)]"
           >
             {round.word}
           </button>
@@ -160,10 +160,10 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            className={`text-center text-base font-display font-bold py-2.5 rounded-xl ${
+            className={`text-center text-base font-display font-extrabold py-3 rounded-2xl ${
               feedback === 'correct'
-                ? 'text-success bg-success/10'
-                : 'text-error bg-error/10'
+                ? 'text-primary bg-primary/15 border border-primary/30'
+                : 'text-error bg-error/15 border border-error/30'
             }`}
           >
             {feedback === 'correct'
@@ -173,7 +173,7 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
         )}
       </AnimatePresence>
 
-      {/* Sound buckets — big, colorful */}
+      {/* Sound buckets */}
       <div className="grid grid-cols-2 gap-4">
         {[round.leftSound, round.rightSound].map((bucketSound, idx) => (
           <motion.button
@@ -182,19 +182,19 @@ export default function SoundSortingGame({ speak, onStarEarned }) {
             animate={
               feedback
                 ? bucketSound.id === round.correctSound.id
-                  ? { scale: [1, 1.06, 1], backgroundColor: ['#ffffff', '#d1fae5', '#ffffff'] }
+                  ? { scale: [1, 1.06, 1] }
                   : { x: [0, -6, 6, -6, 0] }
                 : {}
             }
             onClick={() => handleAnswer(bucketSound)}
-            className="bg-white rounded-3xl border-2 border-border flex flex-col items-center gap-2 p-6 hover:border-primary/30 hover:shadow-md transition cursor-pointer"
+            className="bg-surface rounded-2xl border-2 border-border flex flex-col items-center gap-3 p-6 hover:border-primary/50 shadow-[0_4px_0_rgba(0,0,0,0.2)] transition cursor-pointer active:translate-y-[2px] active:shadow-[0_1px_0_rgba(0,0,0,0.2)]"
           >
-            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-              <span className="text-2xl font-display font-extrabold text-primary">
+            <div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center border border-secondary/30">
+              <span className="text-2xl font-display font-extrabold text-secondary">
                 {bucketSound.symbol.replace(/\//g, '')}
               </span>
             </div>
-            <span className="text-xs text-text-secondary font-display">tap if word starts here</span>
+            <span className="text-xs text-text-secondary font-display font-bold">tap if word starts here</span>
           </motion.button>
         ))}
       </div>

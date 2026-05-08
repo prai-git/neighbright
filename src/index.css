@@ -4,18 +4,25 @@
   --font-display: 'Nunito', sans-serif;
   --font-hindi: 'Noto Sans Devanagari', sans-serif;
 
-  /* ── Warm, child-friendly palette (project plan) ── */
-  --color-primary: #FF6B6B;
-  --color-primary-dark: #E85D5D;
-  --color-secondary: #74B9FF;
-  --color-accent: #FECA57;
-  --color-success: #55E6C1;
-  --color-background: #FAFAFA;
-  --color-surface: #FFFFFF;
-  --color-text-primary: #2D3436;
-  --color-text-secondary: #636E72;
-  --color-error: #E17055;
-  --color-border: #EEEEEE;
+  /* ── Bold & Vibrant palette ── */
+  --color-primary: #58CC02;
+  --color-primary-dark: #46A302;
+  --color-secondary: #1CB0F6;
+  --color-accent: #FF9600;
+  --color-success: #58CC02;
+  --color-background: #131F24;
+  --color-surface: #1B2B32;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #AFAFAF;
+  --color-error: #FF4B4B;
+  --color-border: #2B3D45;
+  --color-card: #1B2B32;
+
+  /* ── Bold shadows ── */
+  --shadow-chunky: 0 4px 0 rgba(0,0,0,0.2);
+  --shadow-chunky-sm: 0 2px 0 rgba(0,0,0,0.15);
+  --shadow-glow-primary: 0 0 20px rgba(88,204,2,0.3);
+  --shadow-glow-secondary: 0 0 20px rgba(28,176,246,0.3);
 }
 
 *, *::before, *::after {
@@ -37,28 +44,66 @@ body {
   min-height: 100vh;
 }
 
-/* ── Glassmorphism — NavBar / BottomNav ─────────────── */
+/* ── Nav bar glass ─────────────────────────────────── */
 .glass {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(19, 31, 36, 0.95);
   backdrop-filter: blur(20px) saturate(1.2);
   -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* ── Elevated card ───────────────────────────────────── */
 .card-elevated {
-  background: #FFFFFF;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-chunky);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card-elevated:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.2);
 }
 
-/* ── Gradient text — coral to sky ─────────────────────── */
+/* ── Gradient text — green to blue ─────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #FF6B6B 0%, #74B9FF 100%);
+  background: linear-gradient(135deg, #58CC02 0%, #1CB0F6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ── Chunky button base ──────────────────────────────── */
+.btn-chunky {
+  font-family: var(--font-display);
+  font-weight: 800;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: var(--shadow-chunky);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-chunky:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+/* ── Module card colors ──────────────────────────────── */
+.module-card {
+  border-radius: 20px;
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-chunky);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.module-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 rgba(0,0,0,0.2);
+}
+.module-card:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.2);
 }
 
 /* ── Section divider ──────────────────────────────────── */
@@ -70,13 +115,13 @@ body {
 /* ── Custom scrollbar ─────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
 
 /* ── Selection ────────────────────────────────────────── */
 ::selection {
-  background: rgba(255, 107, 107, 0.15);
-  color: var(--color-text-primary);
+  background: rgba(88, 204, 2, 0.3);
+  color: white;
 }
 
 /* Hide scrollbar for horizontal scroll areas */

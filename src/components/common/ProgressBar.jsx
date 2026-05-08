@@ -28,7 +28,7 @@ export default function ProgressBar({
   return (
     <div className="flex items-center gap-2 w-full">
       <div
-        className="flex-1 bg-gray-100 rounded-full overflow-hidden"
+        className="flex-1 bg-border rounded-full overflow-hidden"
         style={{ height: `${height}px` }}
         role="progressbar"
         aria-valuenow={clamped}

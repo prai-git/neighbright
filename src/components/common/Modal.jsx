@@ -61,12 +61,12 @@ export default function Modal({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 60, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className={`bg-surface rounded-2xl shadow-lg w-full ${sizeMap[size]} p-6`}
+            className={`bg-surface rounded-2xl shadow-xl border-2 border-border w-full ${sizeMap[size]} p-6`}
             onClick={(e) => e.stopPropagation()}
           >
             {title && (
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-display font-bold text-text-primary">{title}</h2>
+                <h2 className="text-lg font-display font-extrabold text-white">{title}</h2>
                 <button
                   ref={firstFocusRef}
                   onClick={onClose}

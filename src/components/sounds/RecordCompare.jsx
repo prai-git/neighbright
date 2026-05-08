@@ -27,14 +27,14 @@ export default function RecordCompare({ speak, modelText, modelRate = 0.7 }) {
   return (
     <div className="flex flex-col items-center gap-3">
       {error === 'permission_denied' && (
-        <p className="text-sm text-error text-center">{t('sounds.micPermissionDenied')}</p>
+        <p className="text-sm text-error text-center font-display font-bold">{t('sounds.micPermissionDenied')}</p>
       )}
 
       {/* Record / Stop button */}
       <motion.button
         whileTap={{ scale: 0.92 }}
         onClick={isRecording ? stopRecording : startRecording}
-        className={`w-16 h-16 rounded-full flex items-center justify-center shadow-sm transition-colors cursor-pointer ${
+        className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.2)] transition-colors cursor-pointer active:translate-y-[2px] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] ${
           isRecording
             ? 'bg-error text-white animate-pulse'
             : 'bg-primary text-white'
@@ -51,7 +51,7 @@ export default function RecordCompare({ speak, modelText, modelRate = 0.7 }) {
           </svg>
         )}
       </motion.button>
-      <span className="text-xs font-display font-bold text-text-secondary">
+      <span className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-wide">
         {isRecording ? t('sounds.stop') : t('sounds.record')}
       </span>
 
@@ -66,19 +66,19 @@ export default function RecordCompare({ speak, modelText, modelRate = 0.7 }) {
           >
             <button
               onClick={handlePlayback}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-secondary text-white text-sm font-display font-bold shadow-sm hover:shadow-md transition cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-secondary text-white text-sm font-display font-extrabold shadow-[0_3px_0_rgba(0,0,0,0.2)] hover:brightness-110 transition cursor-pointer active:translate-y-[2px] active:shadow-[0_1px_0_rgba(0,0,0,0.2)]"
             >
               ▶ {t('sounds.playBack')}
             </button>
             <button
               onClick={handleHearModel}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white border border-primary text-primary text-sm font-display font-bold hover:bg-primary/5 transition cursor-pointer"
+              className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-white/10 border-2 border-primary/30 text-primary text-sm font-display font-extrabold hover:bg-primary/10 transition cursor-pointer"
             >
               🔊 {t('sounds.playModel')}
             </button>
             <button
               onClick={clearRecording}
-              className="text-text-secondary/40 text-xs hover:text-error transition cursor-pointer"
+              className="text-text-secondary/40 text-sm hover:text-error transition cursor-pointer"
               aria-label="Clear recording"
             >
               ✕

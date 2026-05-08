@@ -21,7 +21,7 @@ export default function LandingFeedback() {
       >
         <h2
           id="feedback-heading"
-          className="text-2xl md:text-3xl font-display font-extrabold text-text-primary"
+          className="text-2xl md:text-3xl font-display font-extrabold text-white"
         >
           {t('landing.feedbackTitle')}
         </h2>

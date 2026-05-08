@@ -74,7 +74,7 @@ export default function Onboarding() {
         {[0, 1].map((i) => (
           <div
             key={i}
-            className={`h-2 rounded-full transition-all duration-300 ${i === step ? 'bg-primary w-8' : 'bg-border w-2'}`}
+            className={`h-2.5 rounded-full transition-all duration-300 ${i === step ? 'bg-primary w-10' : 'bg-border w-2.5'}`}
             aria-current={i === step ? 'step' : undefined}
           />
         ))}
@@ -93,7 +93,7 @@ export default function Onboarding() {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="flex flex-col items-center gap-8"
             >
-              <h1 className="text-2xl md:text-3xl font-display font-extrabold text-text-primary text-center">
+              <h1 className="text-2xl md:text-3xl font-display font-extrabold text-white text-center">
                 {t('onboarding.languageStep')}
               </h1>
 
@@ -103,15 +103,16 @@ export default function Onboarding() {
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
                     className={[
-                      'flex-1 flex flex-col items-center gap-2 p-5 rounded-2xl border-2 bg-white transition-all cursor-pointer',
+                      'flex-1 flex flex-col items-center gap-2 p-5 rounded-2xl border-2 bg-surface transition-all cursor-pointer',
+                      'shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]',
                       language === lang.code
-                        ? 'border-primary shadow-sm'
-                        : 'border-border hover:border-text-secondary/30',
+                        ? 'border-primary'
+                        : 'border-border hover:border-white/30',
                     ].join(' ')}
                     aria-pressed={language === lang.code}
                   >
                     <span className="text-4xl">{lang.flag}</span>
-                    <span className="font-display font-bold text-sm text-text-primary">{lang.label}</span>
+                    <span className="font-display font-extrabold text-sm text-white">{lang.label}</span>
                   </button>
                 ))}
               </div>
@@ -131,7 +132,7 @@ export default function Onboarding() {
               transition={{ duration: 0.35, ease: 'easeInOut' }}
               className="flex flex-col gap-6"
             >
-              <h1 className="text-2xl md:text-3xl font-display font-extrabold text-text-primary text-center">
+              <h1 className="text-2xl md:text-3xl font-display font-extrabold text-white text-center">
                 {t('onboarding.profileStep')}
               </h1>
 
@@ -147,7 +148,7 @@ export default function Onboarding() {
 
               {/* Avatar */}
               <div>
-                <p className="text-xs font-display font-bold text-text-secondary uppercase tracking-wider mb-3">
+                <p className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-wider mb-3">
                   {t('onboarding.avatarLabel')}
                 </p>
                 <motion.div
@@ -162,7 +163,7 @@ export default function Onboarding() {
                       key={emoji}
                       onClick={() => setAvatarKey(emoji)}
                       className={[
-                        'w-10 h-10 rounded-xl bg-white border-2 flex items-center justify-center text-xl transition-all cursor-pointer hover:scale-105',
+                        'w-10 h-10 rounded-xl bg-surface border-2 flex items-center justify-center text-xl transition-all cursor-pointer hover:scale-105',
                         avatarKey === emoji
                           ? 'border-primary scale-105'
                           : 'border-border',
@@ -175,13 +176,13 @@ export default function Onboarding() {
                   ))}
                 </motion.div>
                 {avatarShake && !avatarKey && (
-                  <p className="text-xs text-error mt-1 font-display">{t('onboarding.avatarLabel')} is required</p>
+                  <p className="text-xs text-error mt-1 font-display font-bold">{t('onboarding.avatarLabel')} is required</p>
                 )}
               </div>
 
               {/* Tier */}
               <div>
-                <p className="text-xs font-display font-bold text-text-secondary uppercase tracking-wider mb-3">
+                <p className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-wider mb-3">
                   {t('onboarding.tierLabel')}
                 </p>
                 <motion.div
@@ -196,16 +197,17 @@ export default function Onboarding() {
                       key={tierItem.value}
                       onClick={() => setTier(tierItem.value)}
                       className={[
-                        'flex items-center gap-3 p-4 rounded-2xl bg-white border-2 transition-all cursor-pointer text-left',
+                        'flex items-center gap-3 p-4 rounded-2xl bg-surface border-2 transition-all cursor-pointer text-left',
+                        'shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]',
                         tier === tierItem.value
                           ? 'border-primary'
-                          : 'border-border hover:border-text-secondary/30',
+                          : 'border-border hover:border-white/30',
                       ].join(' ')}
                       aria-pressed={tier === tierItem.value}
                     >
                       <span className="text-2xl">{tierItem.emoji}</span>
                       <div>
-                        <p className="font-display font-bold text-sm text-text-primary">{t(tierItem.nameKey)}</p>
+                        <p className="font-display font-extrabold text-sm text-white">{t(tierItem.nameKey)}</p>
                         <p className="text-xs text-text-secondary">{t(tierItem.descKey)}</p>
                       </div>
                     </button>

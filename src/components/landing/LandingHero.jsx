@@ -17,7 +17,7 @@ export default function LandingHero() {
       <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-5">
         {/* Logo */}
         <motion.div {...fadeUp(0)} className="flex items-center gap-2">
-          <span className="font-display font-extrabold text-5xl md:text-6xl text-text-primary tracking-tight">
+          <span className="font-display font-extrabold text-5xl md:text-6xl gradient-text tracking-tight">
             NeighBright
           </span>
           <motion.span
@@ -30,7 +30,7 @@ export default function LandingHero() {
         </motion.div>
 
         {/* Tagline */}
-        <motion.p {...fadeUp(0.1)} className="text-lg md:text-xl text-text-secondary font-display font-semibold max-w-lg leading-relaxed">
+        <motion.p {...fadeUp(0.1)} className="text-lg md:text-xl text-text-secondary font-display font-bold max-w-lg leading-relaxed">
           {t('landing.heroTitle')}
         </motion.p>
 

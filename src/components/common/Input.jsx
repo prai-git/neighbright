@@ -37,7 +37,7 @@ export default function Input({
             'outline-none transition-all',
             'focus:ring-2 focus:ring-primary/30 focus:border-primary',
             icon ? 'pl-10' : '',
-            error ? 'border-error' : 'border-gray-200',
+            error ? 'border-error' : 'border-border',
           ].join(' ')}
           aria-invalid={!!error}
           aria-describedby={error ? `${id}-error` : undefined}

@@ -19,18 +19,19 @@ export default function EmojiCard({
 
   return (
     <motion.button
-      whileTap={disabled ? {} : { scale: 0.92 }}
+      whileTap={disabled ? {} : { scale: 0.92, y: 2 }}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
       aria-label={label}
       aria-pressed={selected}
       className={[
-        'bg-white rounded-2xl border flex flex-col items-center justify-center gap-1 select-none transition-all',
+        'bg-surface rounded-2xl border-2 flex flex-col items-center justify-center gap-1.5 select-none transition-all',
+        'shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)]',
         card,
         selected
-          ? 'ring-2 ring-primary border-primary bg-primary/5'
+          ? 'ring-2 ring-primary border-primary bg-primary/10'
           : 'border-border',
-        disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:shadow-sm',
+        disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:border-primary/50',
       ].join(' ')}
     >
       <span className={emojiSize}>{emoji}</span>
