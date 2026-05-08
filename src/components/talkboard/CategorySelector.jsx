@@ -14,7 +14,7 @@ export default function CategorySelector({ categories, active, onSelect }) {
   return (
     <div
       ref={scrollRef}
-      className="flex gap-2 overflow-x-auto hide-scrollbar py-1"
+      className="flex gap-2 overflow-x-auto hide-scrollbar pt-1 pb-2"
       role="tablist"
       aria-label="Categories"
     >
@@ -28,13 +28,14 @@ export default function CategorySelector({ categories, active, onSelect }) {
             aria-selected={isActive}
             onClick={() => handleSelect(cat)}
             className={[
-              'flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-display font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer',
+              'flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-display font-extrabold whitespace-nowrap shrink-0 transition-all cursor-pointer border-2',
               isActive
-                ? 'bg-primary text-white shadow-sm'
-                : 'bg-white text-text-secondary border border-border hover:border-text-secondary/30',
+                ? 'text-white shadow-[0_3px_0_rgba(0,0,0,0.2)]'
+                : 'bg-surface text-text-secondary border-border hover:border-white/20',
             ].join(' ')}
+            style={isActive ? { backgroundColor: cat.color, borderColor: cat.color } : undefined}
           >
-            <span className="text-base">{cat.icon}</span>
+            <span className="text-lg">{cat.icon}</span>
             <span>{t(cat.i18nKey)}</span>
           </button>
         );

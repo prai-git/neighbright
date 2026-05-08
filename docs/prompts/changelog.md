@@ -318,40 +318,116 @@ Consolidated navigation: single "← Back" button per sub-page positioned top-ri
 **Sound Explorer cleanup:**
 - `SoundGroupSelector.jsx` — Removed "Choose a Sound Group" heading (redundant with page title)
 
-### Files Changed (36 files)
-- `docs/prompts/changelog.md`
-- `src/index.css`
-- `src/components/common/AppLayout.jsx`
-- `src/components/common/BottomNav.jsx`
-- `src/components/common/Button.jsx`
-- `src/components/common/Card.jsx`
-- `src/components/common/EmojiCard.jsx`
-- `src/components/common/LanguageSwitcher.jsx`
+### Files Changed (8 files)
 - `src/components/common/NavBar.jsx`
-- `src/components/common/SideNav.jsx`
-- `src/components/common/StarCounter.jsx`
-- `src/components/common/StreakBadge.jsx`
-- `src/components/landing/LandingAudience.jsx`
-- `src/components/landing/LandingEvidence.jsx`
-- `src/components/landing/LandingFeatures.jsx`
-- `src/components/landing/LandingFeedback.jsx`
-- `src/components/landing/LandingFooter.jsx`
-- `src/components/landing/LandingHero.jsx`
-- `src/components/landing/LandingHowItWorks.jsx`
-- `src/components/sounds/PracticeView.jsx`
-- `src/components/sounds/RecordCompare.jsx`
-- `src/components/sounds/SoundCard.jsx`
 - `src/components/sounds/SoundGroupSelector.jsx`
-- `src/components/sounds/SoundSortingGame.jsx`
-- `src/components/talkboard/CategorySelector.jsx`
-- `src/components/talkboard/PictureCardGrid.jsx`
-- `src/components/talkboard/QuickPhrases.jsx`
-- `src/components/talkboard/SentenceStrip.jsx`
-- `src/pages/Home.jsx`
-- `src/pages/MatchAndLearn.jsx`
-- `src/pages/Onboarding.jsx`
-- `src/pages/ParentDashboard.jsx`
-- `src/pages/Puzzles.jsx`
-- `src/pages/SoundExplorer.jsx`
+- `src/components/sounds/PracticeView.jsx`
 - `src/pages/TalkBoard.jsx`
+- `src/pages/SoundExplorer.jsx`
 - `src/pages/WordBuilder.jsx`
+- `src/pages/MatchAndLearn.jsx`
+- `src/pages/Puzzles.jsx`
+- `src/pages/ParentDashboard.jsx`
+
+---
+
+## Design Overhaul v4 — Bold & Vibrant (Duolingo-style)
+**Date:** 2026-05-05
+**Status:** ✅ Complete
+
+### Summary
+Complete visual overhaul to a bold, vibrant dark theme inspired by Duolingo. Dark background (#131F24), saturated colors, chunky 3D-shadow buttons, large module cards with vivid fills, and proper widget layout across all pages.
+
+### Design System
+- **Palette**: Dark background (#131F24), surface (#1B2B32), border (#2B3D45), green primary (#58CC02), blue secondary (#1CB0F6), orange accent (#FF9600), red error (#FF4B4B)
+- **Shadows**: Chunky 3D button shadows (0 4px 0) with press-down active states
+- **Typography**: White text on dark, font-extrabold, uppercase tracking on labels
+- **Cards**: Dark surface, 2px borders, 3D drop shadows, hover lift
+- **Module cards**: Fully saturated backgrounds (green, blue, orange, purple, red)
+
+### Key Changes
+
+**CSS Foundation**: Complete dark palette, `.module-card` with 3D shadow, dark glass nav, dark scrollbar
+**NavBar/BottomNav**: Dark glass, gradient logo, active indicator bar, scale effects
+**Common Components**: Chunky 3D buttons, dark cards/modals/inputs, accent-colored badges
+**Home**: Gradient banner, side-by-side stats cards, large saturated module tiles
+**Sub-Pages**: Dark headers, chunky ghost Back button with 3D shadow
+**Sound Explorer**: Saturated group cards, dark sound cards, chunky level pills, bold game UI
+**TalkBoard**: Dark sentence strip, blue word chips, orange quick phrases, dark picture cards
+**Landing**: All dark sections, saturated feature tiles, dark audience/evidence cards
+**Onboarding**: Dark selection cards with 3D shadows, thicker progress dots
+
+### Files Changed (33 files)
+- `src/index.css`
+- `src/components/common/{Button,Card,EmojiCard,Input,LanguageSwitcher,Modal,NavBar,BottomNav,ProgressBar,StreakBadge}.jsx`
+- `src/components/landing/{LandingHero,LandingFeatures,LandingHowItWorks,LandingAudience,LandingEvidence,LandingFeedback,LandingFooter}.jsx`
+- `src/components/sounds/{PracticeView,RecordCompare,SoundCard,SoundGroupSelector,SoundSortingGame}.jsx`
+- `src/components/talkboard/{CategorySelector,PictureCardGrid,QuickPhrases,SentenceStrip}.jsx`
+- `src/pages/{Home,TalkBoard,SoundExplorer,WordBuilder,MatchAndLearn,Puzzles,ParentDashboard,Onboarding}.jsx`
+
+---
+
+## Module 08 — Word Builder
+**Date:** 2026-05-08
+**Status:** ✅ Complete
+
+### Summary
+Full vocabulary learning system with 240+ words across 12 categories, three learning modes (Learn, Listen & Point, Say It), spaced repetition, progress tracking, star earning, and Word of the Day integration on the Home screen.
+
+### Changes
+
+**Vocabulary Data (`src/data/vocabulary.js`):**
+- Added `wordCategories` export with 12 categories: Fruits & Vegetables, Food & Meals, Animals, Vehicles, Colors & Shapes, Clothes, Furniture, Kitchen, Hygiene, School, Actions, Descriptors
+- 240+ words total, each with emoji, i18n word key, and i18n phrase key
+- Existing TalkBoard `categories` export preserved untouched
+
+**i18n (`src/data/i18n/en.json`):**
+- Added ~120 new vocabulary entries (word + phrase pairs) covering all new words
+- Used `orangeFruit` key to disambiguate from the color "orange"
+
+**Spaced Repetition (`src/utils/spaced-repetition.js`):**
+- `getWeightedWordList(categoryWords)` — queries IndexedDB progress for accuracy per word
+- Words with < 50% accuracy repeat 3×, 50-80% repeat 2×, > 80% repeat 1×
+- Fisher-Yates shuffle on the weighted list
+
+**Learning Mode Components (`src/components/words/`):**
+- `LearnMode.jsx` — Swipeable flashcard interface with AnimatePresence slide transitions, large emoji (text-7xl), word + phrase badge, tap-to-speak via useSpeech, prev/next arrow buttons, progress dots, logs `learn-view` to IndexedDB, awards star on category completion
+- `ListenPointMode.jsx` — Audio prompt ("Can you find the [word]?"), EmojiCard choice grid, tier-scaled difficulty (Tier 1 = 2 choices, Tier 2 = 3, Tier 3 = 4), correct = bounce + green ring + star + auto-advance 1.5s, incorrect = shake + dim + retry, replay button, logs `listen-point` with result
+- `SayItMode.jsx` — Large emoji + word card, speaks "Say: [word]", two large rating buttons (👍 correct / 👎 needs practice), star animation on correct, auto-advance after rating, logs `say-it` with result
+
+**WordBuilder Page (`src/pages/WordBuilder.jsx`):**
+- VIEW enum pattern (CATEGORIES / MODE) matching SoundExplorer
+- 12-category grid (2/3/4 cols responsive) with emoji, name, word count, color accent
+- Three-button mode selector (Learn / Listen / Say) as segmented control
+- Context-aware Back button (mode → categories → browser history)
+- Star earning via `db.rewards` (same pattern as SoundExplorer)
+
+**Home Page (`src/pages/Home.jsx`):**
+- Word of the Day now uses `wordCategories` data (240+ word pool) instead of hardcoded WORD_EMOJIS map
+- `getDailyWord()` returns i18n keys — word and phrase render via `t()` for full multilingual support
+- Removed `en.json` direct import dependency
+
+### Talk Board Layout Fix
+- Moved "Add Card" button from cramped header to inline with "Categories" section label
+- Added section labels ("Quick Phrases", "Categories") as uppercase tracking headers
+- Redesigned QuickPhrases from horizontal scroll pills to 3×2 grid cards (emoji above label)
+- CategorySelector active tab now uses category's own color instead of generic green
+- Increased section spacing from gap-5 to gap-6
+
+### Files Changed
+- `src/data/vocabulary.js` — added `wordCategories` export
+- `src/data/i18n/en.json` — ~120 new vocabulary entries
+- `src/utils/spaced-repetition.js` — **new file**
+- `src/components/words/LearnMode.jsx` — **new file**
+- `src/components/words/ListenPointMode.jsx` — **new file**
+- `src/components/words/SayItMode.jsx` — **new file**
+- `src/pages/WordBuilder.jsx` — replaced placeholder
+- `src/pages/Home.jsx` — Word of the Day updated
+- `src/pages/TalkBoard.jsx` — layout restructured
+- `src/components/talkboard/QuickPhrases.jsx` — redesigned to grid
+- `src/components/talkboard/CategorySelector.jsx` — color-coded active state
+
+### Deviations
+- Used `orangeFruit` i18n key for the fruit "orange" to avoid collision with the color "orange" key
+- LearnMode uses category's original word order (not spaced repetition) since it's a browse/flashcard mode; Listen & Say modes use spaced repetition
+- Bundle size ~596KB — code-splitting planned for Module 12

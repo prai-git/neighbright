@@ -65,59 +65,73 @@ export default function TalkBoard() {
 
   return (
     <AppLayout>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-6">
         {/* Page header */}
         <div className="flex items-center justify-between">
-          <h1 className="text-xl md:text-2xl font-display font-extrabold text-text-primary">
+          <h1 className="text-xl md:text-2xl font-display font-extrabold text-white">
             💬 {t('nav.talkBoard')}
           </h1>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setShowCustomForm(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-display font-bold cursor-pointer hover:bg-primary/15 transition-colors"
-            >
-              + {t('talkBoard.addCard')}
-            </button>
-            <button
-              onClick={() => navigate(-1)}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white border border-border text-sm font-display font-bold text-text-secondary hover:text-primary hover:border-primary/30 transition-colors cursor-pointer"
-            >
-              ← Back
-            </button>
-          </div>
+          <button
+            onClick={() => navigate(-1)}
+            className="inline-flex items-center gap-1 px-4 py-2 rounded-xl bg-white/10 border-2 border-white/20 text-sm font-display font-extrabold text-white hover:bg-white/15 transition-colors cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
+          >
+            ← Back
+          </button>
         </div>
 
         {voiceUnavailable && (
-          <div className="bg-accent/10 rounded-xl px-4 py-2 text-sm text-text-secondary font-display text-center">
+          <div className="bg-accent/15 rounded-xl px-4 py-2.5 text-sm text-accent font-display font-bold text-center border border-accent/30">
             ⚠️ Speech not available for this language on your device
           </div>
         )}
 
         {/* Sentence strip */}
-        <SentenceStrip
-          words={sentenceWords}
-          onSpeak={handleSpeak}
-          onClear={() => setSentenceWords([])}
-          onRemoveWord={handleRemoveWord}
-          flash={flash}
-        />
+        <section>
+          <SentenceStrip
+            words={sentenceWords}
+            onSpeak={handleSpeak}
+            onClear={() => setSentenceWords([])}
+            onRemoveWord={handleRemoveWord}
+            flash={flash}
+          />
+        </section>
 
         {/* Quick phrases */}
-        <QuickPhrases onPhraseTap={(phrase) => { speak(phrase); logProgress('quick-phrase', { phrase }); }} />
+        <section>
+          <h2 className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-widest mb-2.5">
+            {t('talkBoard.quickPhrases')}
+          </h2>
+          <QuickPhrases onPhraseTap={(phrase) => { speak(phrase); logProgress('quick-phrase', { phrase }); }} />
+        </section>
 
-        {/* Category selector */}
-        <CategorySelector
-          categories={categories}
-          active={selectedCategory}
-          onSelect={setSelectedCategory}
-        />
+        {/* Category + Grid */}
+        <section>
+          <div className="flex items-center justify-between mb-2.5">
+            <h2 className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-widest">
+              {t('talkBoard.categories.feelings') && 'Categories'}
+            </h2>
+            <button
+              onClick={() => setShowCustomForm(true)}
+              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary/15 text-primary text-xs font-display font-extrabold cursor-pointer hover:bg-primary/25 transition-colors border border-primary/25"
+            >
+              + {t('talkBoard.addCard')}
+            </button>
+          </div>
+          <CategorySelector
+            categories={categories}
+            active={selectedCategory}
+            onSelect={setSelectedCategory}
+          />
+        </section>
 
         {/* Picture card grid */}
-        <PictureCardGrid
-          key={`${selectedCategory.id}-${gridKey}`}
-          category={selectedCategory}
-          onWordTap={handleWordTap}
-        />
+        <section>
+          <PictureCardGrid
+            key={`${selectedCategory.id}-${gridKey}`}
+            category={selectedCategory}
+            onWordTap={handleWordTap}
+          />
+        </section>
 
         <CustomCardForm
           isOpen={showCustomForm}

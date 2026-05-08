@@ -722,6 +722,438 @@
     "bedtime": {
       "word": "bedtime",
       "phrase": "Time for bed"
+    },
+    "orangeFruit": {
+      "word": "orange",
+      "phrase": "I want an orange"
+    },
+    "grapes": {
+      "word": "grapes",
+      "phrase": "I want grapes"
+    },
+    "strawberry": {
+      "word": "strawberry",
+      "phrase": "I want a strawberry"
+    },
+    "carrot": {
+      "word": "carrot",
+      "phrase": "I see a carrot"
+    },
+    "tomato": {
+      "word": "tomato",
+      "phrase": "I see a tomato"
+    },
+    "potato": {
+      "word": "potato",
+      "phrase": "I want a potato"
+    },
+    "corn": {
+      "word": "corn",
+      "phrase": "I want corn"
+    },
+    "peas": {
+      "word": "peas",
+      "phrase": "I want peas"
+    },
+    "watermelon": {
+      "word": "watermelon",
+      "phrase": "I want watermelon"
+    },
+    "mango": {
+      "word": "mango",
+      "phrase": "I want a mango"
+    },
+    "pear": {
+      "word": "pear",
+      "phrase": "I want a pear"
+    },
+    "broccoli": {
+      "word": "broccoli",
+      "phrase": "I see broccoli"
+    },
+    "onion": {
+      "word": "onion",
+      "phrase": "I see an onion"
+    },
+    "soup": {
+      "word": "soup",
+      "phrase": "I want soup"
+    },
+    "cake": {
+      "word": "cake",
+      "phrase": "I want cake"
+    },
+    "pasta": {
+      "word": "pasta",
+      "phrase": "I want pasta"
+    },
+    "sandwich": {
+      "word": "sandwich",
+      "phrase": "I want a sandwich"
+    },
+    "cereal": {
+      "word": "cereal",
+      "phrase": "I want cereal"
+    },
+    "butter": {
+      "word": "butter",
+      "phrase": "I want butter"
+    },
+    "jam": {
+      "word": "jam",
+      "phrase": "I want jam"
+    },
+    "yogurt": {
+      "word": "yogurt",
+      "phrase": "I want yogurt"
+    },
+    "pancake": {
+      "word": "pancake",
+      "phrase": "I want a pancake"
+    },
+    "noodles": {
+      "word": "noodles",
+      "phrase": "I want noodles"
+    },
+    "hamburger": {
+      "word": "hamburger",
+      "phrase": "I want a hamburger"
+    },
+    "salad": {
+      "word": "salad",
+      "phrase": "I want salad"
+    },
+    "toast": {
+      "word": "toast",
+      "phrase": "I want toast"
+    },
+    "elephant": {
+      "word": "elephant",
+      "phrase": "I see an elephant"
+    },
+    "monkey": {
+      "word": "monkey",
+      "phrase": "I see a monkey"
+    },
+    "rabbit": {
+      "word": "rabbit",
+      "phrase": "I see a rabbit"
+    },
+    "turtle": {
+      "word": "turtle",
+      "phrase": "I see a turtle"
+    },
+    "snake": {
+      "word": "snake",
+      "phrase": "I see a snake"
+    },
+    "butterfly": {
+      "word": "butterfly",
+      "phrase": "I see a butterfly"
+    },
+    "bee": {
+      "word": "bee",
+      "phrase": "I see a bee"
+    },
+    "penguin": {
+      "word": "penguin",
+      "phrase": "I see a penguin"
+    },
+    "bus": {
+      "word": "bus",
+      "phrase": "I see a bus"
+    },
+    "truck": {
+      "word": "truck",
+      "phrase": "I see a truck"
+    },
+    "train": {
+      "word": "train",
+      "phrase": "I see a train"
+    },
+    "airplane": {
+      "word": "airplane",
+      "phrase": "I see an airplane"
+    },
+    "bike": {
+      "word": "bike",
+      "phrase": "I want to ride my bike"
+    },
+    "boat": {
+      "word": "boat",
+      "phrase": "I see a boat"
+    },
+    "helicopter": {
+      "word": "helicopter",
+      "phrase": "I see a helicopter"
+    },
+    "motorcycle": {
+      "word": "motorcycle",
+      "phrase": "I see a motorcycle"
+    },
+    "scooter": {
+      "word": "scooter",
+      "phrase": "I want to ride my scooter"
+    },
+    "pink": {
+      "word": "pink",
+      "phrase": "I see pink"
+    },
+    "brown": {
+      "word": "brown",
+      "phrase": "I see brown"
+    },
+    "circle": {
+      "word": "circle",
+      "phrase": "I see a circle"
+    },
+    "square": {
+      "word": "square",
+      "phrase": "I see a square"
+    },
+    "triangle": {
+      "word": "triangle",
+      "phrase": "I see a triangle"
+    },
+    "star": {
+      "word": "star",
+      "phrase": "I see a star"
+    },
+    "dress": {
+      "word": "dress",
+      "phrase": "I want my dress"
+    },
+    "shorts": {
+      "word": "shorts",
+      "phrase": "I want my shorts"
+    },
+    "boots": {
+      "word": "boots",
+      "phrase": "I want my boots"
+    },
+    "gloves": {
+      "word": "gloves",
+      "phrase": "I want my gloves"
+    },
+    "chair": {
+      "word": "chair",
+      "phrase": "I want to sit on the chair"
+    },
+    "table": {
+      "word": "table",
+      "phrase": "It is on the table"
+    },
+    "sofa": {
+      "word": "sofa",
+      "phrase": "I want to sit on the sofa"
+    },
+    "lamp": {
+      "word": "lamp",
+      "phrase": "Turn on the lamp"
+    },
+    "shelf": {
+      "word": "shelf",
+      "phrase": "It is on the shelf"
+    },
+    "desk": {
+      "word": "desk",
+      "phrase": "It is on my desk"
+    },
+    "mirror": {
+      "word": "mirror",
+      "phrase": "I see the mirror"
+    },
+    "rug": {
+      "word": "rug",
+      "phrase": "I am on the rug"
+    },
+    "door": {
+      "word": "door",
+      "phrase": "Open the door"
+    },
+    "plate": {
+      "word": "plate",
+      "phrase": "I need a plate"
+    },
+    "cup": {
+      "word": "cup",
+      "phrase": "I need a cup"
+    },
+    "spoon": {
+      "word": "spoon",
+      "phrase": "I need a spoon"
+    },
+    "fork": {
+      "word": "fork",
+      "phrase": "I need a fork"
+    },
+    "knife": {
+      "word": "knife",
+      "phrase": "I need a knife"
+    },
+    "bowl": {
+      "word": "bowl",
+      "phrase": "I need a bowl"
+    },
+    "pot": {
+      "word": "pot",
+      "phrase": "I see a pot"
+    },
+    "stove": {
+      "word": "stove",
+      "phrase": "The stove is hot"
+    },
+    "fridge": {
+      "word": "fridge",
+      "phrase": "Open the fridge"
+    },
+    "sink": {
+      "word": "sink",
+      "phrase": "I see the sink"
+    },
+    "toothbrush": {
+      "word": "toothbrush",
+      "phrase": "I need my toothbrush"
+    },
+    "soap": {
+      "word": "soap",
+      "phrase": "I need soap"
+    },
+    "towel": {
+      "word": "towel",
+      "phrase": "I need a towel"
+    },
+    "shampoo": {
+      "word": "shampoo",
+      "phrase": "I need shampoo"
+    },
+    "comb": {
+      "word": "comb",
+      "phrase": "I need a comb"
+    },
+    "tissue": {
+      "word": "tissue",
+      "phrase": "I need a tissue"
+    },
+    "bath": {
+      "word": "bath",
+      "phrase": "I want a bath"
+    },
+    "washHands": {
+      "word": "wash hands",
+      "phrase": "I need to wash my hands"
+    },
+    "clean": {
+      "word": "clean",
+      "phrase": "I want to be clean"
+    },
+    "dry": {
+      "word": "dry",
+      "phrase": "I need to dry off"
+    },
+    "pencil": {
+      "word": "pencil",
+      "phrase": "I need a pencil"
+    },
+    "crayon": {
+      "word": "crayon",
+      "phrase": "I want a crayon"
+    },
+    "paper": {
+      "word": "paper",
+      "phrase": "I need paper"
+    },
+    "backpack": {
+      "word": "backpack",
+      "phrase": "I want my backpack"
+    },
+    "scissors": {
+      "word": "scissors",
+      "phrase": "I need scissors"
+    },
+    "glue": {
+      "word": "glue",
+      "phrase": "I need glue"
+    },
+    "ruler": {
+      "word": "ruler",
+      "phrase": "I need a ruler"
+    },
+    "eraser": {
+      "word": "eraser",
+      "phrase": "I need an eraser"
+    },
+    "dance": {
+      "word": "dance",
+      "phrase": "I want to dance"
+    },
+    "sing": {
+      "word": "sing",
+      "phrase": "I want to sing"
+    },
+    "jump": {
+      "word": "jump",
+      "phrase": "I want to jump"
+    },
+    "swim": {
+      "word": "swim",
+      "phrase": "I want to swim"
+    },
+    "climb": {
+      "word": "climb",
+      "phrase": "I want to climb"
+    },
+    "throw": {
+      "word": "throw",
+      "phrase": "I want to throw"
+    },
+    "catch": {
+      "word": "catch",
+      "phrase": "I want to catch"
+    },
+    "draw": {
+      "word": "draw",
+      "phrase": "I want to draw"
+    },
+    "big": {
+      "word": "big",
+      "phrase": "It is big"
+    },
+    "small": {
+      "word": "small",
+      "phrase": "It is small"
+    },
+    "fast": {
+      "word": "fast",
+      "phrase": "It is fast"
+    },
+    "slow": {
+      "word": "slow",
+      "phrase": "It is slow"
+    },
+    "up": {
+      "word": "up",
+      "phrase": "I want to go up"
+    },
+    "down": {
+      "word": "down",
+      "phrase": "I want to go down"
+    },
+    "allDone": {
+      "word": "all done",
+      "phrase": "I am all done"
+    },
+    "new": {
+      "word": "new",
+      "phrase": "It is new"
+    },
+    "old": {
+      "word": "old",
+      "phrase": "It is old"
+    },
+    "soft": {
+      "word": "soft",
+      "phrase": "It is soft"
     }
   }
 }
