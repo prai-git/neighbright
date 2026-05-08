@@ -48,7 +48,8 @@ export default function WhatsMissingGame({ difficulty, onBack }) {
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [phase, isComplete, speak, t]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, isComplete]);
 
   const handleGuess = useCallback(
     (item) => {

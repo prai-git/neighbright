@@ -32,7 +32,8 @@ export default function OddOneOutGame({ difficulty, onBack }) {
       speak(t('games.whichDoesntBelong'));
     }, 400);
     return () => clearTimeout(timer);
-  }, [round, isComplete, data, speak, t]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [round, isComplete]);
 
   const handleTap = useCallback(
     (item) => {

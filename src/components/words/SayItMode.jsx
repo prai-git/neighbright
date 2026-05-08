@@ -18,7 +18,8 @@ export default function SayItMode({ words, onStarEarned }) {
       speak(t('words.sayTheWord', { word: t(word.i18nWord) }));
     }, 400);
     return () => clearTimeout(timer);
-  }, [index, word, speak, t]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index]);
 
   const handleRate = useCallback(
     (isCorrect) => {

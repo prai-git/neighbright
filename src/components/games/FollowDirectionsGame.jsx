@@ -35,7 +35,8 @@ export default function FollowDirectionsGame({ difficulty, onBack }) {
       speak(t('games.tapInstruction', { item: t(data.target.i18nWord) }));
     }, 500);
     return () => clearTimeout(timer);
-  }, [round, data, isComplete, speak, t]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [round, isComplete]);
 
   const handleTap = useCallback(
     (item) => {

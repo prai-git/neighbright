@@ -42,7 +42,8 @@ export default function ListenPointMode({ words, onStarEarned }) {
       speak(t('words.canYouFind', { word: t(currentWord.i18nWord) }));
     }, 400);
     return () => clearTimeout(timer);
-  }, [index, currentWord, speak, t]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index]);
 
   const handleSelect = useCallback(
     (word) => {
