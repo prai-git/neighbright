@@ -431,3 +431,52 @@ Full vocabulary learning system with 240+ words across 12 categories, three lear
 - Used `orangeFruit` i18n key for the fruit "orange" to avoid collision with the color "orange" key
 - LearnMode uses category's original word order (not spaced repetition) since it's a browse/flashcard mode; Listen & Say modes use spaced repetition
 - Bundle size ~596KB — code-splitting planned for Module 12
+
+---
+
+## Module 09 — Match & Learn Games
+**Date:** 2026-05-08
+**Status:** ✅ Complete
+
+### Summary
+Six interactive receptive language games with difficulty scaling (Easy/Medium/Hard), game selection screen, shared game wrapper for progress tracking and star earning, and full vocabulary integration from Module 08.
+
+### Changes
+
+**Game Utilities:**
+- `src/utils/game-helpers.js` — **new file**: `shuffle()`, `pickRandom()`, `pickOddOneOut()`, `getRandomCategoryPair()`, `getRandomCategories()`
+- `src/data/sequences.js` — **new file**: 6 predefined sequences for Sequence Builder (morning, getting dressed, eating, bath time, going to school, bedtime)
+
+**Game Wrapper (`src/components/games/GameWrapper.jsx`):**
+- Wraps all games with session timer, star awarding on completion, progress logging to IndexedDB, "Play Again" and "Back" buttons on completion screen
+
+**6 Game Components (`src/components/games/`):**
+- `PictureMatchGame.jsx` — Memory card flip game. Grid sizes by difficulty (2×2 / 3×4 / 4×4). Tap to flip, matching pairs stay face-up with green glow, speaks matched word
+- `CategorySortingGame.jsx` — Tap-to-select item, tap bucket to place. 2–3 category buckets with colored drop zones. Correct = snap + speak, incorrect = bounce back. Difficulty scales item/category count
+- `FollowDirectionsGame.jsx` — Audio instruction ("Tap the [word]"), grid of 4–6 choices, 8 rounds. Correct = green highlight, incorrect = shake + replay. Replay button for audio
+- `WhatsMissingGame.jsx` — 3-second memorization phase, 1-second hiding overlay, one item removed. 3 answer choices (1 correct + 2 distractors). 8 rounds
+- `OddOneOutGame.jsx` — 2×2 grid, 3 items from one category + 1 odd item. Audio prompt "Which one doesn't belong?". 8 rounds
+- `SequenceBuilderGame.jsx` — Tap cards in correct order to build a sequence. Placed slots show progress, remaining items below. Incorrect order resets. Rounds scale by difficulty (3/4/6)
+
+**MatchAndLearn Page (`src/pages/MatchAndLearn.jsx`):**
+- Game selection grid (1/2/3 cols responsive) with color-coded cards
+- Each card: emoji, name, description, per-game difficulty selector, Play button
+- VIEW pattern: selection → active game → back
+- Context-aware Back button (game → selection → browser history)
+
+### Files Changed
+- `src/utils/game-helpers.js` — **new file**
+- `src/data/sequences.js` — **new file**
+- `src/components/games/GameWrapper.jsx` — **new file**
+- `src/components/games/PictureMatchGame.jsx` — **new file**
+- `src/components/games/CategorySortingGame.jsx` — **new file**
+- `src/components/games/FollowDirectionsGame.jsx` — **new file**
+- `src/components/games/WhatsMissingGame.jsx` — **new file**
+- `src/components/games/OddOneOutGame.jsx` — **new file**
+- `src/components/games/SequenceBuilderGame.jsx` — **new file**
+- `src/pages/MatchAndLearn.jsx` — replaced placeholder
+
+### Deviations
+- Category Sorting uses tap-to-select + tap-bucket (not drag) for simpler mobile UX, same approach as Sound Sorting game
+- Follow Directions game simplified to single-item instructions across all difficulties (compound descriptors would require additional i18n infrastructure)
+- Bundle size ~617KB — code-splitting planned for Module 12
