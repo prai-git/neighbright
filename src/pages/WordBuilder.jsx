@@ -62,7 +62,7 @@ export default function WordBuilder() {
   const wordsToUse = selectedMode === 'learn' ? (selectedCategory?.words || []) : weightedWords;
 
   return (
-    <AppLayout>
+    <AppLayout bgTheme="words">
       <div className="flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center justify-between">

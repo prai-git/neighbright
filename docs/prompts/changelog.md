@@ -480,3 +480,50 @@ Six interactive receptive language games with difficulty scaling (Easy/Medium/Ha
 - Category Sorting uses tap-to-select + tap-bucket (not drag) for simpler mobile UX, same approach as Sound Sorting game
 - Follow Directions game simplified to single-item instructions across all difficulties (compound descriptors would require additional i18n infrastructure)
 - Bundle size ~617KB — code-splitting planned for Module 12
+
+---
+
+## Design Enhancement — Fun Tropical Backgrounds
+**Date:** 2026-05-09
+**Status:** ✅ Complete
+
+### Summary
+Added animated tropical-themed emoji decorations to all page backgrounds, making the app feel more playful and child-friendly. Each page gets a unique themed set of floating emojis (animals, insects, flowers, leaves) at low opacity with gentle float animations.
+
+### Changes
+
+**New Component (`src/components/common/FunBackground.jsx`):**
+- 7 themed emoji sets: default, talk, sounds, words, games, puzzles, home
+- 12 fixed positions spread across bottom 60% of viewport
+- Each emoji: low opacity (6%), varying sizes (18–36px), staggered float animation
+- `pointer-events-none` so decorations never interfere with interaction
+- `aria-hidden="true"` for accessibility
+
+**CSS (`src/index.css`):**
+- Added `@keyframes fun-float` animation with gentle vertical bob + subtle rotation
+- `.fun-float` class with infinite ease-in-out animation
+
+**AppLayout (`src/components/common/AppLayout.jsx`):**
+- Accepts `bgTheme` prop, renders `FunBackground` behind all content
+- Content area set to `relative z-10` to layer above decorations
+
+**All pages updated with themed backgrounds:**
+- Home → `"home"` (palms, parrots, monkeys, flowers)
+- TalkBoard → `"talk"` (parrots, speech bubbles, birds, flowers)
+- SoundExplorer → `"sounds"` (frogs, bells, music notes, crickets)
+- WordBuilder → `"words"` (books, butterflies, caterpillars, flowers)
+- MatchAndLearn → `"games"` (targets, lions, elephants, monkeys)
+- Puzzles → `"puzzles"` (puzzle pieces, turtles, cacti, lizards)
+- ParentDashboard → `"default"` (mixed tropical)
+
+### Files Changed
+- `src/components/common/FunBackground.jsx` — **new file**
+- `src/components/common/AppLayout.jsx` — added FunBackground integration
+- `src/index.css` — added fun-float animation
+- `src/pages/Home.jsx` — bgTheme="home"
+- `src/pages/TalkBoard.jsx` — bgTheme="talk"
+- `src/pages/SoundExplorer.jsx` — bgTheme="sounds"
+- `src/pages/WordBuilder.jsx` — bgTheme="words"
+- `src/pages/MatchAndLearn.jsx` — bgTheme="games"
+- `src/pages/Puzzles.jsx` — bgTheme="puzzles"
+- `src/pages/ParentDashboard.jsx` — bgTheme="default"

@@ -64,7 +64,7 @@ export default function TalkBoard() {
   };
 
   return (
-    <AppLayout>
+    <AppLayout bgTheme="talk">
       <div className="flex flex-col gap-6">
         {/* Page header */}
         <div className="flex items-center justify-between">

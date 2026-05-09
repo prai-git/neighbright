@@ -59,7 +59,7 @@ export default function MatchAndLearn() {
   const GameComponent = activeGame ? GAME_COMPONENTS[activeGame] : null;
 
   return (
-    <AppLayout>
+    <AppLayout bgTheme="games">
       <div className="flex flex-col gap-5">
         {/* Header */}
         <div className="flex items-center justify-between">

@@ -55,7 +55,7 @@ export default function SoundExplorer() {
   };
 
   return (
-    <AppLayout>
+    <AppLayout bgTheme="sounds">
       <div className="flex flex-col gap-5">
         {/* Page header */}
         <div className="flex items-center justify-between">

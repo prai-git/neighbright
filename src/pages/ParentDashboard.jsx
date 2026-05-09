@@ -7,7 +7,7 @@ export default function ParentDashboard() {
   const navigate = useNavigate();
 
   return (
-    <AppLayout>
+    <AppLayout bgTheme="default">
       <div className="flex flex-col gap-5">
         <div className="flex items-center justify-between">
           <h1 className="text-xl md:text-2xl font-display font-extrabold text-white">

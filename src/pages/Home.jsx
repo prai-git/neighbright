@@ -69,7 +69,7 @@ export default function Home() {
   const goalProgress = Math.min(100, Math.round((practicedSecs / 60 / goalMinutes) * 100));
 
   return (
-    <AppLayout>
+    <AppLayout bgTheme="home">
       <div className="flex flex-col gap-6">
 
         {/* Greeting banner */}
