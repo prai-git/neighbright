@@ -6,13 +6,13 @@ const GITHUB_URL = 'https://github.com/prai-git/neighbright';
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen w-full bg-background flex flex-col">
       <NavBar mode="landing" />
       <main className="flex-1 flex flex-col">
         <LandingHero />
       </main>
-      <footer className="border-t border-border py-8 px-4">
-        <div className="max-w-md mx-auto flex flex-col items-center gap-3 text-center">
+      <footer className="w-full border-t border-border py-8 px-4">
+        <div className="w-full max-w-md mx-auto flex flex-col items-center gap-3 text-center">
           <p className="text-sm text-text-secondary font-display font-bold">
             We're building this for you
           </p>
