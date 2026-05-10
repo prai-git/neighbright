@@ -1,8 +1,8 @@
-# Module 12 — PWA & Deployment
+# Module 14 — PWA & Deployment
 
 **Scope:** Finalize the Progressive Web App configuration (service worker, manifest, offline support), set up GitHub Actions CI/CD, configure the custom domain on Porkbun, and optimize build performance.
 
-**Prerequisite:** Modules 01–11 complete.
+**Prerequisite:** Modules 01–13 complete.
 
 ---
 

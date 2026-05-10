@@ -1,8 +1,8 @@
-# Module 13 — Verification & Testing
+# Module 15 — Verification & Testing
 
 **Scope:** Comprehensive quality assurance across all dimensions: cross-device testing, accessibility audit, i18n verification, performance benchmarks, functional regression, and sign-off checklist. This module ensures the final product is production-ready.
 
-**Prerequisite:** Modules 01–12 complete.
+**Prerequisite:** Modules 01–14 complete.
 
 ---
 

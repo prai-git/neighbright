@@ -12,6 +12,8 @@ import SoundExplorer from './pages/SoundExplorer';
 import WordBuilder from './pages/WordBuilder';
 import MatchAndLearn from './pages/MatchAndLearn';
 import Puzzles from './pages/Puzzles';
+import Alphabets from './pages/Alphabets';
+import Numbers from './pages/Numbers';
 import ParentDashboard from './pages/ParentDashboard';
 
 export default function App() {
@@ -31,6 +33,8 @@ export default function App() {
             <Route path="/word-builder" element={<RequireProfile><WordBuilder /></RequireProfile>} />
             <Route path="/match-and-learn" element={<RequireProfile><MatchAndLearn /></RequireProfile>} />
             <Route path="/puzzles" element={<RequireProfile><Puzzles /></RequireProfile>} />
+            <Route path="/alphabets" element={<RequireProfile><Alphabets /></RequireProfile>} />
+            <Route path="/numbers" element={<RequireProfile><Numbers /></RequireProfile>} />
             <Route path="/dashboard" element={<RequireProfile><ParentDashboard /></RequireProfile>} />
 
             <Route path="*" element={<Navigate to="/" replace />} />

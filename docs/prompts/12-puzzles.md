@@ -1,8 +1,8 @@
-# Module 10 — Puzzles (Cognitive Development)
+# Module 12 — Puzzles (Cognitive Development)
 
 **Scope:** Build 15+ puzzle types across three developmental tiers. All procedurally generated or SVG-based — no raster images. Puzzle instructions translated; some puzzle content (rhyming, sentence building) is English-only in Phase 1.
 
-**Prerequisite:** Modules 01–09 complete.
+**Prerequisite:** Modules 01–11 complete.
 
 ---
 

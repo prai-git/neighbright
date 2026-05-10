@@ -1,8 +1,8 @@
-# Module 11 — Rewards & Parent Dashboard
+# Module 13 — Rewards & Parent Dashboard
 
 **Scope:** Build the reward/motivation system (stars, streaks, stickers, avatar progression) and the comprehensive parent dashboard (progress charts, session notes, settings, PDF export).
 
-**Prerequisite:** Modules 01–10 complete.
+**Prerequisite:** Modules 01–12 complete.
 
 ---
 

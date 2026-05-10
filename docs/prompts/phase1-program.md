@@ -34,7 +34,7 @@ NeighBright is a free, multilingual (English, Hindi, French) speech therapy and 
 
 ## Development Modules
 
-This program is divided into 13 sub-modules. Each module is a self-contained markdown file that can be used as a standalone prompt for Claude or Copilot. **Execute them in order** — each module builds on the output of the previous one.
+This program is divided into 15 sub-modules. Each module is a self-contained markdown file that can be used as a standalone prompt for Claude or Copilot. **Execute them in order** — each module builds on the output of the previous one.
 
 | Order | File | Scope | Est. Effort |
 |---|---|---|---|
@@ -47,10 +47,12 @@ This program is divided into 13 sub-modules. Each module is a self-contained mar
 | 7 | [07-sound-explorer.md](./07-sound-explorer.md) | Articulation practice: phoneme data, mouth SVGs, 5-level progression, record & compare, sound sorting game | Day 25–32 |
 | 8 | [08-word-builder.md](./08-word-builder.md) | Vocabulary: 240+ words × 3 languages, Learn/Listen/Say modes, spaced repetition, Word of the Day | Day 33–40 |
 | 9 | [09-match-learn-games.md](./09-match-learn-games.md) | 6 receptive language games: matching, sorting, directions, missing, odd-one-out, sequencing | Day 41–48 |
-| 10 | [10-puzzles.md](./10-puzzles.md) | 3 tiers of cognitive puzzles: shape sorter, jigsaws, patterns, counting, letter tracing, analogies, mazes | Day 49–60 |
-| 11 | [11-rewards-dashboard.md](./11-rewards-dashboard.md) | Stars, streaks, stickers, avatar progression, parent dashboard, session notes, settings, PDF export | Day 61–70 |
-| 12 | [12-pwa-deployment.md](./12-pwa-deployment.md) | Service worker, PWA manifest, GitHub Actions CI/CD, Porkbun DNS, performance optimization | Day 71–75 |
-| 13 | [13-verification-testing.md](./13-verification-testing.md) | Cross-device testing, accessibility audit, i18n verification, Lighthouse, regression checklist, sign-off | Day 76–80 |
+| 10 | [10-alphabets.md](./10-alphabets.md) | Letter recognition & phonics: A–Z data, Learn Letters, Listen & Find, Trace Letters (canvas), Letter Quiz | Day 49–56 |
+| 11 | [11-numbers.md](./11-numbers.md) | Counting & number sense: 0–20 data, Learn Numbers, Count It, Match Up, Number Quiz, tier-scaled ranges | Day 57–64 |
+| 12 | [12-puzzles.md](./12-puzzles.md) | 3 tiers of cognitive puzzles: shape sorter, jigsaws, patterns, counting, letter tracing, analogies, mazes | Day 65–76 |
+| 13 | [13-rewards-dashboard.md](./13-rewards-dashboard.md) | Stars, streaks, stickers, avatar progression, parent dashboard, session notes, settings, PDF export | Day 77–86 |
+| 14 | [14-pwa-deployment.md](./14-pwa-deployment.md) | Service worker, PWA manifest, GitHub Actions CI/CD, Porkbun DNS, performance optimization | Day 87–91 |
+| 15 | [15-verification-testing.md](./15-verification-testing.md) | Cross-device testing, accessibility audit, i18n verification, Lighthouse, regression checklist, sign-off | Day 92–96 |
 
 ---
 
@@ -100,6 +102,8 @@ neighbright/
 │   │   ├── talkboard/              # AAC board components
 │   │   ├── sounds/                 # Sound Explorer components
 │   │   ├── words/                  # Word Builder components
+│   │   ├── alphabets/              # Alphabet learning components
+│   │   ├── numbers/                # Number learning components
 │   │   ├── games/                  # Match & Learn components
 │   │   ├── puzzles/                # Puzzle components
 │   │   ├── rewards/                # Reward system components
@@ -114,6 +118,8 @@ neighbright/
 │   │   │   ├── fr.json
 │   │   │   └── index.js
 │   │   ├── vocabulary.js
+│   │   ├── alphabets.js
+│   │   ├── numbers.js
 │   │   ├── sounds.js
 │   │   ├── puzzles.js
 │   │   └── rewards.js
@@ -131,6 +137,8 @@ neighbright/
 │   │   ├── SoundExplorer.jsx
 │   │   ├── WordBuilder.jsx
 │   │   ├── MatchAndLearn.jsx
+│   │   ├── Alphabets.jsx
+│   │   ├── Numbers.jsx
 │   │   ├── Puzzles.jsx
 │   │   └── ParentDashboard.jsx
 │   ├── App.jsx
@@ -193,26 +201,29 @@ Desktop (lg:):     > 1024px  → three columns, persistent sidebar
          08-word-builder       09-games
               │                     │
               └──────────┬──────────┘
+                         │
+              ┌──────────┼──────────┐
+              ▼          ▼          ▼
+        10-alphabets 11-numbers 12-puzzles
+              │          │          │
+              └──────────┼──────────┘
                          ▼
-                    10-puzzles
+                13-rewards-dashboard
                          │
                          ▼
-                11-rewards-dashboard
+                 14-pwa-deployment
                          │
                          ▼
-                 12-pwa-deployment
-                         │
-                         ▼
-              13-verification-testing
+              15-verification-testing
 ```
 
-Modules 06 through 10 (the therapy modules) can be developed in any order after 05 is complete, but the order listed above is recommended because later modules reuse patterns established by earlier ones.
+Modules 06 through 12 (the therapy and learning modules) can be developed in any order after 05 is complete, but the order listed above is recommended because later modules reuse patterns established by earlier ones. Modules 10, 11, and 12 are independent of each other and can be developed in parallel.
 
 ---
 
 ## Final Deliverable
 
-At the end of all 13 modules, NeighBright should be:
+At the end of all 15 modules, NeighBright should be:
 
 - Live at `neighbright.yourdomain.com`
 - Fully functional in English, Hindi, and French
@@ -224,4 +235,4 @@ At the end of all 13 modules, NeighBright should be:
 
 ---
 
-*Execute modules in order. Test after each. Ship when Module 13 passes.*
+*Execute modules in order. Test after each. Ship when Module 15 passes.*

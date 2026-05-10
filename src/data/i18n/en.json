@@ -10,6 +10,8 @@
     "wordBuilder": "Words",
     "games": "Games",
     "puzzles": "Puzzles",
+    "alphabets": "Alphabets",
+    "numbers": "Numbers",
     "dashboard": "Dashboard",
     "getStarted": "Get Started",
     "language": "Language"
@@ -87,7 +89,11 @@
       "games": "Match & Learn",
       "gamesDesc": "Play learning games",
       "puzzles": "Puzzles",
-      "puzzlesDesc": "Solve fun puzzles"
+      "puzzlesDesc": "Solve fun puzzles",
+      "alphabets": "Alphabets",
+      "alphabetsDesc": "Learn your ABCs",
+      "numbers": "Numbers",
+      "numbersDesc": "Count and learn numbers"
     },
     "dailyGoal": "Daily Goal",
     "minutesLeft": "{minutes} minutes left today"
@@ -194,6 +200,52 @@
       "actions": "Actions",
       "descriptors": "Descriptors"
     }
+  },
+  "alphabets": {
+    "title": "Alphabets",
+    "learnMode": "Learn Letters",
+    "learnModeDesc": "See each letter and its word",
+    "listenMode": "Listen & Find",
+    "listenModeDesc": "Hear a letter, tap to find it",
+    "traceMode": "Trace Letters",
+    "traceModeDesc": "Practice writing letters",
+    "quizMode": "Letter Quiz",
+    "quizModeDesc": "What letter does it start with?",
+    "canYouFind": "Can you find the letter {letter}?",
+    "whatLetterStartsWith": "What letter does {word} start with?",
+    "traceTheLetter": "Trace the letter {letter}",
+    "startsWithLetter": "The word {word} starts with {letter}",
+    "correct": "That's right!",
+    "tryAgain": "Let's try again!"
+  },
+  "numbers": {
+    "title": "Numbers",
+    "learnMode": "Learn Numbers",
+    "learnModeDesc": "See each number and count along",
+    "countMode": "Count It",
+    "countModeDesc": "How many do you see?",
+    "matchMode": "Match Up",
+    "matchModeDesc": "Match numbers to quantities",
+    "quizMode": "Number Quiz",
+    "quizModeDesc": "Test your number skills",
+    "howMany": "How many do you see?",
+    "tapTheNumber": "Tap the number {number}",
+    "whatComesNext": "What number comes next?",
+    "whichHasMore": "Which group has more?",
+    "whichHasFewer": "Which group has fewer?",
+    "letsCountTogether": "Let's count together!",
+    "correct": "That's right!",
+    "tryAgain": "Try again!",
+    "word0": "zero", "word1": "one", "word2": "two", "word3": "three",
+    "word4": "four", "word5": "five", "word6": "six", "word7": "seven",
+    "word8": "eight", "word9": "nine", "word10": "ten",
+    "word11": "eleven", "word12": "twelve", "word13": "thirteen",
+    "word14": "fourteen", "word15": "fifteen", "word16": "sixteen",
+    "word17": "seventeen", "word18": "eighteen", "word19": "nineteen",
+    "word20": "twenty",
+    "ten": "ten", "twenty": "twenty", "thirty": "thirty", "forty": "forty",
+    "fifty": "fifty", "sixty": "sixty", "seventy": "seventy", "eighty": "eighty",
+    "ninety": "ninety", "hundred": "one hundred"
   },
   "games": {
     "title": "Match & Learn",
@@ -1154,6 +1206,34 @@
     "soft": {
       "word": "soft",
       "phrase": "It is soft"
+    },
+    "queen": {
+      "word": "queen",
+      "phrase": "I see a queen"
+    },
+    "umbrella": {
+      "word": "umbrella",
+      "phrase": "I have an umbrella"
+    },
+    "van": {
+      "word": "van",
+      "phrase": "I see a van"
+    },
+    "iceCream": {
+      "word": "ice cream",
+      "phrase": "I want ice cream"
+    },
+    "kite": {
+      "word": "kite",
+      "phrase": "I see a kite"
+    },
+    "xylophone": {
+      "word": "xylophone",
+      "phrase": "I hear a xylophone"
+    },
+    "zebra": {
+      "word": "zebra",
+      "phrase": "I see a zebra"
     }
   }
 }

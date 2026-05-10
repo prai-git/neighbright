@@ -14,6 +14,8 @@ const MODULE_CARDS = [
   { emoji: '🔤', nameKey: 'home.modules.words',      descKey: 'home.modules.wordsDesc',     to: '/word-builder',    bg: '#FF9600', dark: '#E08600' },
   { emoji: '🎮', nameKey: 'home.modules.games',      descKey: 'home.modules.gamesDesc',     to: '/match-and-learn', bg: '#CE82FF', dark: '#B06FDF' },
   { emoji: '🧩', nameKey: 'home.modules.puzzles',    descKey: 'home.modules.puzzlesDesc',   to: '/puzzles',         bg: '#FF4B4B', dark: '#E04343' },
+  { emoji: '🔠', nameKey: 'home.modules.alphabets', descKey: 'home.modules.alphabetsDesc', to: '/alphabets',       bg: '#2DCDAA', dark: '#25AB8E' },
+  { emoji: '🔢', nameKey: 'home.modules.numbers',   descKey: 'home.modules.numbersDesc',   to: '/numbers',         bg: '#FF6B8A', dark: '#E05A76' },
 ];
 
 const ALL_WORDS = wordCategories.flatMap((c) => c.words);
@@ -135,7 +137,7 @@ export default function Home() {
           <h2 id="modules-heading" className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-widest mb-4">
             {t('home.modules.talkBoard') && 'Modules'}
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {MODULE_CARDS.map((mod, i) => (
               <motion.button
                 key={mod.to}

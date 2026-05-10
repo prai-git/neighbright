@@ -272,9 +272,48 @@ Games that build receptive language. All instructions adapt to the selected lang
 
 **Evidence basis:** Receptive language games build auditory comprehension, categorization, and direction-following.
 
-### 8.5 Age-Specific Puzzles (Cognitive Development)
+### 8.5 Alphabets (Letter Recognition & Phonics)
 
-Puzzles scaled by developmental level. The child's profile tier determines which are available; parent can unlock any tier. Instructions adapt to selected language.
+Alphabet learning covering A–Z with uppercase and lowercase recognition, phonics, and tracing practice.
+
+- **26 letters** with associated vocabulary word and emoji (A=🍎 apple, B=🍌 banana, etc.)
+- **Phonetic pronunciation hints** for each letter with mouth-position guidance
+- **Four learning modes:**
+  - **Learn Letters** — flashcard with uppercase/lowercase pair, associated emoji + word, tap to hear letter name and word
+  - **Listen & Find** — "Can you find the letter B?" — child taps the correct letter from 3–4 choices (tier-scaled)
+  - **Trace Letters** — canvas-based letter tracing with dotted guide path, pointer/touch events, accuracy scoring
+  - **Letter Quiz** — "What letter does 'banana' start with?" — child taps correct starting letter from 4 choices
+- **Tier scaling:**
+  - Tier 1: uppercase only, 3 choices, thicker guide lines for tracing
+  - Tier 2: uppercase + lowercase alternating, 4 choices
+  - Tier 3: lowercase only, tighter tracing tolerance
+- **Progress tracking** — accuracy per letter in IndexedDB, stars for correct answers
+
+**Evidence basis:** Letter recognition and phonemic awareness are foundational pre-literacy skills. Multi-sensory approaches (see, hear, trace) improve retention in early learners.
+
+### 8.6 Numbers (Counting & Number Sense)
+
+Number learning covering 0–20 with counting, quantity matching, and number recognition.
+
+- **Numbers 0–20** (extension to 100 for Tier 3 tens: 10, 20, 30... 100)
+- **Quantity visualization** using emoji clusters (3 = 🍎🍎🍎) and finger counting for 0–10
+- **Four learning modes:**
+  - **Learn Numbers** — flashcard with large digit, number word, quantity emoji row, finger counting visual
+  - **Count It** — scattered emoji items on screen, "How many do you see?", child taps correct number button
+  - **Match Up** — two-column matching: digits on one side, quantity groups on the other, tap to connect
+  - **Number Quiz** — mixed question types: "Tap the number 5", "How many?", "What comes next?" (sequence), "Which group has more/fewer?" (comparison)
+- **Tier scaling:**
+  - Tier 1: numbers 0–5, simple counting, 3 choices
+  - Tier 2: numbers 0–10, "what comes next" sequences, 4 choices
+  - Tier 3: numbers 0–20, more/fewer comparisons, 4 choices
+- **Counting animation** — on correct answer, items bounce one-by-one with spoken count: "one... two... three!"
+- **Progress tracking** — accuracy per number in IndexedDB, stars for correct answers
+
+**Evidence basis:** Number sense and one-to-one correspondence are critical early math foundations. Concrete-to-abstract progression (objects → digits) mirrors proven developmental math pedagogy.
+
+### 8.7 Age-Specific Puzzles (Cognitive Development)
+
+Puzzles scaled by developmental level. The child's profile tier determines which are available; parent can unlock any tier. Instructions adapt to selected language. *(Module 12)*
 
 **Tier 1 — Early Learners (developmental age 1–3)**
 - Shape sorter — drag shapes into matching holes
@@ -302,9 +341,9 @@ Puzzles scaled by developmental level. The child's profile tier determines which
 
 **Evidence basis:** Cognitive puzzles build problem-solving, spatial reasoning, and pre-literacy skills. Developmental-level alignment is critical for children with delays.
 
-### 8.6 Reward & Motivation System
+### 8.8 Reward & Motivation System
 
-ABA-inspired positive reinforcement. Tracked in IndexedDB.
+ABA-inspired positive reinforcement. Tracked in IndexedDB. *(Module 13)*
 
 - **Stars** — earned for completing any activity (effort counts)
 - **Streak tracker** — daily practice streaks with visual metaphor
@@ -315,9 +354,9 @@ ABA-inspired positive reinforcement. Tracked in IndexedDB.
 
 **Evidence basis:** Positive reinforcement is the backbone of ABA therapy — rewarding effort and approximation.
 
-### 8.7 Parent Dashboard
+### 8.9 Parent Dashboard
 
-Accessible via a gear icon. No PIN needed in Phase 1 (local data only, no account to protect).
+Accessible via a gear icon. No PIN needed in Phase 1 (local data only, no account to protect). *(Module 13)*
 
 **Progress tracking:**
 - Activity log — calendar heatmap of sessions
@@ -410,6 +449,8 @@ neighbright/
 │   │   ├── talkboard/              # AAC communication board
 │   │   ├── sounds/                 # Sound Explorer
 │   │   ├── words/                  # Word Builder
+│   │   ├── alphabets/              # Alphabet learning modes
+│   │   ├── numbers/                # Number learning modes
 │   │   ├── games/                  # Match & Learn games
 │   │   ├── puzzles/                # Age-specific puzzles
 │   │   ├── rewards/                # Stars, stickers, celebrations
@@ -424,6 +465,8 @@ neighbright/
 │   │   │   ├── fr.json             # French (generated, reviewed, committed)
 │   │   │   └── index.js            # useTranslation hook
 │   │   ├── vocabulary.js           # Word/phrase/category data
+│   │   ├── alphabets.js            # 26 letters with phonetics and word associations
+│   │   ├── numbers.js              # 0–20 number data with quantity visuals
 │   │   ├── sounds.js               # Phoneme data with mouth positions
 │   │   ├── puzzles.js              # Puzzle configs by tier
 │   │   └── rewards.js              # Sticker/achievement definitions
@@ -441,6 +484,8 @@ neighbright/
 │   │   ├── SoundExplorer.jsx
 │   │   ├── WordBuilder.jsx
 │   │   ├── MatchAndLearn.jsx
+│   │   ├── Alphabets.jsx
+│   │   ├── Numbers.jsx
 │   │   ├── Puzzles.jsx
 │   │   └── ParentDashboard.jsx
 │   ├── utils/
@@ -640,7 +685,36 @@ db.version(1).stores({
 
 **Deliverable:** Six games building receptive language skills.
 
-### 11.6 Age-Specific Puzzles (Week 11–13)
+### 11.6 Alphabets (Week 11–12)
+
+**Goal:** Letter recognition, phonics, and tracing.
+
+- Alphabet data (26 letters with emoji, word, phonetic hints)
+- Learn Letters mode (flashcard with upper/lowercase, tap to hear)
+- Listen & Find mode (audio letter recognition, tier-scaled choices)
+- Trace Letters mode (canvas tracing with guide path, pointer/touch events)
+- Letter Quiz mode ("what letter does X start with?")
+- i18n keys for all alphabet UI strings
+- Progress tracking in IndexedDB
+
+**Deliverable:** Four alphabet learning modes with canvas-based tracing.
+
+### 11.7 Numbers (Week 12–13)
+
+**Goal:** Counting, number recognition, and quantity matching.
+
+- Number data (0–20 with words, emoji, finger counting)
+- Learn Numbers mode (flashcard with digit, word, quantity visual)
+- Count It mode (scattered emoji, "how many?", counting animation)
+- Match Up mode (digit-to-quantity matching)
+- Number Quiz mode (mixed question types: show number, how many, sequences, comparisons)
+- Tier-scaled number ranges (0–5, 0–10, 0–20)
+- i18n keys for all number UI strings
+- Progress tracking in IndexedDB
+
+**Deliverable:** Four number learning modes with animated counting feedback.
+
+### 11.8 Age-Specific Puzzles (Week 14–15)
 
 **Goal:** Three tiers of puzzles.
 
@@ -653,7 +727,7 @@ db.version(1).stores({
 
 **Deliverable:** 15+ puzzle types across three tiers.
 
-### 11.7 Rewards & Dashboard (Week 14–15)
+### 11.9 Rewards & Dashboard (Week 16–17)
 
 **Goal:** Motivation system and parent dashboard.
 
@@ -666,7 +740,7 @@ db.version(1).stores({
 
 **Deliverable:** Complete reward system and parent dashboard.
 
-### 11.8 Polish & Deploy (Week 16–17)
+### 11.10 Polish & Deploy (Week 18–19)
 
 **Goal:** Production-ready on GitHub Pages.
 
@@ -770,11 +844,19 @@ export default defineConfig({
 | Daily Routines | 15 | wake up, brush teeth, eat breakfast, go to school, bath time |
 | Descriptors | 15 | big, small, hot, cold, fast, slow, up, down, more, all done |
 
-### 13.2 Sound Inventory (English Only)
+### 13.2 Alphabet Content (26 Letters)
+
+Each letter mapped to a vocabulary word and emoji. Phonetic pronunciation hint and mouth-position guidance. Canvas tracing guide paths for uppercase and lowercase forms. Associated vocabulary entries reused from Word Builder where possible; 7 new entries (queen, umbrella, van, ice cream, kite, xylophone, zebra).
+
+### 13.3 Number Content (0–20 + Tens to 100)
+
+Number words in all three languages. Quantity visualizations using countable emoji sets (🍎, 🌟, 🐟, etc.). Finger counting visuals for 0–10. Tens data (10, 20, 30... 100) for Tier 3 extension.
+
+### 13.4 Sound Inventory (English Only)
 
 All 24 consonant sounds + vowel sounds. IPA symbol, mouth SVG, 3 words per position, age of acquisition note.
 
-### 13.3 Puzzle Assets
+### 13.5 Puzzle Assets
 
 Procedurally generated / SVG-based. No raster images. Canvas clipping for jigsaws. Coordinate paths for letter tracing.
 
@@ -790,6 +872,8 @@ Procedurally generated / SVG-based. No raster images. Canvas clipping for jigsaw
 | Articulation (5 levels) | Limited | Yes | No | **Yes** |
 | Vocabulary builder | Yes | Yes | Yes | **Yes** |
 | Receptive language games | Limited | No | Limited | **Yes (6 games)** |
+| Alphabet learning + tracing | No | No | No | **Yes (4 modes)** |
+| Number sense + counting | No | No | No | **Yes (4 modes)** |
 | Cognitive puzzles | No | No | No | **Yes (3 tiers)** |
 | Offline | App only | App only | App only | **Yes (PWA)** |
 | Any device | iOS/Android | iOS/Android | Android | **Any browser** |

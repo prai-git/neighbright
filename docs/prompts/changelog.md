@@ -527,3 +527,193 @@ Added animated tropical-themed emoji decorations to all page backgrounds, making
 - `src/pages/MatchAndLearn.jsx` — bgTheme="games"
 - `src/pages/Puzzles.jsx` — bgTheme="puzzles"
 - `src/pages/ParentDashboard.jsx` — bgTheme="default"
+
+## Alphabets & Numbers Modules — Placeholder Pages
+**Date:** 2026-05-09
+**Status:** ✅ Complete (placeholder)
+
+### Changes
+- Added Alphabets (🔠) and Numbers (🔢) module cards to Home page
+- Created placeholder pages: `Alphabets.jsx` and `Numbers.jsx` (Coming Soon)
+- Added routes `/alphabets` and `/numbers` in `App.jsx`
+- Added i18n keys: `nav.alphabets`, `nav.numbers`, `home.modules.alphabets`, `home.modules.alphabetsDesc`, `home.modules.numbers`, `home.modules.numbersDesc`
+- Added FunBackground themes for `"alphabets"` and `"numbers"`
+- Updated Home grid from 5-col to 4-col to better accommodate 7 module cards
+- Alphabets color: teal (#2DCDAA), Numbers color: coral pink (#FF6B8A)
+
+### Files Changed
+- `src/pages/Alphabets.jsx` — **new file** (placeholder)
+- `src/pages/Numbers.jsx` — **new file** (placeholder)
+- `src/pages/Home.jsx` — added 2 module cards, updated grid layout
+- `src/App.jsx` — added routes + imports
+- `src/data/i18n/en.json` — added i18n keys
+- `src/components/common/FunBackground.jsx` — added alphabets/numbers themes
+
+### Prompt Renumbering
+Inserted Module 10 (Alphabets) and Module 11 (Numbers) prompts. Existing prompts shifted:
+- `10-puzzles.md` → `12-puzzles.md`
+- `11-rewards-dashboard.md` → `13-rewards-dashboard.md`
+- `12-pwa-deployment.md` → `14-pwa-deployment.md`
+- `13-verification-testing.md` → `15-verification-testing.md`
+
+New prompt files:
+- `docs/prompts/10-alphabets.md` — Letter recognition, phonics, tracing, letter quiz (4 modes)
+- `docs/prompts/11-numbers.md` — Counting, number recognition, quantity matching, number quiz (4 modes)
+
+---
+
+## Module 10 — Alphabets (Letter Recognition & Phonics)
+**Date:** 2026-05-10
+**Status:** ✅ Complete
+
+### Summary
+Full letter learning module with 4 interactive modes: Learn Letters (flashcards), Listen & Find (audio identification), Trace Letters (canvas-based tracing), and Letter Quiz. Covers all 26 letters with uppercase/lowercase, phonetics, emoji associations, and tier-based difficulty scaling.
+
+### Changes
+
+**Data (`src/data/alphabets.js`):**
+- 26 letters with uppercase, lowercase, emoji, word, i18nWord key, phonetic symbol, and soundHint
+- Example: `{ letter: 'A', lowercase: 'a', emoji: '🍎', word: 'apple', i18nWord: 'vocabulary.apple.word', phonetic: '/æ/', soundHint: 'Open your mouth wide — "aah"' }`
+
+**i18n (`src/data/i18n/en.json`):**
+- Added full `alphabets` section (16 keys): title, 4 mode names + descriptions, canYouFind, whatLetterStartsWith, traceTheLetter, etc.
+- Added 7 new vocabulary entries: queen, umbrella, van, iceCream, kite, xylophone, zebra
+
+**Components (`src/components/alphabets/`):**
+- `LearnLettersMode.jsx` — Flashcard with large uppercase/lowercase, emoji + word, phonetic badge, soundHint. AnimatePresence slide transitions, tap-to-speak, progress dots. Logs `learn-letter` to db.progress
+- `ListenLetterMode.jsx` — "Can you find the letter X?" with tier-scaled choices (Tier 1: 3 choices, Tier 2: 4, Tier 3: 4 with mixed case). Bounce/shake feedback, auto-advance, star award on completion
+- `TraceLetterMode.jsx` — Canvas-based letter tracing with semi-transparent guide rendered via `ctx.fillText`. Pointer events for drawing, grid-based coverage tracking (70% threshold). Tier scaling: uppercase only / alternating / lowercase with varying line thickness
+- `LetterQuizMode.jsx` — "What letter does [word] start with?" quiz, 10 rounds, 4 choices, feedback animations, star award
+
+**Page (`src/pages/Alphabets.jsx`):**
+- VIEW enum (MENU/LEARN/LISTEN/TRACE/QUIZ) with AnimatePresence transitions
+- 2-column mode card grid with emoji, name, description, colored Play button
+- MODE_COMPONENTS map for dynamic rendering
+- Context-aware back button (mode → menu → navigate(-1))
+- Uses bgTheme="alphabets"
+
+### Files Changed
+- `src/data/alphabets.js` — **new file**
+- `src/components/alphabets/LearnLettersMode.jsx` — **new file**
+- `src/components/alphabets/ListenLetterMode.jsx` — **new file**
+- `src/components/alphabets/TraceLetterMode.jsx` — **new file**
+- `src/components/alphabets/LetterQuizMode.jsx` — **new file**
+- `src/pages/Alphabets.jsx` — replaced placeholder
+- `src/data/i18n/en.json` — added alphabets section + vocabulary
+
+---
+
+## Module 11 — Numbers (Counting & Number Sense)
+**Date:** 2026-05-10
+**Status:** ✅ Complete
+
+### Summary
+Full number learning module with 4 interactive modes: Learn Numbers (flashcards with digit, word, quantity, finger counting), Count (scattered emoji counting), Match (digit-to-quantity matching), and Number Quiz. Covers 0–20 with tier-based difficulty scaling and tens data for Tier 3.
+
+### Changes
+
+**Data (`src/data/numbers.js`):**
+- `numberData` array (0–20) with value, word, i18nWord, emoji, fingers
+- `tensData` for Tier 3 (10–100 by tens)
+- `countableEmojis` array for counting exercises
+- `getNumberRange(tier)` helper: Tier 1 = 0–5, Tier 2 = 0–10, Tier 3 = 0–20
+
+**i18n (`src/data/i18n/en.json`):**
+- Added full `numbers` section (34+ keys): title, 4 mode names + descriptions, howMany, tapTheNumber, whatComesAfter, whichIsMore, word0–word20, tens (ten through hundred)
+
+**Components (`src/components/numbers/`):**
+- `LearnNumbersMode.jsx` — Flashcard with large digit, word, quantity emoji grid (repeated emojis), finger counting display. Slide transitions, tap-to-speak, progress dots
+- `CountMode.jsx` — 8-round counting game. Scattered emoji items with random positions, "How many?" prompt, number buttons grid, counting animation, tier-scaled ranges
+- `MatchMode.jsx` — Two-column digit-to-quantity matching. Left column: digits, right column: emoji quantities. Tap-to-select matching, 3 rounds with 3–4 pairs each, tier-scaled
+- `NumberQuizMode.jsx` — 10-round mixed quiz with 4 question types (identify number, how many, what comes after, which is more/less), tier-weighted question selection, 4 answer choices
+
+**Page (`src/pages/Numbers.jsx`):**
+- VIEW enum (MENU/LEARN/COUNT/MATCH/QUIZ) with AnimatePresence transitions
+- 2×2 grid of mode cards with emoji, name, description, colored Play button
+- Context-aware back button, bgTheme="numbers"
+
+### Files Changed
+- `src/data/numbers.js` — **new file**
+- `src/components/numbers/LearnNumbersMode.jsx` — **new file**
+- `src/components/numbers/CountMode.jsx` — **new file**
+- `src/components/numbers/MatchMode.jsx` — **new file**
+- `src/components/numbers/NumberQuizMode.jsx` — **new file**
+- `src/pages/Numbers.jsx` — replaced placeholder
+- `src/data/i18n/en.json` — added numbers section
+
+---
+
+## Module 12 — Puzzles
+**Date:** 2026-05-10
+**Status:** ✅ Complete
+
+### Summary
+17 puzzle types across 3 developmental tiers, with collapsible tier sections, profile-based tier locking, and a shared PuzzleWrapper for progress tracking and star earning. Puzzles range from simple shape sorting (Tier 1) to analogies and mazes (Tier 3).
+
+### Changes
+
+**Data (`src/data/puzzles.js`):**
+- `puzzlesByTier` object with 3 tiers:
+  - Tier 1 (5 puzzles): Shape Sorter, Color Match, Size Order, Peekaboo, Jigsaw (4-piece)
+  - Tier 2 (6 puzzles): Pattern Completion, Counting, Letter Trace, Shadow Match, Rhyming Pairs, Jigsaw (9-piece)
+  - Tier 3 (7 puzzles): Word-Picture Match, Sentence Builder, Story Sequence, Beginning Sounds, Analogies, Maze, Jigsaw (16-piece)
+- Each entry: id, i18nKey, icon emoji, component name, optional config
+
+**Shared Wrapper (`src/components/puzzles/PuzzleWrapper.jsx`):**
+- Same pattern as GameWrapper: star animation, score display, play again/back buttons
+- Logs to `db.progress` with `module: 'puzzles'`, awards star via `db.rewards`
+
+**17 Puzzle Components (`src/components/puzzles/`):**
+- `ShapeSorter.jsx` — Drag shapes into matching outlines (circle, square, triangle, star)
+- `ColorMatch.jsx` — Match colors to their names, 8 rounds
+- `SizeOrder.jsx` — Arrange items from smallest to biggest
+- `Peekaboo.jsx` — Items shown briefly then hidden, find the target
+- `Jigsaw.jsx` — Grid-based jigsaw with configurable piece count (4/9/16)
+- `PatternCompletion.jsx` — Complete the emoji pattern sequence
+- `Counting.jsx` — Count objects and select the correct number
+- `LetterTrace.jsx` — Simplified letter tracing (puzzle variant)
+- `ShadowMatch.jsx` — Match emoji to their silhouette/shadow
+- `RhymingPairs.jsx` — Find words that rhyme
+- `WordPicture.jsx` — Match words to pictures
+- `SentenceBuilder.jsx` — Arrange words to form sentences
+- `StorySequence.jsx` — Put story events in order
+- `BeginningSound.jsx` — Identify words starting with a given letter, 8 letter sets (B/C/D/F/H/M/S/T)
+- `Analogies.jsx` — "A is to B as C is to ?" with 8 analogy pairs
+- `Maze.jsx` — 9×9 grid maze with recursive backtracking generation, 🐱 player, ⭐ goal, directional buttons
+
+**Page (`src/pages/Puzzles.jsx`):**
+- 3 collapsible tier sections (🌱 Seedling, 🌿 Sprout, 🌳 Tree)
+- User's profile tier expanded by default, higher tiers locked (🔒)
+- AnimatePresence for expand/collapse transitions
+- Dynamic component loading via COMPONENTS map
+- 2/3-column puzzle grid within each tier
+- Context-aware back button (puzzle → tier list → navigate(-1))
+- Uses bgTheme="puzzles"
+
+### Files Changed
+- `src/data/puzzles.js` — **new file**
+- `src/components/puzzles/PuzzleWrapper.jsx` — **new file**
+- `src/components/puzzles/ShapeSorter.jsx` — **new file**
+- `src/components/puzzles/ColorMatch.jsx` — **new file**
+- `src/components/puzzles/SizeOrder.jsx` — **new file**
+- `src/components/puzzles/Peekaboo.jsx` — **new file**
+- `src/components/puzzles/Jigsaw.jsx` — **new file**
+- `src/components/puzzles/PatternCompletion.jsx` — **new file**
+- `src/components/puzzles/Counting.jsx` — **new file**
+- `src/components/puzzles/LetterTrace.jsx` — **new file**
+- `src/components/puzzles/ShadowMatch.jsx` — **new file**
+- `src/components/puzzles/RhymingPairs.jsx` — **new file**
+- `src/components/puzzles/WordPicture.jsx` — **new file**
+- `src/components/puzzles/SentenceBuilder.jsx` — **new file**
+- `src/components/puzzles/StorySequence.jsx` — **new file**
+- `src/components/puzzles/BeginningSound.jsx` — **new file**
+- `src/components/puzzles/Analogies.jsx` — **new file**
+- `src/components/puzzles/Maze.jsx` — **new file**
+- `src/pages/Puzzles.jsx` — replaced placeholder
+- `src/data/i18n/en.json` — added puzzles section with all puzzle i18n keys
+
+### Deviations
+- Maze uses tap buttons instead of swipe gestures for simpler mobile UX
+- Beginning Sounds is English-only (letter-sound correspondence doesn't translate directly)
+- Jigsaw uses CSS grid positioning rather than actual drag-and-drop for cross-device compatibility
+- Bundle size ~716KB — code-splitting planned for Module 14

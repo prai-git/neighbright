@@ -7,7 +7,9 @@ const THEMES = {
   words:   ['📖', '🌻', '🦋', '🐛', '🌸', '🍀', '🐝', '🌿', '🌺', '🐞', '🌴', '🍃'],
   games:   ['🎯', '🦁', '🐘', '🌴', '🦋', '🌺', '🐒', '🌿', '🦜', '🐞', '🍃', '🌸'],
   puzzles: ['🧩', '🐢', '🌵', '🦎', '🌺', '🐝', '🌿', '🦋', '🍃', '🌻', '🐞', '🌴'],
-  home:    ['🌴', '🌺', '🦜', '🐒', '🌿', '🦋', '🐝', '🌸', '🐞', '🍃', '🌻', '🐢'],
+  home:      ['🌴', '🌺', '🦜', '🐒', '🌿', '🦋', '🐝', '🌸', '🐞', '🍃', '🌻', '🐢'],
+  alphabets: ['🔤', '📝', '🅰️', '🅱️', '🌟', '📖', '✏️', '🦋', '🌸', '🍎', '🐝', '🌿'],
+  numbers:   ['🔢', '1️⃣', '2️⃣', '3️⃣', '🌟', '🎯', '🧮', '🦋', '🌺', '🍀', '🐞', '🌴'],
 };
 
 // Fixed positions to avoid layout shift — spread across bottom 60% of viewport
@@ -34,7 +36,7 @@ export default function FunBackground({ theme = 'default' }) {
       emojis.map((emoji, i) => ({
         emoji,
         ...POSITIONS[i % POSITIONS.length],
-        size: 18 + (i % 4) * 6,
+        size: 34 + (i % 4) * 10,
         delay: i * 0.7,
         duration: 4 + (i % 3) * 2,
       })),
@@ -54,7 +56,7 @@ export default function FunBackground({ theme = 'default' }) {
             left: item.left,
             top: item.top,
             fontSize: `${item.size}px`,
-            opacity: 0.06,
+            opacity: 0.35,
             animationDelay: `${item.delay}s`,
             animationDuration: `${item.duration}s`,
           }}
