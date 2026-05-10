@@ -1,9 +1,9 @@
 const CACHE_NAME = 'neighbright-v1';
 
 const PRECACHE_URLS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
+  '/neighbright/',
+  '/neighbright/index.html',
+  '/neighbright/manifest.json',
 ];
 
 // Install: precache app shell
@@ -31,7 +31,7 @@ self.addEventListener('fetch', (event) => {
   if (request.mode === 'navigate') {
     // SPA: always serve index.html for navigation requests
     event.respondWith(
-      caches.match('/index.html').then((cached) => cached || fetch(request))
+      caches.match('/neighbright/index.html').then((cached) => cached || fetch(request))
     );
     return;
   }

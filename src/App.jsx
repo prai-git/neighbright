@@ -33,7 +33,7 @@ export default function App() {
   return (
     <LanguageProvider>
       <ProfileProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/neighbright">
           <Suspense fallback={<LoadingFallback />}>
             <Routes>
               {/* Public routes — redirect to /home if profile already exists */}
