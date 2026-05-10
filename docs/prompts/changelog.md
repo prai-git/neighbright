@@ -779,3 +779,82 @@ Full reward/motivation system (stars, streaks, stickers, avatar progression) and
 - Avatar level badges use emoji overlays rather than SVG accessories — keeps bundle lean
 - Dashboard heatmap uses div grid rather than canvas — simpler, more accessible
 - Bundle size ~1.1MB (jsPDF + html2canvas added) — code-splitting planned for Module 14
+
+---
+
+## Module 14 — PWA & GitHub Pages Deployment
+**Date:** 2026-05-10
+**Status:** ✅ Complete
+
+### Summary
+Progressive Web App configuration with service worker, manifest, offline support, lazy loading with code splitting, touch compatibility fixes, and GitHub Actions CI/CD for GitHub Pages deployment. No custom domain yet — deploying to `prai-git.github.io/neighbright` initially.
+
+### Changes
+
+**PWA Configuration:**
+- `public/manifest.json` — PWA manifest with dark theme colors (#131F24 bg, #58CC02 theme), SVG icons (192/512), standalone display, education/kids/health categories
+- `public/sw.js` — Service worker with cache-first for static assets, network-first for navigation (serves index.html for SPA routing), precaches app shell, cleans old caches on activate
+- `public/404.html` — GitHub Pages SPA routing fix: redirects 404s to `/?redirect=<path>` for client-side routing
+- `public/images/icon-192.svg` — SVG app icon 192×192 with NB branding, dark theme
+- `public/images/icon-512.svg` — SVG app icon 512×512 with same branding
+
+**index.html — PWA meta tags:**
+- Added `<meta name="description">`, `<meta name="theme-color" content="#58CC02">`
+- Added Apple mobile web app tags (capable, status-bar-style, title, touch-icon)
+- Added `<link rel="manifest" href="/manifest.json">`
+- Added Open Graph tags (og:title, og:description, og:type, og:image)
+
+**main.jsx — Service worker registration + SPA redirect:**
+- SPA redirect handling: reads `?redirect=` param, replaces history state
+- Service worker registration on window load with error swallowing
+
+**App.jsx — Lazy loading:**
+- All 11 page components converted to `React.lazy()` imports
+- Single `<Suspense>` wrapper around `<Routes>` with branded loading spinner fallback
+- Loading fallback: dark bg, spinning green ring, "Loading…" text
+
+**vite.config.js — Code splitting:**
+- `manualChunks` function splitting vendor (react/react-dom/react-router), motion (framer-motion), and db (dexie) into separate chunks
+- Rolldown-compatible function syntax (not object)
+
+**GitHub Actions (`.github/workflows/deploy.yml`):**
+- Triggers on push to main + manual workflow_dispatch
+- Node 20, npm ci, npm run build
+- Uses `actions/upload-pages-artifact@v3` + `actions/deploy-pages@v4`
+- Proper permissions (contents: read, pages: write, id-token: write)
+- Concurrency group to cancel in-progress deploys
+
+**Touch Compatibility Fixes (pre-Module 14):**
+- `index.html` — Added `viewport-fit=cover` for notch/safe-area handling
+- `NavBar.jsx` — Home icon and avatar buttons bumped to w-12 h-12 (48px touch targets)
+- `LanguageSwitcher.jsx` — Globe button bumped to w-12 h-12, changed mousedown to pointerdown
+- `TraceLetterMode.jsx` — Prev/next arrow buttons bumped to w-12 h-12
+- `src/index.css` — Added `@media (hover: none)` guard to prevent sticky hover on touch devices
+
+### Build Output
+- 33 chunks, code-split by page and vendor
+- vendor: 223KB (71KB gzip), motion: 124KB (40KB gzip), db: 103KB (34KB gzip)
+- Each page is its own chunk (loaded on navigation)
+- Total build time: ~700ms
+
+### Files Changed
+- `index.html` — PWA meta tags, Open Graph, Apple mobile web app
+- `src/main.jsx` — service worker registration, SPA redirect
+- `src/App.jsx` — React.lazy + Suspense for all pages
+- `vite.config.js` — manualChunks code splitting
+- `public/manifest.json` — **new file**
+- `public/sw.js` — **new file**
+- `public/404.html` — **new file**
+- `public/images/icon-192.svg` — **new file**
+- `public/images/icon-512.svg` — **new file**
+- `.github/workflows/deploy.yml` — **new file**
+- `src/components/common/NavBar.jsx` — touch target fix
+- `src/components/common/LanguageSwitcher.jsx` — touch target + pointerdown fix
+- `src/components/alphabets/TraceLetterMode.jsx` — touch target fix
+- `src/index.css` — hover guard for touch devices
+
+### Deviations
+- SVG icons used instead of PNG — avoids needing image generation tools, scales perfectly
+- No custom domain / CNAME / Porkbun DNS setup — deferred until after initial user testing
+- manualChunks uses function syntax (not object) due to Vite 8 + Rolldown requirement
+- jsPDF not given its own chunk — it's only imported by ParentDashboard which is already lazy-loaded

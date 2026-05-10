@@ -29,7 +29,7 @@ export default function NavBar({ mode = 'app' }) {
             <Link
               to="/home"
               aria-label={t('nav.home')}
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-xl hover:bg-white/10 transition-colors"
+              className="w-12 h-12 rounded-xl flex items-center justify-center text-xl hover:bg-white/10 transition-colors"
             >
               🏠
             </Link>
@@ -45,7 +45,7 @@ export default function NavBar({ mode = 'app' }) {
             <Link
               to="/dashboard"
               aria-label={t('nav.dashboard')}
-              className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-lg hover:bg-primary/30 transition-colors border border-primary/30"
+              className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-lg hover:bg-primary/30 transition-colors border border-primary/30"
             >
               {profile?.avatarKey || '👤'}
             </Link>

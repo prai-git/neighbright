@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#131F24"/>
+  <rect x="32" y="32" width="448" height="448" rx="64" fill="#1B2B32" stroke="#2B3D45" stroke-width="4"/>
+  <text x="256" y="220" text-anchor="middle" font-size="160" fill="#58CC02" font-family="sans-serif" font-weight="800">NB</text>
+  <text x="256" y="340" text-anchor="middle" font-size="64" fill="#1CB0F6" font-family="sans-serif" font-weight="700">NeighBright</text>
+  <circle cx="400" cy="112" r="32" fill="#FF9600"/>
+  <text x="400" y="124" text-anchor="middle" font-size="40" fill="white">✨</text>
+</svg>

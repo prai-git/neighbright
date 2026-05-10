@@ -19,8 +19,8 @@ export default function LanguageSwitcher() {
         setOpen(false);
       }
     };
-    document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener('pointerdown', handler);
+    return () => document.removeEventListener('pointerdown', handler);
   }, []);
 
   return (
@@ -29,7 +29,7 @@ export default function LanguageSwitcher() {
         onClick={() => setOpen((o) => !o)}
         aria-label="Switch language"
         aria-expanded={open}
-        className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 active:bg-white/5 transition-colors cursor-pointer text-lg"
+        className="w-12 h-12 flex items-center justify-center rounded-xl hover:bg-white/10 active:bg-white/5 transition-colors cursor-pointer text-lg"
       >
         🌐
       </button>

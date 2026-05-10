@@ -272,7 +272,7 @@ export default function TraceLetterMode({ onBack }) {
         <button
           onClick={goPrev}
           disabled={index === 0}
-          className="w-10 h-10 rounded-full bg-white/10 border-2 border-white/20 text-white font-extrabold text-lg flex items-center justify-center disabled:opacity-30 cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
+          className="w-12 h-12 rounded-full bg-white/10 border-2 border-white/20 text-white font-extrabold text-lg flex items-center justify-center disabled:opacity-30 cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
           aria-label="Previous letter"
         >
           &larr;
@@ -286,7 +286,7 @@ export default function TraceLetterMode({ onBack }) {
         <button
           onClick={goNext}
           disabled={index === alphabetData.length - 1}
-          className="w-10 h-10 rounded-full bg-white/10 border-2 border-white/20 text-white font-extrabold text-lg flex items-center justify-center disabled:opacity-30 cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
+          className="w-12 h-12 rounded-full bg-white/10 border-2 border-white/20 text-white font-extrabold text-lg flex items-center justify-center disabled:opacity-30 cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
           aria-label="Next letter"
         >
           &rarr;

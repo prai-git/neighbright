@@ -771,6 +771,8 @@ Deploy: GitHub Actions → gh-pages branch
 
 ### 12.2 GitHub Actions Workflow
 
+Uses the official GitHub Pages deployment actions (no third-party actions):
+
 ```yaml
 # .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
@@ -778,48 +780,78 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
+          cache: npm
       - run: npm ci
       - run: npm run build
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      - uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          cname: neighbright.yourdomain.com
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
 ```
 
-### 12.3 Porkbun DNS
+**Repository Settings:** Go to repo → Settings → Pages → Source: GitHub Actions → Enforce HTTPS ✅
+
+### 12.3 Porkbun DNS (Deferred)
+
+Custom domain setup deferred until after initial user testing. Will configure when ready:
 
 ```
 Type: CNAME
 Host: neighbright
-Value: yourusername.github.io
+Value: prai-git.github.io
 TTL: 600
 ```
+
+Then add `public/CNAME` containing the custom domain and update `vite.config.js` base if needed.
 
 ### 12.4 Vite Config
 
 ```javascript
 // vite.config.js
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   base: '/',
   build: {
     outDir: 'dist',
     sourcemap: false,
-  }
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/') || id.includes('node_modules/react-router')) return 'vendor';
+          if (id.includes('node_modules/framer-motion')) return 'motion';
+          if (id.includes('node_modules/dexie')) return 'db';
+        },
+      },
+    },
+  },
 });
 ```
 
