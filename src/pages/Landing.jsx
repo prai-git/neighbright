@@ -1,25 +1,24 @@
 import NavBar from '../components/common/NavBar';
 import LandingHero from '../components/landing/LandingHero';
-import LandingFeatures from '../components/landing/LandingFeatures';
-import LandingHowItWorks from '../components/landing/LandingHowItWorks';
-import LandingAudience from '../components/landing/LandingAudience';
-import LandingEvidence from '../components/landing/LandingEvidence';
-import LandingFeedback from '../components/landing/LandingFeedback';
-import LandingFooter from '../components/landing/LandingFooter';
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <NavBar mode="landing" />
-      <main>
+      <main className="flex-1 flex flex-col">
         <LandingHero />
-        <LandingFeatures />
-        <LandingHowItWorks />
-        <LandingAudience />
-        <LandingEvidence />
-        <LandingFeedback />
       </main>
-      <LandingFooter />
+      <footer className="text-center py-6 text-[10px] text-text-secondary/50 border-t border-border">
+        <p>NeighBright — Free speech therapy for every family</p>
+        <a
+          href="https://github.com/prai-git/neighbright"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-text-secondary/40 hover:text-white transition-colors mt-1 inline-block"
+        >
+          GitHub
+        </a>
+      </footer>
     </div>
   );
 }
