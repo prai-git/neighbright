@@ -717,3 +717,65 @@ Full number learning module with 4 interactive modes: Learn Numbers (flashcards 
 - Beginning Sounds is English-only (letter-sound correspondence doesn't translate directly)
 - Jigsaw uses CSS grid positioning rather than actual drag-and-drop for cross-device compatibility
 - Bundle size ~716KB — code-splitting planned for Module 14
+
+---
+
+## Module 13 — Rewards & Parent Dashboard
+**Date:** 2026-05-10
+**Status:** ✅ Complete
+
+### Summary
+Full reward/motivation system (stars, streaks, stickers, avatar progression) and comprehensive parent dashboard with 7 tabs: Overview, Activity Log, Word Accuracy, Sound Progress, Puzzle Progress, Session Notes, and Settings. Includes PDF export and data reset functionality.
+
+### Changes
+
+**Reward Data & Logic:**
+- `src/data/rewards.js` — 9 sticker definitions with unlock thresholds (star count or streak), 5 avatar levels (Beginner to Legend at 200 stars)
+- `src/hooks/useRewards.js` — Central rewards hook with `useLiveQuery` reactivity, `updateStreak()` (daily streak logic), `awardStar(count)` (increments stars, detects new stickers/avatar levels), `getUnlockedStickers()`, `getAvatarLevel()`
+- `src/hooks/useProgress.js` — Central progress hook with 8 methods: `addProgress`, `getProgressByModule`, `getProgressByDate`, `getTodayProgress`, `getTotalDuration`, `getWordAccuracy`, `getSoundProgress`, `getPuzzleCompletion`
+
+**Reward Components (`src/components/rewards/`):**
+- `StickerGallery.jsx` — 3-column grid of sticker slots, unlocked = vibrant with green border, locked = grayscale with lock overlay
+- `NewStickerModal.jsx` — Full-screen celebration overlay with confetti, large sticker emoji, "You earned a new sticker!" message, dismiss button
+- `AvatarDisplay.jsx` — Renders avatar with level badge overlay, golden glow animation at level 5 (200+ stars), 3 sizes (sm/md/lg)
+- `ConfettiEffect.jsx` — 30 colored particles falling with wobble via framer motion, auto-removes after 3s
+
+**Parent Dashboard (`src/pages/ParentDashboard.jsx`):**
+- 7 tabbed sections with horizontal scrollable tab bar:
+  - **Overview** — 6 stat cards (stars, streak, words, sounds, puzzles, total time) with date range filter (This Week / This Month / All Time)
+  - **Activity Log** — Calendar heatmap (16 weeks, color-coded by daily minutes) + recent activity list with module emoji, type, duration, result, relative timestamps
+  - **Word Accuracy** — Summary badges (mastered/learning/need practice) + word list sorted by accuracy with color-coded progress bars
+  - **Sound Progress** — Sounds grouped by articulation type with 5-dot level indicators per phoneme
+  - **Puzzle Progress** — 3 tier sections with checkmarks for completed puzzles
+  - **Session Notes** — Full CRUD: add note (inline textarea), edit in-place, delete with confirmation
+  - **Settings** — Voice rate/pitch sliders, daily goal input, profile name/tier editing, PDF export button, destructive "Reset All Data" with confirmation
+
+**PDF Export (`src/utils/export-pdf.js`):**
+- Client-side PDF generation via jsPDF
+- Includes: child name, date, tier, summary stats, module activity breakdown, last 10 session notes
+- Auto-downloads as `neighbright-progress-{name}-{date}.pdf`
+
+**Home Page Integration:**
+- Streak logic now runs on Home page load via `useRewards().updateStreak()`
+
+**i18n (`src/data/i18n/en.json`):**
+- Added: `rewards.awesome`, `rewards.locked`, `rewards.milestones.hundredStars`, full `rewards.avatarLevels` object (5 levels)
+
+### Files Changed
+- `src/data/rewards.js` — **new file**
+- `src/hooks/useRewards.js` — **new file**
+- `src/hooks/useProgress.js` — **new file**
+- `src/components/rewards/StickerGallery.jsx` — **new file**
+- `src/components/rewards/NewStickerModal.jsx` — **new file**
+- `src/components/rewards/AvatarDisplay.jsx` — **new file**
+- `src/components/rewards/ConfettiEffect.jsx` — **new file**
+- `src/utils/export-pdf.js` — **new file**
+- `src/pages/ParentDashboard.jsx` — replaced placeholder
+- `src/pages/Home.jsx` — added streak update on load
+- `src/data/i18n/en.json` — added reward/avatar i18n keys
+
+### Deviations
+- Sticker unlock conditions use simple threshold checks (totalStars >= N, currentStreak >= N) rather than complex manual triggers — simpler and more predictable
+- Avatar level badges use emoji overlays rather than SVG accessories — keeps bundle lean
+- Dashboard heatmap uses div grid rather than canvas — simpler, more accessible
+- Bundle size ~1.1MB (jsPDF + html2canvas added) — code-splitting planned for Module 14

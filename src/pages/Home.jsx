@@ -7,6 +7,7 @@ import { useTranslation } from '../data/i18n';
 import { useProfile } from '../contexts/ProfileContext';
 import db from '../db';
 import { wordCategories } from '../data/vocabulary';
+import { useRewards } from '../hooks/useRewards';
 
 const MODULE_CARDS = [
   { emoji: '💬', nameKey: 'home.modules.talkBoard',  descKey: 'home.modules.talkBoardDesc', to: '/talk-board',      bg: '#58CC02', dark: '#46A302' },
@@ -40,6 +41,7 @@ export default function Home() {
   const { profile } = useProfile();
   const navigate = useNavigate();
 
+  const { updateStreak } = useRewards();
   const [stars, setStars] = useState(0);
   const [streak, setStreak] = useState(0);
   const [goalMinutes, setGoalMinutes] = useState(10);
@@ -50,8 +52,11 @@ export default function Home() {
   useEffect(() => {
     const today = new Date().toISOString().slice(0, 10);
 
-    db.rewards.toCollection().first().then((r) => {
-      if (r) { setStars(r.totalStars || 0); setStreak(r.currentStreak || 0); }
+    // Update daily streak on app load
+    updateStreak().then(() => {
+      db.rewards.toCollection().first().then((r) => {
+        if (r) { setStars(r.totalStars || 0); setStreak(r.currentStreak || 0); }
+      });
     });
 
     db.settings.toCollection().first().then((s) => {

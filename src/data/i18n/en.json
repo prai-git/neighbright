@@ -307,17 +307,27 @@
     "keepGoing": "Keep going!",
     "letsKeepPracticing": "Let's keep practicing!",
     "newSticker": "You earned a new sticker!",
+    "awesome": "Awesome!",
+    "locked": "Locked",
     "streakMessage": "You've practiced {count} days in a row!",
     "milestones": {
       "firstWord": "First Word",
       "tenWords": "10 Words",
       "fiftyWords": "50 Words",
+      "hundredStars": "100 Stars",
       "firstRecording": "First Recording",
       "threeDay": "3-Day Streak",
       "sevenDay": "7-Day Streak",
       "thirtyDay": "30-Day Streak",
       "puzzleMaster": "Puzzle Master",
       "soundStar": "Sound Star"
+    },
+    "avatarLevels": {
+      "beginner": "Beginner",
+      "starLearner": "Star Learner",
+      "superLearner": "Super Learner",
+      "champion": "Champion",
+      "legend": "Legend"
     }
   },
   "dashboard": {
