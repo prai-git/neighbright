@@ -1,16 +1,44 @@
-# React + Vite
+# NeighBright
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Free speech therapy and learning tools for children**
 
-Currently, two official plugins are available:
+NeighBright is a free, bilingual (English, French) web application for children ages 1-8 with speech delays. It combines AAC communication tools, articulation practice, vocabulary building, receptive language games, alphabet and number learning, and cognitive puzzles — all grounded in evidence-based speech therapy techniques.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live:** https://prai-git.github.io/neighbright/
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Talk Board** — AAC communication board with categories, picture cards, sentence building, and text-to-speech. Camera support for custom photo cards.
+- **Sound Explorer** — 24 consonant sounds with mouth diagrams, 5-level articulation progression, phonics breakdown, record & compare.
+- **Word Builder** — 240+ vocabulary words across 12 categories with Learn, Listen & Point, and Say It modes.
+- **Match & Learn** — 6 receptive language games: picture matching, category sorting, follow directions, what's missing, odd one out, sequence builder.
+- **Alphabets** — Letter recognition with flashcards, listen & find, canvas tracing, letter quiz, and ASL sign language display.
+- **Numbers** — Counting and number sense (0-20) with flashcards, counting games, digit-quantity matching, quizzes, and ASL signs.
+- **Puzzles** — 17 puzzle types across 3 developmental tiers, from shape sorting to analogies and mazes.
+- **Parent Dashboard** — Progress tracking, activity logs, word accuracy, sound progress, session notes, PDF export, and settings.
+- **Rewards** — Stars, streaks, sticker gallery, and avatar progression to motivate daily practice.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19 + Vite 8 + Tailwind CSS 4
+- Framer Motion for animations
+- Dexie.js (IndexedDB) for offline data storage
+- Web Speech API for text-to-speech
+- MediaRecorder API for record & compare
+- jsPDF for progress report export
+- GitHub Pages deployment via GitHub Actions
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+## Deployment
+
+Pushes to `main` automatically deploy to GitHub Pages via GitHub Actions.
+
+## License
+
+MIT - Praveen Rai 2026

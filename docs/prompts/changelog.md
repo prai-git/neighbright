@@ -858,3 +858,77 @@ Progressive Web App configuration with service worker, manifest, offline support
 - No custom domain / CNAME / Porkbun DNS setup — deferred until after initial user testing
 - manualChunks uses function syntax (not object) due to Vite 8 + Rolldown requirement
 - jsPDF not given its own chunk — it's only imported by ParentDashboard which is already lazy-loaded
+
+---
+
+## User Feedback Round 1 — Bug Fixes & Enhancements
+**Date:** 2026-05-15
+**Status:** ✅ Complete
+
+### Summary
+Applied 7 fixes based on initial user testing feedback. Removed Hindi language, fixed bugs in Sound Explorer (mouth SVG, recording), enlarged Talk Board cards, added phonics breakdown, camera support for custom cards, and ASL sign language for Alphabets & Numbers.
+
+### Changes
+
+**General — Remove Hindi Language:**
+- Removed Hindi from LanguageSwitcher, Onboarding, i18n imports, useSpeech LANG_MAP
+- Removed 🇮🇳 flag from LandingEvidence
+- Updated i18n strings: "Three Languages" → "Two Languages"
+- Removed Noto Sans Devanagari Google Font from index.html
+- Removed --font-hindi CSS token from index.css
+
+**Sound Explorer — Fix Mouth SVG Path:**
+- Changed hardcoded `/images/mouth/` to `${import.meta.env.BASE_URL}images/mouth/` in PracticeView.jsx
+- Mouth diagrams now load correctly on GitHub Pages with `/neighbright/` base path
+
+**Sound Explorer — Fix Recording Playback (Safari):**
+- Detect supported MIME type (audio/webm or audio/mp4) instead of hardcoding webm
+- Use `recorder.mimeType` for Blob creation instead of fixed type
+- Add playback fallback with fetch+blob retry
+
+**Sound Explorer — Phonics Breakdown (Levels 2-3):**
+- New `handleSpeakWithBreakdown` function in PracticeView
+- For syllables (level 2) and words (level 3), each letter is spoken individually with 700ms gaps, then the full word is spoken
+- New i18n key: `sounds.tapToHearBreakdown`
+
+**Talk Board — Enlarge Card Emoji & Text:**
+- Emoji bumped from `text-4xl sm:text-5xl` to `text-5xl sm:text-6xl md:text-7xl`
+- Label bumped from `text-xs` to `text-sm sm:text-base`
+- Reduced card padding from p-3 to p-2 with gap-1 for more content space
+
+**Talk Board — Camera Support for Custom Cards:**
+- Added 📷 Photo button to CustomCardForm with `<input type="file" accept="image/*" capture="environment">`
+- Photos resized to 200×200 JPEG (quality 0.7) via canvas before storing
+- Stored as `photoData` (base64) in IndexedDB customVocabulary table
+- PictureCardGrid renders `<img>` for cards with photoData, falls back to emoji
+- Emoji field now optional when photo is provided
+
+**Alphabets & Numbers — ASL Sign Language:**
+- New `src/data/signLanguage.js` with ASL hand signs for A-Z (aslLetters) and 0-10 (aslNumbers)
+- New `src/components/common/ASLSign.jsx` — orange-themed badge with hand emoji and "ASL" label, 3 sizes
+- LearnLettersMode: ASL sign displayed beside letter (A-Z)
+- LearnNumbersMode: ASL sign displayed beside number (0-10 only)
+
+### Files Changed
+- `src/data/i18n/index.js` — removed hi.json import
+- `src/data/i18n/en.json` — updated multilingual strings, added tapToHearBreakdown
+- `src/components/common/LanguageSwitcher.jsx` — removed Hindi option
+- `src/hooks/useSpeech.js` — removed hi from LANG_MAP
+- `src/pages/Onboarding.jsx` — removed Hindi from LANGUAGES
+- `src/components/landing/LandingEvidence.jsx` — removed 🇮🇳 flag
+- `index.html` — removed Noto Sans Devanagari font
+- `src/index.css` — removed --font-hindi token
+- `src/components/sounds/PracticeView.jsx` — BASE_URL for SVG, phonics breakdown
+- `src/hooks/useAudioRecorder.js` — Safari MIME type detection
+- `src/components/sounds/RecordCompare.jsx` — playback fallback
+- `src/components/talkboard/PictureCardGrid.jsx` — larger sizes, photo rendering
+- `src/components/talkboard/CustomCardForm.jsx` — camera/photo capture
+- `src/data/signLanguage.js` — **new file**
+- `src/components/common/ASLSign.jsx` — **new file**
+- `src/components/alphabets/LearnLettersMode.jsx` — added ASLSign
+- `src/components/numbers/LearnNumbersMode.jsx` — added ASLSign
+
+### Deviations
+- ASL signs use emoji hand representations rather than SVG illustrations — keeps bundle lean, works across all devices
+- Phonics breakdown uses Web Speech API for individual letters — pronunciation quality depends on browser TTS engine
+- Camera photos stored as base64 in IndexedDB — practical for small images but not scalable for large photo libraries

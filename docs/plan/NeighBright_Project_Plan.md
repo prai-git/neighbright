@@ -9,7 +9,7 @@
 
 Approximately 1 in 4 children experience some form of speech or language delay during early development. The leading apps in this space — Speech Blubs ($60/yr), Articulation Station ($60), SpeakEasy ($50/yr) — lock evidence-based therapy techniques behind paywalls that many families cannot afford. NeighBright fills this gap: a completely free, professional-grade web application that any family can run on any device, combining AAC communication tools, articulation practice, vocabulary building, receptive language games, and age-appropriate cognitive puzzles — all grounded in the same evidence-based techniques that licensed SLPs use.
 
-NeighBright launches in three languages — English, Hindi, and French — making it accessible to a broader global audience from day one.
+NeighBright launches in two languages — English and French — making it accessible to a broader global audience from day one.
 
 NeighBright is not a replacement for professional speech therapy. It is a powerful supplement for daily home practice, designed so a parent and child can sit together and turn screen time into speech time.
 
@@ -23,7 +23,7 @@ Ship a fully functional, multilingual speech therapy app as a static site hosted
 
 - **Hosting:** GitHub Pages (free, served via GitHub's global CDN)
 - **Domain:** Custom domain via Porkbun
-- **Languages:** English, Hindi, French (pre-generated translations)
+- **Languages:** English, French (pre-generated translations)
 - **Data storage:** Browser localStorage / IndexedDB (one profile per browser)
 - **Offline:** Full PWA support
 - **Concurrent users:** Unlimited — static files are served globally via CDN; every user runs the app entirely in their own browser with zero shared server state
@@ -72,26 +72,26 @@ This architecture means Phase 1 scales effortlessly. Whether 10 families or 10,0
 
 ### 5.1 Approach
 
-NeighBright supports English, Hindi, and French from launch. All translations are pre-generated at build time using OpenAI's API — the API is never called at runtime and the key is never exposed in client code.
+NeighBright supports English and French from launch. All translations are pre-generated at build time using OpenAI's API — the API is never called at runtime and the key is never exposed in client code.
 
 ### 5.2 What Gets Translated
 
-| Content Type | Example (English) | Hindi | French |
-|---|---|---|---|
-| UI labels | "Get Started", "Settings" | All navigation, buttons, headers | All navigation, buttons, headers |
-| Category names | "Feelings", "Animals", "Food" | Category labels | Category labels |
-| Word labels | "happy", "dog", "apple" | Transliterated + Devanagari | French word |
-| Phrases | "I am happy", "I want milk" | Full phrase in Hindi | Full phrase in French |
-| Quick phrases | "I need help", "All done" | Hindi equivalents | French equivalents |
-| Instructions | "Tap the red circle" | Hindi instructions | French instructions |
-| Encouragement | "Great job!", "Let's try again!" | Hindi encouragement | French encouragement |
-| Puzzle prompts | "What comes next?" | Hindi prompts | French prompts |
-| Sound descriptions | "Put your lips together" | Hindi articulation cues | French articulation cues |
-| Landing page copy | Hero text, feature descriptions | Full page in Hindi | Full page in French |
+| Content Type | Example (English) | French |
+|---|---|---|
+| UI labels | "Get Started", "Settings" | All navigation, buttons, headers |
+| Category names | "Feelings", "Animals", "Food" | Category labels |
+| Word labels | "happy", "dog", "apple" | French word |
+| Phrases | "I am happy", "I want milk" | Full phrase in French |
+| Quick phrases | "I need help", "All done" | French equivalents |
+| Instructions | "Tap the red circle" | French instructions |
+| Encouragement | "Great job!", "Let's try again!" | French encouragement |
+| Puzzle prompts | "What comes next?" | French prompts |
+| Sound descriptions | "Put your lips together" | French articulation cues |
+| Landing page copy | Hero text, feature descriptions | Full page in French |
 
 ### 5.3 What Does NOT Get Translated
 
-- **Phoneme inventory** — Sound Explorer teaches English speech sounds specifically. Hindi and French have different phoneme sets. Phase 1 keeps Sound Explorer in English only. Future versions could add language-specific sound inventories.
+- **Phoneme inventory** — Sound Explorer teaches English speech sounds specifically. French has a different phoneme set. Phase 1 keeps Sound Explorer in English only. Future versions could add language-specific sound inventories.
 - **Code and technical strings** — route names, component IDs, data keys
 - **Avatar names and sticker labels** — kept universal
 
@@ -108,9 +108,8 @@ NeighBright supports English, Hindi, and French from launch. All translations ar
 │     └── scripts/translate.js                             │
 │         ├── Reads en.json                                │
 │         ├── Calls OpenAI API (gpt-4o) with structured    │
-│         │   prompt for Hindi and French                   │
+│         │   prompt for French                             │
 │         ├── Outputs:                                     │
-│         │   src/data/i18n/hi.json                        │
 │         │   src/data/i18n/fr.json                        │
 │         └── Developer reviews and commits the JSON files │
 │                                                          │
@@ -124,25 +123,24 @@ NeighBright supports English, Hindi, and French from launch. All translations ar
 **Key details:**
 - The translate script runs only on the developer's Mac, where the OpenAI API key lives in a local `.env` file
 - `.env` is in `.gitignore` — never committed, never deployed
-- The generated `hi.json` and `fr.json` files ARE committed to the repo — they are static data
+- The generated `fr.json` file IS committed to the repo — it is static data
 - If vocabulary or UI text changes, the developer re-runs `npm run translate`, reviews the output, and commits
 - OpenAI is used as a translation tool at build time only — the deployed app has zero API dependencies
 
 ### 5.5 Language Switcher UI
 
 - A globe icon (🌐) in the top navigation bar, always visible
-- Tapping opens a simple dropdown: English, हिन्दी, Français
+- Tapping opens a simple dropdown: English, Français
 - Selected language saved to localStorage, persists across sessions
 - Changing language instantly re-renders all text without a page reload (React context)
 - Landing page also has the language switcher
-- Web Speech API respects the selected language — TTS speaks in Hindi or French when active (voice availability varies by device/browser)
+- Web Speech API respects the selected language — TTS speaks in French when active (voice availability varies by device/browser)
 
 ### 5.6 i18n Architecture
 
 ```
 src/data/i18n/
 ├── en.json          # Master file — all strings authored here
-├── hi.json          # Generated, reviewed, committed
 ├── fr.json          # Generated, reviewed, committed
 └── index.js         # Exports useTranslation() hook
 ```
@@ -167,7 +165,7 @@ The first thing any visitor sees. Fully translatable via the language switcher. 
 - **How it works** — three steps with illustrations: 1) Open NeighBright on any device, 2) Pick your child's level, 3) Start practicing together. No credit card, no app store, no subscription.
 - **Who it's for** — three audience cards: Parents & Families, Speech Therapists & SLPs, Teachers & Schools.
 - **Evidence-based** — therapeutic foundations: PECS, articulation progression, ABA reinforcement, vocabulary acquisition. Note: "NeighBright supplements but does not replace professional speech therapy."
-- **Multilingual** — "Available in English, Hindi, and French."
+- **Multilingual** — "Available in English and French."
 - **Feedback callout** — "We're building this for you. Tell us what you need." Link to feedback form.
 - **Footer** — About, Privacy Policy, Contact, GitHub link, "Built for every family who deserves access."
 
@@ -179,7 +177,7 @@ The first thing any visitor sees. Fully translatable via the language switcher. 
 
 On first visit, tapping "Get Started" leads to a simple onboarding:
 
-1. **Select language** — English, Hindi, or French
+1. **Select language** — English or French
 2. **Set up your child** — child's name (or nickname), avatar selection (24+ SVG characters), developmental tier: Tier 1 (Early Learners, ~1–3), Tier 2 (Growing Minds, ~3–5), Tier 3 (Ready to Learn, ~5–8)
 3. **Start** — lands on the app home screen
 
@@ -211,7 +209,7 @@ A picture-exchange communication system (PECS-style) that gives non-verbal or mi
 - **10 categories** of visual cards: Feelings, Animals, Food, Actions, People, Places, Body, Clothes, Colors, Daily Routines
 - **200+ picture-word cards** using high-quality emoji/SVG symbols
 - **Sentence strip** at the top — child taps cards to build multi-word messages ("I + want + milk")
-- **Text-to-speech playback** — tapping the sentence strip speaks the message aloud (Web Speech API). When Hindi or French is active, TTS uses the corresponding language voice.
+- **Text-to-speech playback** — tapping the sentence strip speaks the message aloud (Web Speech API). When French is active, TTS uses the corresponding language voice.
 - **Voice selection** — parent can pick from available system voices
 - **Customizable cards** — parent can add/edit cards via the dashboard. Stored in IndexedDB.
 - **Quick phrases** — one-tap phrases: "I need help", "I want more", "All done", "Bathroom please" — translated per language
@@ -220,7 +218,7 @@ A picture-exchange communication system (PECS-style) that gives non-verbal or mi
 
 ### 8.2 Sound Explorer (Articulation Practice)
 
-Structured articulation therapy: isolation → syllables → words → phrases → sentences. **English only in Phase 1** (Hindi and French have different phoneme inventories).
+Structured articulation therapy: isolation → syllables → words → phrases → sentences. **English only in Phase 1** (French has a different phoneme inventory).
 
 - **All English speech sounds** organized by manner of articulation:
   - Bilabials: /p/, /b/, /m/
@@ -391,7 +389,7 @@ Accessible via a gear icon. No PIN needed in Phase 1 (local data only, no accoun
 │  React SPA (Vite build → static HTML/CSS/JS)         │
 │  ├── Landing page                                    │
 │  ├── App modules (all therapy + puzzles)             │
-│  ├── i18n JSON bundles (en, hi, fr)                  │
+│  ├── i18n JSON bundles (en, fr)                      │
 │  ├── Web Speech API (TTS — client-side, multilingual)│
 │  ├── MediaRecorder API (ephemeral voice recording)   │
 │  ├── Canvas API (letter tracing, puzzles)            │
@@ -430,7 +428,7 @@ Accessible via a gear icon. No PIN needed in Phase 1 (local data only, no accoun
 | Build | Vite | Fast builds, code splitting |
 | Hosting | GitHub Pages | Free, global CDN, auto HTTPS |
 | Domain | Porkbun | CNAME to GitHub Pages |
-| Translation | OpenAI API (build-time only) | Pre-generates hi.json and fr.json on Mac |
+| Translation | OpenAI API (build-time only) | Pre-generates fr.json on Mac |
 
 ### 9.3 Project Structure
 
@@ -461,7 +459,6 @@ neighbright/
 │   ├── data/
 │   │   ├── i18n/
 │   │   │   ├── en.json             # Master strings
-│   │   │   ├── hi.json             # Hindi (generated, reviewed, committed)
 │   │   │   ├── fr.json             # French (generated, reviewed, committed)
 │   │   │   └── index.js            # useTranslation hook
 │   │   ├── vocabulary.js           # Word/phrase/category data
@@ -545,7 +542,7 @@ db.version(1).stores({
 - **Font scaling** — rem-based, 18px min for child-facing text
 - **No hover-dependent interactions** — tap/click only
 - **Safe areas** — respects notch/status bar
-- **Hindi text** — Devanagari may be wider; layout uses flexible containers
+- **French text** — accented characters handled natively by Nunito; layout uses flexible containers
 
 ### 9.6 Offline Capability (PWA)
 
@@ -595,7 +592,6 @@ db.version(1).stores({
 
 - **Display/Headings:** Nunito (rounded, friendly, supports Latin + extended)
 - **Body/Labels:** Quicksand or Nunito Sans
-- **Hindi text:** Noto Sans Devanagari (Google Fonts, free)
 - **French text:** Nunito handles French accented characters natively
 - **Word cards:** Large, bold, generous letter-spacing
 - **Minimum sizes:** 20px child-facing, 16px dashboard, 14px floor
@@ -621,7 +617,7 @@ db.version(1).stores({
 - Design system: Button, Card, IconButton, Modal, NavBar, Input, ProgressBar
 - Create en.json master strings
 - Build `useTranslation` hook and LanguageContext
-- Run translate script → generate and review hi.json, fr.json
+- Run translate script → generate and review fr.json
 - Build landing page (fully translated)
 - Language switcher component
 - `useSpeech` hook (language-aware)
@@ -634,14 +630,14 @@ db.version(1).stores({
 
 ### 11.2 Talk Board (Week 3–4)
 
-**Goal:** AAC board in all three languages.
+**Goal:** AAC board in both languages.
 
 - Category selector, picture card grid (responsive columns)
 - Sentence strip + speech synthesis
 - Quick phrases (translated)
 - Custom card management in dashboard
 - Progress tracking in IndexedDB
-- TTS testing in English, Hindi, French across devices
+- TTS testing in English and French across devices
 
 **Deliverable:** Child taps pictures, builds sentences, hears them in their language.
 
@@ -662,7 +658,7 @@ db.version(1).stores({
 
 ### 11.4 Word Builder (Week 7–8)
 
-**Goal:** Vocabulary in all three languages.
+**Goal:** Vocabulary in both languages.
 
 - 240+ words across 12 categories with translations
 - Learn mode (flashcards + translated audio)
@@ -672,7 +668,7 @@ db.version(1).stores({
 - Word of the Day
 - Progress in IndexedDB
 
-**Deliverable:** Three vocabulary modes, fully multilingual.
+**Deliverable:** Three vocabulary modes, fully bilingual.
 
 ### 11.5 Match & Learn Games (Week 9–10)
 
@@ -745,7 +741,7 @@ db.version(1).stores({
 **Goal:** Production-ready on GitHub Pages.
 
 - Cross-device testing: iOS Safari, Android Chrome, Firefox, desktop
-- Cross-language testing: Hindi/French rendering, TTS voices
+- Cross-language testing: French rendering, TTS voices
 - Performance: lazy loading, code splitting, Lighthouse 95+
 - Service worker finalization
 - Accessibility audit (WCAG 2.1 AA)
@@ -755,7 +751,7 @@ db.version(1).stores({
 - README with screenshots and usage guide
 - Feedback form (GitHub Issues or Google Form)
 
-**Deliverable:** Live at neighbright.yourdomain.com — free, offline, trilingual.
+**Deliverable:** Live at neighbright.yourdomain.com — free, offline, bilingual.
 
 ---
 
@@ -859,7 +855,7 @@ export default defineConfig({
 
 ## 13. Content Plan
 
-### 13.1 Vocabulary (240+ words, each in EN/HI/FR)
+### 13.1 Vocabulary (240+ words, each in EN/FR)
 
 | Category | Count | Examples (English) |
 |---|---|---|
@@ -882,7 +878,7 @@ Each letter mapped to a vocabulary word and emoji. Phonetic pronunciation hint a
 
 ### 13.3 Number Content (0–20 + Tens to 100)
 
-Number words in all three languages. Quantity visualizations using countable emoji sets (🍎, 🌟, 🐟, etc.). Finger counting visuals for 0–10. Tens data (10, 20, 30... 100) for Tier 3 extension.
+Number words in both languages. Quantity visualizations using countable emoji sets (🍎, 🌟, 🐟, etc.). Finger counting visuals for 0–10. Tens data (10, 20, 30... 100) for Tier 3 extension.
 
 ### 13.4 Sound Inventory (English Only)
 
@@ -899,7 +895,7 @@ Procedurally generated / SVG-based. No raster images. Canvas clipping for jigsaw
 | Feature | Speech Blubs | SpeakEasy | My Words | NeighBright |
 |---|---|---|---|---|
 | Price | $60/yr | $50/yr | Freemium | **Free forever** |
-| Languages | 1 | 1 | 1 | **3 (EN, HI, FR)** |
+| Languages | 1 | 1 | 1 | **2 (EN, FR)** |
 | AAC board | No | No | No | **Yes** |
 | Articulation (5 levels) | Limited | Yes | No | **Yes** |
 | Vocabulary builder | Yes | Yes | Yes | **Yes** |
@@ -923,7 +919,7 @@ Procedurally generated / SVG-based. No raster images. Canvas clipping for jigsaw
 | Risk | Impact | Mitigation |
 |---|---|---|
 | Web Speech API voice varies | Robotic speech | Bundle pre-recorded MP3s for critical words |
-| Hindi TTS unavailable on some devices | No Hindi audio | Detect voices; text-only fallback with clear message |
+| French TTS unavailable on some devices | No French audio | Detect voices; text-only fallback with clear message |
 | French TTS pronunciation | Incorrect accent | Test with speakers; pre-record key words |
 | MediaRecorder on older iOS | Record & Compare missing | Feature-detect, hide gracefully |
 | Browser data cleared | All progress lost | Clear warning in dashboard; PDF export as backup; Phase 2 solves with accounts |

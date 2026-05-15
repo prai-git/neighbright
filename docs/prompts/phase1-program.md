@@ -6,7 +6,7 @@
 
 ## Project Summary
 
-NeighBright is a free, multilingual (English, Hindi, French) speech therapy and cognitive development web application for children ages 1–8 with speech delays. Phase 1 is a fully static React SPA hosted on GitHub Pages. No backend, no accounts. One child profile per browser. All data stored in IndexedDB. All content bundled at build time.
+NeighBright is a free, bilingual (English, French) speech therapy and cognitive development web application for children ages 1–8 with speech delays. Phase 1 is a fully static React SPA hosted on GitHub Pages. No backend, no accounts. One child profile per browser. All data stored in IndexedDB. All content bundled at build time.
 
 **Live URL:** `neighbright.yourdomain.com` (GitHub Pages + Porkbun CNAME)
 
@@ -25,7 +25,7 @@ NeighBright is a free, multilingual (English, Hindi, French) speech therapy and 
 | Speech | Web Speech API | Browser native |
 | Recording | MediaRecorder API | Browser native |
 | PDF export | jsPDF | 2+ |
-| Fonts | Nunito, Noto Sans Devanagari | Google Fonts |
+| Fonts | Nunito | Google Fonts |
 | Translation | OpenAI API (build-time script) | gpt-4o |
 | Hosting | GitHub Pages | — |
 | CI/CD | GitHub Actions | — |
@@ -79,7 +79,7 @@ This program is divided into 15 sub-modules. Each module is a self-contained mar
 - **Accessibility always** — semantic HTML, ARIA labels, keyboard handlers, focus management.
 - **No external API calls at runtime** — the deployed app must work fully offline after first load.
 - **No TypeScript in Phase 1** — plain JSX for faster iteration. TypeScript is a Phase 2 consideration.
-- **All comments in English** — even for Hindi/French content sections.
+- **All comments in English** — even for French content sections.
 
 ---
 
@@ -114,7 +114,6 @@ neighbright/
 │   ├── data/
 │   │   ├── i18n/
 │   │   │   ├── en.json
-│   │   │   ├── hi.json
 │   │   │   ├── fr.json
 │   │   │   └── index.js
 │   │   ├── vocabulary.js
@@ -226,7 +225,7 @@ Modules 06 through 12 (the therapy and learning modules) can be developed in any
 At the end of all 15 modules, NeighBright should be:
 
 - Live at `neighbright.yourdomain.com`
-- Fully functional in English, Hindi, and French
+- Fully functional in English and French
 - Offline-capable as a PWA
 - Lighthouse 95+ on all four categories
 - WCAG 2.1 AA compliant

@@ -227,3 +227,14 @@ Stars awarded: 1 star per correct answer in Count, Match, and Quiz modes.
 - [ ] Mobile responsive — grids stack on small screens, number buttons wrap
 - [ ] Counting animation plays smoothly on mobile
 - [ ] Consistent design with existing modules (dark theme, 3D buttons, chunky cards)
+
+---
+
+## Feedback Amendments (2026-05-15)
+
+### ASL Sign Language Display
+
+Each number (0-10) in the Learn Numbers mode now displays an ASL (American Sign Language) sign alongside the number:
+- An `ASLSign` component renders a hand emoji and a text description of the hand shape for the corresponding number
+- The ASL sign is shown beside the number card in the flashcard view
+- Covers numbers 0 through 10 (the one-handed ASL number range)

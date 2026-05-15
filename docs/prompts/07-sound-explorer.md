@@ -188,3 +188,25 @@ Sound sorting game:
 - [ ] Progress writes to IndexedDB for every practice attempt
 - [ ] UI text is translated (instructions, group names, buttons); phoneme content stays English
 - [ ] Responsive: practice view works on phone in portrait mode
+
+---
+
+## Feedback Amendments (2026-05-15)
+
+### Phonics Breakdown for Levels 2-3
+
+Levels 2 (Syllables) and 3 (Words) now include a phonics breakdown before speaking the item:
+- Each letter of the word/syllable is spelled out individually (e.g., "P - O - P"), then the whole word is spoken ("pop")
+- This helps children connect individual letter sounds to the complete word
+- The spell-out uses a brief pause between each letter for clarity
+
+### Safari Recording Playback Fix
+
+Recording playback now works correctly on Safari (iOS and macOS):
+- The `useAudioRecorder` hook detects the browser's supported MIME type, preferring `audio/webm` where available and falling back to `audio/mp4` for Safari
+- The Blob is created using `recorder.mimeType` (the actual MIME type the recorder used) rather than a hardcoded type
+- This resolves an issue where recordings made on Safari could not be played back
+
+### Mouth SVG Path Fix
+
+Mouth-position SVG diagrams now use `import.meta.env.BASE_URL` to construct the image path, ensuring correct resolution when the app is deployed to a subdirectory on GitHub Pages.

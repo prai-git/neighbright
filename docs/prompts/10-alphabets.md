@@ -213,3 +213,15 @@ The `TraceLetterMode` is the most technically complex component:
 - [ ] All UI strings translated via i18n
 - [ ] Mobile responsive — single column, canvas scales to screen width
 - [ ] Consistent design with existing modules (dark theme, 3D buttons, chunky cards)
+
+---
+
+## Feedback Amendments (2026-05-15)
+
+### ASL Sign Language Display
+
+Each letter (A-Z) in the Learn Letters mode now displays an ASL (American Sign Language) sign alongside the letter:
+- An `ASLSign` component renders a hand emoji and a text description of the hand shape for the corresponding letter
+- The ASL sign is shown beside the letter card in the flashcard view
+- This adds a multi-sensory dimension to letter learning, supporting children who benefit from sign language exposure
+- Covers all 26 letters of the ASL fingerspelling alphabet

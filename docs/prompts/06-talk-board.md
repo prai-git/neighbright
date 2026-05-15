@@ -28,7 +28,7 @@ setSelectedVoice(v) // Save voice preference to IndexedDB settings
 
 **Behavior:**
 - Read current language from `useLanguage()` context
-- Filter `speechSynthesis.getVoices()` by language code: `en` → `en-*`, `hi` → `hi-*`, `fr` → `fr-*`
+- Filter `speechSynthesis.getVoices()` by language code: `en` → `en-*`, `fr` → `fr-*`
 - Default to the first available voice for the language
 - Load saved voice preference from IndexedDB `settings` table
 - `speak()` creates a `SpeechSynthesisUtterance`, sets `lang`, `voice`, `rate`, `pitch` from settings
@@ -190,9 +190,8 @@ export default function TalkBoard() {
 ## Acceptance Criteria
 
 - [ ] `useSpeech` hook works: `speak('hello')` produces audio in English
-- [ ] Switching language to Hindi: `speak(t('vocabulary.happy.word'))` speaks Hindi word
-- [ ] Switching to French: same test with French audio
-- [ ] If Hindi/French voices unavailable: a message shows instead of crashing
+- [ ] Switching to French: `speak(t('vocabulary.happy.word'))` speaks French word
+- [ ] If French voices unavailable: a message shows instead of crashing
 - [ ] Category selector shows all 10 categories with icons and translated names
 - [ ] Tapping a category shows its word cards
 - [ ] Tapping a word card adds it to the sentence strip and speaks the word
@@ -204,4 +203,24 @@ export default function TalkBoard() {
 - [ ] Custom cards appear in the grid under their assigned category
 - [ ] Progress records are written to IndexedDB on word taps and sentence speaks
 - [ ] Layout is responsive: cards reflow from 3 to 5 columns; sentence strip stays at top
-- [ ] All strings use `t()` — full Hindi/French rendering works
+- [ ] All strings use `t()` — full French rendering works
+
+---
+
+## Feedback Amendments (2026-05-15)
+
+### Camera/Photo Support for Custom Cards
+
+The `CustomCardForm` now supports camera/photo capture in addition to emoji-only cards:
+- Users can take a photo using their device camera via the browser's media capture API
+- Captured photos are stored as base64 data URIs in IndexedDB alongside the custom card entry
+- The photo replaces the emoji on the card when present
+- Fallback: if camera is unavailable, the form works as before with emoji-only input
+- Storage: photos are compressed and stored in the `customVocabulary` table in IndexedDB
+
+### Enlarged Card Sizes
+
+Talk Board cards have been enlarged for better visibility and easier tap targets:
+- Emoji size increased from `text-4xl` to `text-5xl` / `text-6xl` / `text-7xl` (responsive scaling)
+- Label text increased from `text-xs` to `text-sm` / `text-base` (responsive scaling)
+- This improves usability for younger children and those with motor difficulties
