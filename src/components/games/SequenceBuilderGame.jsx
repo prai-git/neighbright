@@ -102,7 +102,7 @@ export default function SequenceBuilderGame({ difficulty, onBack }) {
                 key={i}
                 animate={feedback === 'correct' && item ? { scale: [1, 1.15, 1] } : {}}
                 transition={{ delay: i * 0.1 }}
-                className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 flex items-center justify-center transition-all ${
+                className={`w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 flex items-center justify-center transition-all ${
                   item
                     ? 'bg-green-500/15 border-green-500/50'
                     : i === placed.length
@@ -131,7 +131,7 @@ export default function SequenceBuilderGame({ difficulty, onBack }) {
               whileTap={{ scale: 0.9 }}
               animate={feedback === 'incorrect' ? { x: [0, -4, 4, -2, 2, 0] } : {}}
               onClick={() => handleTap(item)}
-              className="flex flex-col items-center gap-1 p-3 w-16 sm:w-20 rounded-xl bg-surface border-2 border-border cursor-pointer hover:border-white/30 transition-all shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
+              className="flex flex-col items-center gap-1 p-3 w-20 sm:w-24 rounded-xl bg-surface border-2 border-border cursor-pointer hover:border-white/30 transition-all shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
             >
               <span className="text-3xl sm:text-4xl">{item.emoji}</span>
               <span className="text-xs font-display font-bold text-white truncate max-w-full">

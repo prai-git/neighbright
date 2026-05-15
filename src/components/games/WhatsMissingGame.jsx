@@ -121,7 +121,7 @@ export default function WhatsMissingGame({ difficulty, onBack }) {
               return (
                 <div
                   key={item.id + i}
-                  className={`flex flex-col items-center gap-1 p-3 rounded-xl border-2 aspect-square justify-center transition-all ${
+                  className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 aspect-square justify-center transition-all ${
                     isRemoved
                       ? 'bg-border/30 border-dashed border-white/10'
                       : 'bg-surface border-border'
@@ -154,7 +154,7 @@ export default function WhatsMissingGame({ difficulty, onBack }) {
                     whileTap={{ scale: 0.93 }}
                     animate={isSel && feedback === 'incorrect' ? { x: [0, -6, 6, -3, 3, 0] } : {}}
                     onClick={() => handleGuess(item)}
-                    className={`flex flex-col items-center gap-1 p-3 rounded-xl border-2 cursor-pointer transition-all shadow-[0_3px_0_rgba(0,0,0,0.2)] ${
+                    className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 cursor-pointer transition-all shadow-[0_3px_0_rgba(0,0,0,0.2)] ${
                       isSel && feedback === 'correct'
                         ? 'bg-green-500/20 border-green-500'
                         : isSel && feedback === 'incorrect'
