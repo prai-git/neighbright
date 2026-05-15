@@ -1,4 +1,4 @@
-const CACHE_NAME = 'neighbright-v3';
+const CACHE_NAME = 'neighbright-v4';
 
 const PRECACHE_URLS = [
   '/neighbright/',

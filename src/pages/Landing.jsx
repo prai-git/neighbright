@@ -6,45 +6,41 @@ const GITHUB_URL = 'https://github.com/prai-git/neighbright';
 
 export default function Landing() {
   return (
-    <div className="min-h-screen w-full bg-background flex flex-col">
+    <div className="min-h-screen bg-background" style={{ width: '100%' }}>
       <NavBar mode="landing" />
-      <main className="flex-1 flex flex-col">
-        <LandingHero />
-      </main>
-      <footer className="w-full border-t border-border py-8 px-4">
-        <div className="w-full max-w-md mx-auto flex flex-col items-center gap-3 text-center">
-          <p className="text-sm text-text-secondary font-display font-bold">
-            We're building this for you
-          </p>
-          <div className="flex items-center gap-4 text-xs">
-            <a
-              href={FEEDBACK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 font-bold transition-colors"
-            >
-              Share Feedback
-            </a>
-            <span className="text-border">·</span>
-            <a href="#" className="text-text-secondary/50 hover:text-white transition-colors">About</a>
-            <span className="text-border">·</span>
-            <a href="#" className="text-text-secondary/50 hover:text-white transition-colors">Privacy</a>
-            <span className="text-border">·</span>
-            <a href="#" className="text-text-secondary/50 hover:text-white transition-colors">Contact</a>
-            <span className="text-border">·</span>
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text-secondary/50 hover:text-white transition-colors"
-            >
-              GitHub
-            </a>
-          </div>
-          <p className="text-[10px] text-text-secondary/30 mt-1">
-            NeighBright — Free speech therapy for every family
-          </p>
+      <LandingHero />
+      <footer style={{ width: '100%', textAlign: 'center', borderTop: '1px solid var(--color-border)', padding: '2rem 1rem' }}>
+        <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', fontWeight: 700, marginBottom: '0.75rem' }}>
+          We're building this for you
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', fontSize: '0.75rem', flexWrap: 'wrap' }}>
+          <a
+            href={FEEDBACK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'var(--color-primary)', fontWeight: 700 }}
+          >
+            Share Feedback
+          </a>
+          <span style={{ color: 'var(--color-border)' }}>·</span>
+          <a href="#" style={{ color: 'rgba(175,175,175,0.5)' }}>About</a>
+          <span style={{ color: 'var(--color-border)' }}>·</span>
+          <a href="#" style={{ color: 'rgba(175,175,175,0.5)' }}>Privacy</a>
+          <span style={{ color: 'var(--color-border)' }}>·</span>
+          <a href="#" style={{ color: 'rgba(175,175,175,0.5)' }}>Contact</a>
+          <span style={{ color: 'var(--color-border)' }}>·</span>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'rgba(175,175,175,0.5)' }}
+          >
+            GitHub
+          </a>
         </div>
+        <p style={{ fontSize: '10px', color: 'rgba(175,175,175,0.3)', marginTop: '0.75rem' }}>
+          NeighBright — Free speech therapy for every family
+        </p>
       </footer>
     </div>
   );
