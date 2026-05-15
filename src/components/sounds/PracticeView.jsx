@@ -61,7 +61,7 @@ export default function PracticeView({ sound, speak, onStarEarned }) {
       {/* Mouth diagram */}
       <div className="flex justify-center mb-5">
         <img
-          src={`/images/mouth/${sound.mouthDiagramKey}.svg`}
+          src={`${import.meta.env.BASE_URL}images/mouth/${sound.mouthDiagramKey}.svg`}
           alt={t('sounds.mouthGuide')}
           className="w-32 h-32 rounded-2xl bg-surface border-2 border-border p-2"
         />
