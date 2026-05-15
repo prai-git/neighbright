@@ -15,7 +15,8 @@ export default function CustomCardForm({ isOpen, onClose, onSaved }) {
   const [photoData, setPhotoData] = useState(null);
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
-  const fileInputRef = useRef(null);
+  const cameraInputRef = useRef(null);
+  const galleryInputRef = useRef(null);
 
   const validate = () => {
     const errs = {};
@@ -109,16 +110,30 @@ export default function CustomCardForm({ isOpen, onClose, onSaved }) {
             <span className="text-xs text-text-secondary pt-3">or</span>
             <button
               type="button"
-              onClick={() => fileInputRef.current?.click()}
-              className="px-4 py-3 rounded-xl bg-secondary/20 border-2 border-secondary/30 text-secondary font-display font-bold text-sm hover:bg-secondary/30 transition cursor-pointer shrink-0"
+              onClick={() => cameraInputRef.current?.click()}
+              className="px-3 py-3 rounded-xl bg-secondary/20 border-2 border-secondary/30 text-secondary font-display font-bold text-sm hover:bg-secondary/30 transition cursor-pointer shrink-0"
             >
-              📷 Photo
+              📷 Camera
+            </button>
+            <button
+              type="button"
+              onClick={() => galleryInputRef.current?.click()}
+              className="px-3 py-3 rounded-xl bg-accent/20 border-2 border-accent/30 text-accent font-display font-bold text-sm hover:bg-accent/30 transition cursor-pointer shrink-0"
+            >
+              🖼️ Upload
             </button>
             <input
-              ref={fileInputRef}
+              ref={cameraInputRef}
               type="file"
               accept="image/*"
               capture="environment"
+              onChange={handlePhotoCapture}
+              className="hidden"
+            />
+            <input
+              ref={galleryInputRef}
+              type="file"
+              accept="image/*"
               onChange={handlePhotoCapture}
               className="hidden"
             />
