@@ -225,11 +225,11 @@ Talk Board cards have been enlarged for better visibility and easier tap targets
 - Label text increased from `text-xs` to `text-sm` / `text-base` (responsive scaling)
 - This improves usability for younger children and those with motor difficulties
 
-### Delete Custom Cards (2026-05-15, Round 2)
+### Delete Custom Cards & Hide Built-in Cards (2026-05-15, Round 2)
 
-Custom cards now support deletion directly from the card grid:
-- Custom cards display a small ✕ delete button in the top-right corner
-- Tapping the delete button removes the card from IndexedDB and refreshes the grid
-- A confirmation step prevents accidental deletion
-- Default/built-in cards cannot be deleted (no delete button shown)
-- This allows parents to manage the custom vocabulary without needing a separate settings screen
+All cards now support removal from the grid:
+- **Custom cards**: ✕ button deletes from IndexedDB permanently
+- **Built-in cards**: ✕ button hides the card by storing its ID in an IndexedDB `hiddenCards` table
+- Hidden built-in cards can be restored via a "Show hidden cards" toggle at the bottom of the grid
+- A confirmation step (tap ✕ once to highlight red, tap again to confirm) prevents accidental removal
+- This allows parents to replace built-in cards with custom ones (e.g., hide "papa", add custom "dad" with photo)
