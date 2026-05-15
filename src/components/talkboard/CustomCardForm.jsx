@@ -111,16 +111,18 @@ export default function CustomCardForm({ isOpen, onClose, onSaved }) {
             <button
               type="button"
               onClick={() => cameraInputRef.current?.click()}
-              className="px-3 py-3 rounded-xl bg-secondary/20 border-2 border-secondary/30 text-secondary font-display font-bold text-sm hover:bg-secondary/30 transition cursor-pointer shrink-0"
+              className="w-12 h-12 rounded-xl bg-secondary/20 border-2 border-secondary/30 text-xl flex items-center justify-center hover:bg-secondary/30 transition cursor-pointer shrink-0"
+              aria-label="Take photo"
             >
-              📷 Camera
+              📷
             </button>
             <button
               type="button"
               onClick={() => galleryInputRef.current?.click()}
-              className="px-3 py-3 rounded-xl bg-accent/20 border-2 border-accent/30 text-accent font-display font-bold text-sm hover:bg-accent/30 transition cursor-pointer shrink-0"
+              className="w-12 h-12 rounded-xl bg-accent/20 border-2 border-accent/30 text-xl flex items-center justify-center hover:bg-accent/30 transition cursor-pointer shrink-0"
+              aria-label="Upload image"
             >
-              🖼️ Upload
+              🖼️
             </button>
             <input
               ref={cameraInputRef}
