@@ -99,7 +99,7 @@ export default function FollowDirectionsGame({ difficulty, onBack }) {
           {t('games.tapInstruction', { item: t(data.target.i18nWord) })}
         </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-md mx-auto w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-2xl mx-auto w-full">
           {data.items.map((item) => {
             const isSel = selected === item.id;
             const isCorrectItem = item.id === data.target.id;
@@ -121,8 +121,8 @@ export default function FollowDirectionsGame({ difficulty, onBack }) {
                     : 'bg-surface border-border hover:border-white/30'
                 }`}
               >
-                <span className="text-4xl">{item.emoji}</span>
-                <span className="text-xs font-display font-bold text-white">
+                <span className="text-5xl">{item.emoji}</span>
+                <span className="text-sm font-display font-bold text-white">
                   {t(item.i18nWord)}
                 </span>
               </motion.button>

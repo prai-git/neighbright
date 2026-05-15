@@ -115,7 +115,7 @@ export default function WhatsMissingGame({ difficulty, onBack }) {
         )}
 
         {phase !== PHASE.HIDING && (
-          <div className="grid grid-cols-3 gap-3 max-w-sm mx-auto w-full">
+          <div className="grid grid-cols-3 gap-3 max-w-xl mx-auto w-full">
             {data.items.map((item, i) => {
               const isRemoved = phase === PHASE.GUESS && i === data.removedIndex;
               return (
@@ -129,11 +129,11 @@ export default function WhatsMissingGame({ difficulty, onBack }) {
                 >
                   {!isRemoved && (
                     <>
-                      <span className="text-3xl">{item.emoji}</span>
-                      <span className="text-[10px] font-display font-bold text-white">{t(item.i18nWord)}</span>
+                      <span className="text-4xl">{item.emoji}</span>
+                      <span className="text-xs font-display font-bold text-white">{t(item.i18nWord)}</span>
                     </>
                   )}
-                  {isRemoved && <span className="text-2xl text-white/20">?</span>}
+                  {isRemoved && <span className="text-3xl text-white/20">?</span>}
                 </div>
               );
             })}
@@ -145,7 +145,7 @@ export default function WhatsMissingGame({ difficulty, onBack }) {
             <p className="text-base font-display font-extrabold text-white">
               {t('games.whatsMissingDesc')}
             </p>
-            <div className="grid grid-cols-3 gap-3 max-w-xs w-full">
+            <div className="grid grid-cols-3 gap-3 max-w-xl mx-auto w-full">
               {data.choices.map((item) => {
                 const isSel = selected === item.id;
                 return (
@@ -162,8 +162,8 @@ export default function WhatsMissingGame({ difficulty, onBack }) {
                         : 'bg-surface border-border hover:border-white/30'
                     }`}
                   >
-                    <span className="text-3xl">{item.emoji}</span>
-                    <span className="text-[10px] font-display font-bold text-white">{t(item.i18nWord)}</span>
+                    <span className="text-4xl">{item.emoji}</span>
+                    <span className="text-xs font-display font-bold text-white">{t(item.i18nWord)}</span>
                   </motion.button>
                 );
               })}

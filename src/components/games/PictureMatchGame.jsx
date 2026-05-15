@@ -79,7 +79,7 @@ export default function PictureMatchGame({ difficulty, onBack }) {
           {t('games.pairsFound', { found: matched.length / 2, total: pairCount })}
         </p>
         <div
-          className="grid gap-3 max-w-md mx-auto w-full"
+          className="grid gap-3 max-w-2xl mx-auto w-full"
           style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
         >
           {cards.map((card, i) => {
@@ -90,7 +90,7 @@ export default function PictureMatchGame({ difficulty, onBack }) {
                 key={card.uid}
                 onClick={() => handleFlip(i)}
                 animate={isMatched ? { scale: [1, 1.1, 1] } : {}}
-                className={`aspect-square rounded-2xl flex items-center justify-center text-4xl cursor-pointer border-2 transition-all shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px] ${
+                className={`aspect-square rounded-2xl flex items-center justify-center text-5xl cursor-pointer border-2 transition-all shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px] ${
                   isMatched
                     ? 'bg-green-500/20 border-green-500'
                     : isFlipped

@@ -90,7 +90,7 @@ export default function OddOneOutGame({ difficulty, onBack }) {
           {t('games.whichDoesntBelong')}
         </p>
 
-        <div className="grid grid-cols-2 gap-3 max-w-xs mx-auto w-full">
+        <div className="grid grid-cols-2 gap-3 max-w-lg mx-auto w-full">
           {data.items.map((item) => {
             const isSel = selected === item.id;
             return (
@@ -113,8 +113,8 @@ export default function OddOneOutGame({ difficulty, onBack }) {
                     : 'bg-surface border-border hover:border-white/30'
                 }`}
               >
-                <span className="text-5xl">{item.emoji}</span>
-                <span className="text-sm font-display font-bold text-white">
+                <span className="text-6xl">{item.emoji}</span>
+                <span className="text-base font-display font-bold text-white">
                   {t(item.i18nWord)}
                 </span>
               </motion.button>

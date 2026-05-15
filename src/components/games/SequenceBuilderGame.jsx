@@ -111,9 +111,9 @@ export default function SequenceBuilderGame({ difficulty, onBack }) {
                 }`}
               >
                 {item ? (
-                  <span className="text-2xl sm:text-3xl">{item.emoji}</span>
+                  <span className="text-3xl sm:text-4xl">{item.emoji}</span>
                 ) : (
-                  <span className="text-sm font-display font-bold text-white/30">{i + 1}</span>
+                  <span className="text-base font-display font-bold text-white/30">{i + 1}</span>
                 )}
               </motion.div>
             );
@@ -133,8 +133,8 @@ export default function SequenceBuilderGame({ difficulty, onBack }) {
               onClick={() => handleTap(item)}
               className="flex flex-col items-center gap-1 p-3 w-16 sm:w-20 rounded-xl bg-surface border-2 border-border cursor-pointer hover:border-white/30 transition-all shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
             >
-              <span className="text-2xl sm:text-3xl">{item.emoji}</span>
-              <span className="text-[9px] font-display font-bold text-white truncate max-w-full">
+              <span className="text-3xl sm:text-4xl">{item.emoji}</span>
+              <span className="text-xs font-display font-bold text-white truncate max-w-full">
                 {t(item.i18nWord)}
               </span>
             </motion.button>

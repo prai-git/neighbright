@@ -84,8 +84,8 @@ export default function CategorySortingGame({ difficulty, onBack }) {
                   : 'bg-surface border-border hover:border-white/30'
               }`}
             >
-              <span className="text-3xl">{item.emoji}</span>
-              <span className="text-[10px] font-display font-bold text-white truncate max-w-full">
+              <span className="text-4xl">{item.emoji}</span>
+              <span className="text-xs font-display font-bold text-white truncate max-w-full">
                 {t(item.i18nWord)}
               </span>
             </motion.button>
@@ -113,11 +113,11 @@ export default function CategorySortingGame({ difficulty, onBack }) {
                 className="flex flex-col items-center gap-2 p-4 rounded-2xl border-2 border-dashed cursor-pointer transition-all hover:border-white/40"
                 style={{ borderColor: cat.color + '80', backgroundColor: cat.color + '15' }}
               >
-                <span className="text-2xl">{cat.icon}</span>
-                <span className="text-xs font-display font-extrabold text-white">
+                <span className="text-3xl">{cat.icon}</span>
+                <span className="text-sm font-display font-extrabold text-white">
                   {t(cat.i18nKey)}
                 </span>
-                <span className="text-[10px] font-display font-bold text-text-secondary">
+                <span className="text-xs font-display font-bold text-text-secondary">
                   {sortedInCat.length} placed
                 </span>
               </motion.button>
