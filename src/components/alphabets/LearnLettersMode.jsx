@@ -104,7 +104,7 @@ export default function LearnLettersMode({ onBack }) {
                   {item.lowercase}
                 </span>
               </div>
-              <ASLSign value={item.letter} size="lg" />
+              <ASLSign value={item.letter} size="xl" />
             </div>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-4xl">{item.emoji}</span>

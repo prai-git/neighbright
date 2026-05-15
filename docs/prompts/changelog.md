@@ -932,3 +932,40 @@ Applied 7 fixes based on initial user testing feedback. Removed Hindi language, 
 - ASL signs use emoji hand representations rather than SVG illustrations — keeps bundle lean, works across all devices
 - Phonics breakdown uses Web Speech API for individual letters — pronunciation quality depends on browser TTS engine
 - Camera photos stored as base64 in IndexedDB — practical for small images but not scalable for large photo libraries
+
+---
+
+## User Feedback Round 2 — UI Sizing & Card Management
+**Date:** 2026-05-15
+**Status:** ✅ Complete
+
+### Summary
+Applied 3 fixes based on continued user testing: added delete functionality for custom Talk Board cards, increased Sound Explorer visual sizing, and enlarged ASL sign badges in Alphabets & Numbers.
+
+### Changes
+
+**Talk Board — Delete Custom Cards:**
+- Custom cards now show a ✕ delete button in the top-right corner
+- Tapping delete removes the card from IndexedDB after confirmation
+- Default/built-in cards are unaffected (no delete button)
+- Grid refreshes immediately after deletion
+
+**Sound Explorer — Larger Icons, Images & Text:**
+- SoundCard: phoneme box `w-14 h-14` → `w-18 h-18`, symbol `text-2xl` → `text-3xl`, word `text-sm` → `text-base`
+- SoundGroupSelector: symbol container `w-16 h-16` → `w-20 h-20`, text sizes bumped up one step
+- PracticeView: symbol box `w-16 h-16` → `w-20 h-20`, mouth diagram `w-32 h-32` → `w-40 h-40`
+- RecordCompare: record button `w-16 h-16` → `w-20 h-20`
+
+**Alphabets & Numbers — Larger ASL Signs:**
+- Added `xl` size to ASLSign component: `w-32 h-32`, `text-5xl` emoji
+- LearnLettersMode and LearnNumbersMode now use `size="xl"` for better visibility
+
+### Files Changed
+- `src/components/talkboard/PictureCardGrid.jsx` — delete button for custom cards
+- `src/components/sounds/SoundCard.jsx` — larger sizing
+- `src/components/sounds/SoundGroupSelector.jsx` — larger sizing
+- `src/components/sounds/PracticeView.jsx` — larger sizing
+- `src/components/sounds/RecordCompare.jsx` — larger sizing
+- `src/components/common/ASLSign.jsx` — added xl size
+- `src/components/alphabets/LearnLettersMode.jsx` — use xl ASL size
+- `src/components/numbers/LearnNumbersMode.jsx` — use xl ASL size

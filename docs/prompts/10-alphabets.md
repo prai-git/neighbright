@@ -225,3 +225,9 @@ Each letter (A-Z) in the Learn Letters mode now displays an ASL (American Sign L
 - The ASL sign is shown beside the letter card in the flashcard view
 - This adds a multi-sensory dimension to letter learning, supporting children who benefit from sign language exposure
 - Covers all 26 letters of the ASL fingerspelling alphabet
+
+### Larger ASL Signs (2026-05-15, Round 2)
+
+ASL sign badges in Learn Letters mode have been increased in size:
+- Added `xl` size option to ASLSign component: `w-32 h-32`, `text-5xl` emoji, `text-xs` label
+- LearnLettersMode now uses `size="xl"` instead of `size="lg"` for better visibility alongside the large letter display

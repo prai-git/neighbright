@@ -32,23 +32,23 @@ export default function SoundGroupSelector({ groups, onSelectGroup }) {
             >
               {/* Sound symbols in dark container */}
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center"
+                className="w-20 h-20 rounded-2xl flex items-center justify-center"
                 style={{ backgroundColor: color.dark }}
               >
-                <span className="text-white font-display font-extrabold text-xl">
+                <span className="text-white font-display font-extrabold text-2xl">
                   {group.sounds.slice(0, 2).map(s => s.symbol.replace(/\//g, '')).join(' ')}
                 </span>
               </div>
               {/* Group name */}
-              <div className="font-display font-extrabold text-sm text-white drop-shadow-sm">
+              <div className="font-display font-extrabold text-base text-white drop-shadow-sm">
                 {t(group.i18nKey)}
               </div>
               {/* Sound badges */}
-              <div className="flex flex-wrap gap-1 justify-center">
+              <div className="flex flex-wrap gap-1.5 justify-center">
                 {group.sounds.map(s => (
                   <span
                     key={s.id}
-                    className="text-xs font-display font-bold px-2 py-0.5 rounded-full"
+                    className="text-sm font-display font-bold px-2.5 py-0.5 rounded-full"
                     style={{ backgroundColor: color.dark, color: 'rgba(255,255,255,0.9)' }}
                   >
                     {s.symbol.replace(/\//g, '')}

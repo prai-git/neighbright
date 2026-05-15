@@ -63,13 +63,13 @@ export default function PracticeView({ sound, speak, onStarEarned }) {
   return (
     <div className="flex flex-col relative">
       {/* Sound header */}
-      <div className="flex items-center gap-4 mb-5 p-4 bg-surface rounded-2xl border-2 border-border">
-        <div className="w-16 h-16 rounded-2xl bg-secondary/20 flex items-center justify-center shrink-0 border-2 border-secondary/30">
-          <span className="text-3xl font-display font-extrabold text-secondary">{displaySymbol}</span>
+      <div className="flex items-center gap-4 mb-5 p-5 bg-surface rounded-2xl border-2 border-border">
+        <div className="w-20 h-20 rounded-2xl bg-secondary/20 flex items-center justify-center shrink-0 border-2 border-secondary/30">
+          <span className="text-4xl font-display font-extrabold text-secondary">{displaySymbol}</span>
         </div>
         <div className="min-w-0">
-          <p className="text-xs text-text-secondary mb-1 font-display font-bold">{t('sounds.ageAcquisition', { age: sound.ageOfAcquisition })}</p>
-          <p className="text-sm text-text-secondary leading-relaxed">{sound.mouthDescription}</p>
+          <p className="text-sm text-text-secondary mb-1 font-display font-bold">{t('sounds.ageAcquisition', { age: sound.ageOfAcquisition })}</p>
+          <p className="text-base text-text-secondary leading-relaxed">{sound.mouthDescription}</p>
         </div>
       </div>
 
@@ -78,7 +78,7 @@ export default function PracticeView({ sound, speak, onStarEarned }) {
         <img
           src={`${import.meta.env.BASE_URL}images/mouth/${sound.mouthDiagramKey}.svg`}
           alt={t('sounds.mouthGuide')}
-          className="w-32 h-32 rounded-2xl bg-surface border-2 border-border p-2"
+          className="w-40 h-40 rounded-2xl bg-surface border-2 border-border p-2"
         />
       </div>
 
@@ -209,8 +209,8 @@ function LevelWords({ levelData, onSpeak, onSpeakBreakdown, t }) {
           onClick={() => onSpeakBreakdown(word, 0.75)}
           className="bg-surface border-2 border-border rounded-2xl p-4 flex flex-col items-center gap-2 hover:border-primary/50 transition cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
         >
-          <span className="text-4xl">{emoji}</span>
-          <span className="text-sm font-display font-extrabold text-white capitalize">{word}</span>
+          <span className="text-5xl">{emoji}</span>
+          <span className="text-base font-display font-extrabold text-white capitalize">{word}</span>
         </button>
       ))}
     </div>

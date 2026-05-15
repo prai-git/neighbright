@@ -170,7 +170,7 @@ export default function LearnNumbersMode({ onBack }) {
             <span className="text-8xl font-display font-extrabold text-white">
               {current.value}
             </span>
-            {current.value <= 10 && <ASLSign value={current.value} size="lg" />}
+            {current.value <= 10 && <ASLSign value={current.value} size="xl" />}
           </div>
 
           {/* Number word */}

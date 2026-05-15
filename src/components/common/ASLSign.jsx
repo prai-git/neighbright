@@ -10,6 +10,7 @@ export default function ASLSign({ value, size = 'md' }) {
     sm: { box: 'w-14 h-14', emoji: 'text-2xl', label: 'text-[8px]' },
     md: { box: 'w-20 h-20', emoji: 'text-3xl', label: 'text-[9px]' },
     lg: { box: 'w-24 h-24', emoji: 'text-4xl', label: 'text-[10px]' },
+    xl: { box: 'w-32 h-32', emoji: 'text-5xl', label: 'text-xs' },
   };
   const s = sizes[size] || sizes.md;
 

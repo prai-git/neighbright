@@ -210,3 +210,11 @@ Recording playback now works correctly on Safari (iOS and macOS):
 ### Mouth SVG Path Fix
 
 Mouth-position SVG diagrams now use `import.meta.env.BASE_URL` to construct the image path, ensuring correct resolution when the app is deployed to a subdirectory on GitHub Pages.
+
+### Larger Icons, Images & Text (2026-05-15, Round 2)
+
+All Sound Explorer visual elements have been scaled up for better readability on mobile:
+- **SoundCard**: Phoneme symbol box from `w-14 h-14` → `w-18 h-18`, symbol text from `text-2xl` → `text-3xl`, example word from `text-sm` → `text-base`
+- **SoundGroupSelector**: Symbol container from `w-16 h-16` → `w-20 h-20`, symbol text from `text-xl` → `text-2xl`, group name from `text-sm` → `text-base`, badge text from `text-xs` → `text-sm`
+- **PracticeView**: Sound symbol box from `w-16 h-16` → `w-20 h-20`, symbol text from `text-3xl` → `text-4xl`, mouth diagram from `w-32 h-32` → `w-40 h-40`, level words emoji from `text-4xl` → `text-5xl`
+- **RecordCompare**: Record button from `w-16 h-16` → `w-20 h-20`, icon from `w-6 h-6` → `w-8 h-8`

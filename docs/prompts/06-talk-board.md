@@ -224,3 +224,12 @@ Talk Board cards have been enlarged for better visibility and easier tap targets
 - Emoji size increased from `text-4xl` to `text-5xl` / `text-6xl` / `text-7xl` (responsive scaling)
 - Label text increased from `text-xs` to `text-sm` / `text-base` (responsive scaling)
 - This improves usability for younger children and those with motor difficulties
+
+### Delete Custom Cards (2026-05-15, Round 2)
+
+Custom cards now support deletion directly from the card grid:
+- Custom cards display a small ✕ delete button in the top-right corner
+- Tapping the delete button removes the card from IndexedDB and refreshes the grid
+- A confirmation step prevents accidental deletion
+- Default/built-in cards cannot be deleted (no delete button shown)
+- This allows parents to manage the custom vocabulary without needing a separate settings screen

@@ -238,3 +238,9 @@ Each number (0-10) in the Learn Numbers mode now displays an ASL (American Sign 
 - An `ASLSign` component renders a hand emoji and a text description of the hand shape for the corresponding number
 - The ASL sign is shown beside the number card in the flashcard view
 - Covers numbers 0 through 10 (the one-handed ASL number range)
+
+### Larger ASL Signs (2026-05-15, Round 2)
+
+ASL sign badges in Learn Numbers mode have been increased in size:
+- Uses the new `xl` size option on ASLSign component: `w-32 h-32`, `text-5xl` emoji, `text-xs` label
+- LearnNumbersMode now uses `size="xl"` instead of `size="lg"` for better visibility alongside the large number display

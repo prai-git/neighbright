@@ -42,7 +42,7 @@ export default function RecordCompare({ speak, modelText, modelRate = 0.7 }) {
       <motion.button
         whileTap={{ scale: 0.92 }}
         onClick={isRecording ? stopRecording : startRecording}
-        className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.2)] transition-colors cursor-pointer active:translate-y-[2px] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] ${
+        className={`w-20 h-20 rounded-2xl flex items-center justify-center shadow-[0_4px_0_rgba(0,0,0,0.2)] transition-colors cursor-pointer active:translate-y-[2px] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] ${
           isRecording
             ? 'bg-error text-white animate-pulse'
             : 'bg-primary text-white'
@@ -50,16 +50,16 @@ export default function RecordCompare({ speak, modelText, modelRate = 0.7 }) {
         aria-label={isRecording ? t('sounds.stop') : t('sounds.record')}
       >
         {isRecording ? (
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
             <rect x="6" y="6" width="12" height="12" rx="2"/>
           </svg>
         ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 14a3 3 0 003-3V5a3 3 0 00-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 0014 0h-2zm-5 8a1 1 0 001-1v-1.07A7.003 7.003 0 0019 11h-2a5 5 0 01-10 0H5a7.003 7.003 0 006 6.93V18h-2a1 1 0 000 2h6a1 1 0 000-2h-2v-1z"/>
           </svg>
         )}
       </motion.button>
-      <span className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-wide">
+      <span className="text-sm font-display font-extrabold text-text-secondary uppercase tracking-wide">
         {isRecording ? t('sounds.stop') : t('sounds.record')}
       </span>
 
