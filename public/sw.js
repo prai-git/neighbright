@@ -1,52 +1,35 @@
-const CACHE_NAME = 'neighbright-v4';
+const CACHE_NAME = 'neighbright-v5';
 
-const PRECACHE_URLS = [
-  '/neighbright/',
-  '/neighbright/index.html',
-  '/neighbright/manifest.json',
-];
+// Install: activate immediately
+self.addEventListener('install', () => self.skipWaiting());
 
-// Install: precache app shell
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS))
-  );
-  self.skipWaiting();
-});
-
-// Activate: clean old caches
+// Activate: clean ALL old caches, take control
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
-    )
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-// Fetch: cache-first for static assets, network-first for navigation
+// Fetch: network-first — always try network, fall back to cache for offline
 self.addEventListener('fetch', (event) => {
   const { request } = event;
 
   if (request.mode === 'navigate') {
-    // SPA: always serve index.html for navigation requests
     event.respondWith(
-      caches.match('/neighbright/index.html').then((cached) => cached || fetch(request))
+      fetch(request).catch(() => caches.match('/neighbright/index.html'))
     );
     return;
   }
 
-  // Static assets: cache-first, then network
   event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached;
-      return fetch(request).then((response) => {
-        if (response.ok) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-        }
-        return response;
-      });
-    })
+    fetch(request).then((response) => {
+      if (response.ok) {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+      }
+      return response;
+    }).catch(() => caches.match(request))
   );
 });
