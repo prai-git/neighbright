@@ -45,6 +45,21 @@ export default function PracticeView({ sound, speak, onStarEarned }) {
     handleAttempt(text);
   }, [speak, handleAttempt]);
 
+  // Phonics breakdown: spell out each letter slowly, then say the full word
+  const handleSpeakWithBreakdown = useCallback((text, rate = 0.65) => {
+    const letters = text.replace(/[^a-zA-Z]/g, '').split('');
+    let delay = 0;
+    letters.forEach((letter, i) => {
+      setTimeout(() => speak(letter, 0.4), delay);
+      delay += 700;
+    });
+    // Say the full word after all letters
+    setTimeout(() => {
+      speak(text, rate);
+      handleAttempt(text);
+    }, delay + 300);
+  }, [speak, handleAttempt]);
+
   return (
     <div className="flex flex-col relative">
       {/* Sound header */}
@@ -103,10 +118,10 @@ export default function PracticeView({ sound, speak, onStarEarned }) {
             <LevelIsolation levelData={levelData} onSpeak={handleSpeak} t={t} />
           )}
           {activeLevel === 2 && levelData && (
-            <LevelSyllables levelData={levelData} onSpeak={handleSpeak} t={t} />
+            <LevelSyllables levelData={levelData} onSpeak={handleSpeak} onSpeakBreakdown={handleSpeakWithBreakdown} t={t} />
           )}
           {activeLevel === 3 && levelData && (
-            <LevelWords levelData={levelData} onSpeak={handleSpeak} t={t} />
+            <LevelWords levelData={levelData} onSpeak={handleSpeak} onSpeakBreakdown={handleSpeakWithBreakdown} t={t} />
           )}
           {activeLevel === 4 && levelData && (
             <LevelPhrases levelData={levelData} onSpeak={handleSpeak} t={t} />
@@ -165,7 +180,7 @@ function LevelIsolation({ levelData, onSpeak, t }) {
   );
 }
 
-function LevelSyllables({ levelData, onSpeak, t }) {
+function LevelSyllables({ levelData, onSpeak, onSpeakBreakdown, t }) {
   return (
     <div className="flex flex-col gap-4 py-2">
       <p className="text-sm font-display font-bold text-text-secondary text-center">{levelData.prompt}</p>
@@ -173,25 +188,25 @@ function LevelSyllables({ levelData, onSpeak, t }) {
         {levelData.syllables?.map(syl => (
           <button
             key={syl}
-            onClick={() => onSpeak(syl, 0.65)}
+            onClick={() => onSpeakBreakdown(syl, 0.65)}
             className="px-6 py-3 bg-surface border-2 border-secondary/30 text-secondary rounded-2xl font-display text-lg font-extrabold hover:bg-secondary/10 hover:border-secondary/50 transition cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
           >
             {syl}
           </button>
         ))}
       </div>
-      <p className="text-xs text-center text-text-secondary font-display font-bold">{t('sounds.tapToHear')}</p>
+      <p className="text-xs text-center text-text-secondary font-display font-bold">{t('sounds.tapToHearBreakdown')}</p>
     </div>
   );
 }
 
-function LevelWords({ levelData, onSpeak, t }) {
+function LevelWords({ levelData, onSpeak, onSpeakBreakdown, t }) {
   return (
     <div className="grid grid-cols-3 gap-3 py-2">
       {levelData.words?.map(({ word, emoji }) => (
         <button
           key={word}
-          onClick={() => onSpeak(word, 0.75)}
+          onClick={() => onSpeakBreakdown(word, 0.75)}
           className="bg-surface border-2 border-border rounded-2xl p-4 flex flex-col items-center gap-2 hover:border-primary/50 transition cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
         >
           <span className="text-4xl">{emoji}</span>
