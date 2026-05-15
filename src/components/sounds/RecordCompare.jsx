@@ -9,7 +9,15 @@ export default function RecordCompare({ speak, modelText, modelRate = 0.7 }) {
     useAudioRecorder();
 
   const handlePlayback = useCallback(() => {
-    if (audioURL) new Audio(audioURL).play();
+    if (!audioURL) return;
+    const audio = new Audio(audioURL);
+    audio.play().catch(() => {
+      // Fallback: create fresh blob URL and retry
+      fetch(audioURL).then(r => r.blob()).then(blob => {
+        const url = URL.createObjectURL(blob);
+        new Audio(url).play();
+      });
+    });
   }, [audioURL]);
 
   const handleHearModel = useCallback(() => {
