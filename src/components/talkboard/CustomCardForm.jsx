@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTranslation } from '../../data/i18n';
 import Modal from '../common/Modal';
 import Input from '../common/Input';
@@ -12,15 +12,42 @@ export default function CustomCardForm({ isOpen, onClose, onSaved }) {
   const [word, setWord] = useState('');
   const [emoji, setEmoji] = useState('');
   const [phrase, setPhrase] = useState('');
+  const [photoData, setPhotoData] = useState(null);
   const [errors, setErrors] = useState({});
   const [saving, setSaving] = useState(false);
+  const fileInputRef = useRef(null);
 
   const validate = () => {
     const errs = {};
     if (!word.trim()) errs.word = 'Word is required';
-    if (!emoji.trim()) errs.emoji = 'Emoji is required';
+    if (!emoji.trim() && !photoData) errs.emoji = 'Emoji or photo is required';
     if (!phrase.trim()) errs.phrase = 'Phrase is required';
     return errs;
+  };
+
+  const handlePhotoCapture = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      // Resize to max 200px to keep IndexedDB lean
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const size = 200;
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        const scale = Math.max(size / img.width, size / img.height);
+        const w = img.width * scale;
+        const h = img.height * scale;
+        ctx.drawImage(img, (size - w) / 2, (size - h) / 2, w, h);
+        setPhotoData(canvas.toDataURL('image/jpeg', 0.7));
+        setErrors((p) => ({ ...p, emoji: null }));
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSave = async () => {
@@ -33,10 +60,11 @@ export default function CustomCardForm({ isOpen, onClose, onSaved }) {
       await db.customVocabulary.add({
         category,
         word: word.trim(),
-        emoji: emoji.trim(),
+        emoji: emoji.trim() || '📷',
         phrase: phrase.trim(),
+        ...(photoData && { photoData }),
       });
-      setWord(''); setEmoji(''); setPhrase('');
+      setWord(''); setEmoji(''); setPhrase(''); setPhotoData(null);
       setErrors({});
       onSaved?.();
       onClose();
@@ -64,7 +92,51 @@ export default function CustomCardForm({ isOpen, onClose, onSaved }) {
         </div>
 
         <Input label="Word" placeholder="e.g. swing" value={word} onChange={(e) => { setWord(e.target.value); setErrors((p) => ({ ...p, word: null })); }} error={errors.word} />
-        <Input label="Emoji" placeholder="e.g. 🏄" value={emoji} onChange={(e) => { setEmoji(e.target.value); setErrors((p) => ({ ...p, emoji: null })); }} error={errors.emoji} />
+
+        {/* Emoji or Photo */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-display font-semibold text-text-secondary">Image</label>
+          <div className="flex gap-3 items-start">
+            <div className="flex-1">
+              <Input
+                label=""
+                placeholder="Emoji e.g. 🏄"
+                value={emoji}
+                onChange={(e) => { setEmoji(e.target.value); setErrors((p) => ({ ...p, emoji: null })); }}
+                error={errors.emoji}
+              />
+            </div>
+            <span className="text-xs text-text-secondary pt-3">or</span>
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="px-4 py-3 rounded-xl bg-secondary/20 border-2 border-secondary/30 text-secondary font-display font-bold text-sm hover:bg-secondary/30 transition cursor-pointer shrink-0"
+            >
+              📷 Photo
+            </button>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              capture="environment"
+              onChange={handlePhotoCapture}
+              className="hidden"
+            />
+          </div>
+          {photoData && (
+            <div className="flex items-center gap-3 mt-1">
+              <img src={photoData} alt="Preview" className="w-16 h-16 rounded-xl object-cover border-2 border-primary/30" />
+              <button
+                type="button"
+                onClick={() => setPhotoData(null)}
+                className="text-xs text-error font-display font-bold hover:underline cursor-pointer"
+              >
+                Remove photo
+              </button>
+            </div>
+          )}
+        </div>
+
         <Input label="Phrase" placeholder="e.g. I want to swing" value={phrase} onChange={(e) => { setPhrase(e.target.value); setErrors((p) => ({ ...p, phrase: null })); }} error={errors.phrase} />
 
         <div className="flex gap-3 mt-2">

@@ -28,6 +28,7 @@ export default function PictureCardGrid({ category, onWordTap }) {
     ...customCards.map((c) => ({
       id: `custom-${c.id}`,
       emoji: c.emoji,
+      photoData: c.photoData || null,
       i18nWord: null,
       i18nPhrase: null,
       customWord: c.word,
@@ -53,7 +54,11 @@ export default function PictureCardGrid({ category, onWordTap }) {
             aria-label={label}
             className="flex flex-col items-center justify-center gap-1 p-2 rounded-2xl bg-surface border-2 border-border cursor-pointer hover:border-primary/50 transition-all aspect-square shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
           >
-            <span className="text-5xl sm:text-6xl md:text-7xl">{word.emoji}</span>
+            {word.photoData ? (
+              <img src={word.photoData} alt={label} className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl object-cover" />
+            ) : (
+              <span className="text-5xl sm:text-6xl md:text-7xl">{word.emoji}</span>
+            )}
             <span className="text-sm sm:text-base font-display font-extrabold text-white truncate max-w-full">
               {label}
             </span>
