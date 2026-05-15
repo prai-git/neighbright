@@ -42,7 +42,6 @@ export default function LandingEvidence() {
           <p className="text-sm text-text-secondary mb-3">{t('landing.multilingualDesc')}</p>
           <div className="flex items-center justify-center gap-5 text-3xl">
             <span>🇺🇸</span>
-            <span>🇮🇳</span>
             <span>🇫🇷</span>
           </div>
         </div>

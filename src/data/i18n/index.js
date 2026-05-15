@@ -1,9 +1,8 @@
 import { useLanguage } from '../../contexts/LanguageContext';
 import en from './en.json';
-import hi from './hi.json';
 import fr from './fr.json';
 
-const translations = { en, hi, fr };
+const translations = { en, fr };
 
 export function useTranslation() {
   const { language } = useLanguage();

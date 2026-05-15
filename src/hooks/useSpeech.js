@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import db from '../db';
 
-const LANG_MAP = { en: 'en', hi: 'hi', fr: 'fr' };
+const LANG_MAP = { en: 'en', fr: 'fr' };
 
 function getVoicesForLang(lang) {
   const voices = window.speechSynthesis?.getVoices() || [];

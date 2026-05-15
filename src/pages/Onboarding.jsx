@@ -10,7 +10,6 @@ const AVATARS = ['🐶','🐱','🐰','🐻','🦊','🐼','🦁','🐸','🐵',
 
 const LANGUAGES = [
   { code: 'en', flag: '🇺🇸', label: 'English' },
-  { code: 'hi', flag: '🇮🇳', label: 'हिन्दी' },
   { code: 'fr', flag: '🇫🇷', label: 'Français' },
 ];
 
