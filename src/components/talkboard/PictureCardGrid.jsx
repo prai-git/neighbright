@@ -51,10 +51,10 @@ export default function PictureCardGrid({ category, onWordTap }) {
             whileTap={{ scale: 0.92, y: 2 }}
             onClick={() => handleTap(word)}
             aria-label={label}
-            className="flex flex-col items-center justify-center gap-2 p-3 rounded-2xl bg-surface border-2 border-border cursor-pointer hover:border-primary/50 transition-all aspect-square shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
+            className="flex flex-col items-center justify-center gap-1 p-2 rounded-2xl bg-surface border-2 border-border cursor-pointer hover:border-primary/50 transition-all aspect-square shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
           >
-            <span className="text-4xl sm:text-5xl">{word.emoji}</span>
-            <span className="text-xs font-display font-extrabold text-white truncate max-w-full">
+            <span className="text-5xl sm:text-6xl md:text-7xl">{word.emoji}</span>
+            <span className="text-sm sm:text-base font-display font-extrabold text-white truncate max-w-full">
               {label}
             </span>
           </motion.button>
