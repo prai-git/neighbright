@@ -105,12 +105,12 @@ export default function Puzzles() {
                 onClick={() => toggleTier(meta.tier)}
                 className="w-full flex items-center gap-3 p-4 cursor-pointer hover:bg-white/5 transition-colors"
               >
-                <span className="text-2xl">{meta.emoji}</span>
+                <span className="text-3xl">{meta.emoji}</span>
                 <div className="flex-1 text-left">
-                  <p className="font-display font-extrabold text-white text-sm">
+                  <p className="font-display font-extrabold text-white text-base">
                     {t(meta.nameKey)}
                   </p>
-                  <p className="text-xs text-text-secondary">
+                  <p className="text-sm text-text-secondary">
                     {puzzles.length} puzzles
                   </p>
                 </div>
@@ -140,8 +140,8 @@ export default function Puzzles() {
                           onClick={() => setActivePuzzle(puzzle)}
                           className="flex flex-col items-center gap-2 p-4 rounded-xl bg-background border-2 border-border cursor-pointer shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px] hover:border-white/30 transition-colors"
                         >
-                          <span className="text-3xl">{puzzle.icon}</span>
-                          <p className="font-display font-extrabold text-xs text-white text-center">
+                          <span className="text-4xl">{puzzle.icon}</span>
+                          <p className="font-display font-extrabold text-sm text-white text-center">
                             {t(puzzle.i18nKey)}
                           </p>
                         </motion.button>
