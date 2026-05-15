@@ -53,8 +53,8 @@ export default function SayItMode({ words, onStarEarned }) {
           exit={{ opacity: 0, y: -20 }}
           className="bg-surface rounded-3xl border-2 border-border p-8 flex flex-col items-center gap-4 w-full max-w-sm shadow-[0_4px_0_rgba(0,0,0,0.2)]"
         >
-          <span className="text-7xl">{word.emoji}</span>
-          <span className="text-2xl font-display font-extrabold text-white">
+          <span className="text-8xl">{word.emoji}</span>
+          <span className="text-3xl font-display font-extrabold text-white">
             {t(word.i18nWord)}
           </span>
           <button

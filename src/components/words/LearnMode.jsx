@@ -78,12 +78,12 @@ export default function LearnMode({ words, categoryColor, onStarEarned }) {
             onClick={handleTap}
             className="absolute inset-0 bg-surface rounded-3xl border-2 border-border flex flex-col items-center justify-center gap-4 cursor-pointer shadow-[0_4px_0_rgba(0,0,0,0.2)] active:shadow-[0_2px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
           >
-            <span className="text-7xl">{word.emoji}</span>
-            <span className="text-2xl font-display font-extrabold text-white">
+            <span className="text-8xl">{word.emoji}</span>
+            <span className="text-3xl font-display font-extrabold text-white">
               {t(word.i18nWord)}
             </span>
             <span
-              className="text-xs font-display font-bold px-3 py-1 rounded-full text-white"
+              className="text-sm font-display font-bold px-3 py-1 rounded-full text-white"
               style={{ backgroundColor: categoryColor }}
             >
               {t(word.i18nPhrase)}

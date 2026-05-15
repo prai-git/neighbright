@@ -95,11 +95,11 @@ export default function WordBuilder() {
                     onClick={() => handleSelectCategory(cat)}
                     className="flex flex-col items-center gap-2 p-4 rounded-2xl border-2 border-border bg-surface cursor-pointer shadow-[0_4px_0_rgba(0,0,0,0.2)] active:shadow-[0_2px_0_rgba(0,0,0,0.2)] active:translate-y-[2px] hover:border-white/30 transition-colors"
                   >
-                    <span className="text-4xl">{cat.icon}</span>
-                    <span className="text-sm font-display font-bold text-white text-center">
+                    <span className="text-5xl">{cat.icon}</span>
+                    <span className="text-base font-display font-bold text-white text-center">
                       {t(cat.i18nKey)}
                     </span>
-                    <span className="text-xs text-text-secondary font-display">
+                    <span className="text-sm text-text-secondary font-display">
                       {cat.words.length} {t('home.modules.wordsDesc').split(' ')[0].toLowerCase()}
                     </span>
                     <div

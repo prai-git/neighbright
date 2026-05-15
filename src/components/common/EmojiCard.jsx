@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 
 const sizeMap = {
   sm: { card: 'w-16 h-16', emoji: 'text-2xl', label: 'text-[9px]' },
-  md: { card: 'w-full aspect-square', emoji: 'text-4xl sm:text-5xl', label: 'text-xs' },
-  lg: { card: 'w-full aspect-square', emoji: 'text-5xl', label: 'text-sm' },
+  md: { card: 'w-full aspect-square', emoji: 'text-5xl sm:text-6xl', label: 'text-sm' },
+  lg: { card: 'w-full aspect-square', emoji: 'text-6xl', label: 'text-base' },
 };
 
 export default function EmojiCard({
