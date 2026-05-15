@@ -4,6 +4,7 @@ import { useTranslation } from '../../data/i18n';
 import { useSpeech } from '../../hooks/useSpeech';
 import { numberData, getNumberRange } from '../../data/numbers';
 import { useProfile } from '../../contexts/ProfileContext';
+import ASLSign from '../common/ASLSign';
 import db from '../../db';
 
 const FINGER_MAP = {
@@ -164,10 +165,13 @@ export default function LearnNumbersMode({ onBack }) {
           onClick={handleTapCard}
           className="w-full max-w-sm rounded-3xl bg-surface border-2 border-border p-8 flex flex-col items-center gap-5 cursor-pointer shadow-[0_6px_0_rgba(0,0,0,0.2)] active:shadow-[0_2px_0_rgba(0,0,0,0.2)] active:translate-y-[3px] transition-shadow"
         >
-          {/* Large digit */}
-          <span className="text-8xl font-display font-extrabold text-white">
-            {current.value}
-          </span>
+          {/* Large digit + ASL sign */}
+          <div className="flex items-center gap-4">
+            <span className="text-8xl font-display font-extrabold text-white">
+              {current.value}
+            </span>
+            {current.value <= 10 && <ASLSign value={current.value} size="lg" />}
+          </div>
 
           {/* Number word */}
           <span className="text-2xl font-display font-extrabold text-primary">

@@ -1,0 +1,45 @@
+// ASL fingerspelling descriptions for A-Z and 0-9
+// Each entry has a short visual description of the hand shape
+
+export const aslLetters = {
+  A: { hand: '✊', desc: 'Fist with thumb on side' },
+  B: { hand: '🖐', desc: 'Flat hand, fingers together, thumb tucked' },
+  C: { hand: '🤏', desc: 'Curved hand like holding a cup' },
+  D: { hand: '☝️', desc: 'Index up, others touch thumb' },
+  E: { hand: '🤌', desc: 'Fingers curled to thumb' },
+  F: { hand: '👌', desc: 'Index and thumb circle, others up' },
+  G: { hand: '👉', desc: 'Index and thumb point sideways' },
+  H: { hand: '🤞', desc: 'Index and middle point sideways' },
+  I: { hand: '🤙', desc: 'Pinky up, others in fist' },
+  J: { hand: '🤙', desc: 'Pinky up, scoop down motion' },
+  K: { hand: '✌️', desc: 'Index and middle up, thumb between' },
+  L: { hand: '🤟', desc: 'L-shape: index up, thumb out' },
+  M: { hand: '✊', desc: 'Thumb under three fingers' },
+  N: { hand: '✊', desc: 'Thumb under two fingers' },
+  O: { hand: '🫰', desc: 'All fingers touch thumb, O shape' },
+  P: { hand: '🤞', desc: 'Like K but pointing down' },
+  Q: { hand: '👇', desc: 'Like G but pointing down' },
+  R: { hand: '🤞', desc: 'Index and middle crossed' },
+  S: { hand: '✊', desc: 'Fist with thumb over fingers' },
+  T: { hand: '✊', desc: 'Thumb between index and middle' },
+  U: { hand: '✌️', desc: 'Index and middle up together' },
+  V: { hand: '✌️', desc: 'Index and middle spread apart' },
+  W: { hand: '🤟', desc: 'Three fingers up spread apart' },
+  X: { hand: '☝️', desc: 'Index finger bent like hook' },
+  Y: { hand: '🤙', desc: 'Thumb and pinky out, others in' },
+  Z: { hand: '☝️', desc: 'Index traces Z in the air' },
+};
+
+export const aslNumbers = {
+  0: { hand: '🫰', desc: 'All fingers touch thumb, O shape' },
+  1: { hand: '☝️', desc: 'Index finger up' },
+  2: { hand: '✌️', desc: 'Index and middle up' },
+  3: { hand: '🤟', desc: 'Thumb, index, middle up' },
+  4: { hand: '🖐', desc: 'Four fingers up, thumb tucked' },
+  5: { hand: '🖐', desc: 'All five fingers spread' },
+  6: { hand: '🤙', desc: 'Pinky and thumb touch, others up' },
+  7: { hand: '🖖', desc: 'Ring finger and thumb touch, others up' },
+  8: { hand: '🤞', desc: 'Middle finger and thumb touch, others up' },
+  9: { hand: '👌', desc: 'Index and thumb touch, others up' },
+  10: { hand: '👍', desc: 'Thumb up, shake side to side' },
+};

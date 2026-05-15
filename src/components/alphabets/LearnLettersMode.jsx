@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useSpeech } from '../../hooks/useSpeech';
 import { useTranslation } from '../../data/i18n';
 import { alphabetData } from '../../data/alphabets';
+import ASLSign from '../common/ASLSign';
 import db from '../../db';
 
 const slideVariants = {
@@ -94,12 +95,17 @@ export default function LearnLettersMode({ onBack }) {
             onClick={handleTap}
             className="absolute inset-0 bg-surface rounded-3xl border-2 border-border flex flex-col items-center justify-center gap-2 cursor-pointer shadow-[0_4px_0_rgba(0,0,0,0.2)] active:shadow-[0_2px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
           >
-            <span className="text-8xl font-display font-extrabold text-white leading-none">
-              {item.letter}
-            </span>
-            <span className="text-5xl font-display font-extrabold text-text-secondary leading-none">
-              {item.lowercase}
-            </span>
+            <div className="flex items-center gap-4">
+              <div className="flex flex-col items-center">
+                <span className="text-8xl font-display font-extrabold text-white leading-none">
+                  {item.letter}
+                </span>
+                <span className="text-5xl font-display font-extrabold text-text-secondary leading-none">
+                  {item.lowercase}
+                </span>
+              </div>
+              <ASLSign value={item.letter} size="lg" />
+            </div>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-4xl">{item.emoji}</span>
               <span className="text-xl font-display font-extrabold text-white">
