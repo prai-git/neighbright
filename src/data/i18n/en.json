@@ -269,7 +269,8 @@
     "pairsFound": "{found} of {total} pairs found",
     "tapInstruction": "Tap the {item}",
     "findInstruction": "Find {count} {item}",
-    "whichDoesntBelong": "Which one doesn't belong?"
+    "whichDoesntBelong": "Which one doesn't belong?",
+    "placed": "{count} placed"
   },
   "puzzles": {
     "title": "Puzzles",
@@ -297,7 +298,24 @@
     "tapToCount": "Tap to count",
     "traceTheLetter": "Trace the letter",
     "completed": "Puzzle completed!",
-    "locked": "Complete Tier {n} puzzles to unlock"
+    "locked": "Complete Tier {n} puzzles to unlock",
+    "whoIsHiding": "Who is hiding?",
+    "matchItemsToShadows": "Match items to shadows",
+    "tapTwoToSwap": "Tap two pieces to swap",
+    "matchThePairs": "Match the pairs!",
+    "putStoryInOrder": "Put the story in order!",
+    "greatStory": "Great story!",
+    "tapWordsInOrder": "Tap words in order...",
+    "howManyDoYouSee": "How many do you see?",
+    "itWasCount": "It was {count}",
+    "moves": "Moves: {count}",
+    "findWayToStar": "Find your way to the star!",
+    "tapSmallestToBiggest": "Tap from smallest to biggest!",
+    "tapWordsStartWith": "Tap words that start with \"{letter}\"",
+    "tapAllStartWith": "Tap all the words that start with {letter}",
+    "roundOf": "Round {current} of {total}",
+    "englishOnly": "This puzzle is only available in English. Please switch to English to play.",
+    "rememberThese": "Remember these!"
   },
   "rewards": {
     "stars": "{count} Stars",

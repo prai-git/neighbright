@@ -89,6 +89,7 @@ export default function PictureMatchGame({ difficulty, onBack }) {
               <motion.button
                 key={card.uid}
                 onClick={() => handleFlip(i)}
+                aria-label={isFlipped ? `Card: ${card.emoji}` : `Flip card ${i + 1}`}
                 animate={isMatched ? { scale: [1, 1.1, 1] } : {}}
                 className={`aspect-square rounded-2xl flex items-center justify-center text-5xl cursor-pointer border-2 transition-all shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px] ${
                   isMatched

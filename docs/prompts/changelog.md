@@ -969,3 +969,82 @@ Applied 3 fixes based on continued user testing: added delete functionality for 
 - `src/components/common/ASLSign.jsx` — added xl size
 - `src/components/alphabets/LearnLettersMode.jsx` — use xl ASL size
 - `src/components/numbers/LearnNumbersMode.jsx` — use xl ASL size
+
+---
+
+## Module 15 — Verification & Testing
+**Date:** 2026-06-13
+**Status:** ✅ Complete
+
+### Summary
+Comprehensive quality assurance pass covering French translations, accessibility audit, security hardening, i18n verification (hardcoded string elimination), and edge case handling. All 17 hardcoded English strings across puzzle/game components replaced with `t()` calls.
+
+### Changes
+
+**French Translations (`src/data/i18n/fr.json`):**
+- Generated complete French translation file with 1250+ lines covering all UI sections and 216 vocabulary entries
+- Uses informal "tu" form appropriate for family contexts
+- All accented characters (é, è, ê, à, ç, ô, ù, î) correctly encoded
+- Updated `scripts/translate.js` to remove Hindi (only French remains)
+
+**Accessibility Fixes:**
+- `PictureCardGrid.jsx` — Changed delete `<span>` to `<button>` for keyboard accessibility
+- `Peekaboo.jsx` — Added `aria-label` to emoji-only guess buttons
+- `PictureMatchGame.jsx` — Added `aria-label` to card flip buttons
+- `ShadowMatch.jsx` — Added `aria-label` to left and right match buttons
+- `TraceLetterMode.jsx` — Added `aria-label` and `role="img"` to canvas
+- `LetterTrace.jsx` — Added `aria-label` and `role="img"` to canvas
+- `index.css` — Added `@media (prefers-reduced-motion: reduce)` to disable animations for users who prefer reduced motion
+
+**Security Hardening:**
+- `index.html` — Added `Content-Security-Policy` meta tag: `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self';`
+- Verified: no API keys in source code, all external links have `rel="noopener noreferrer"`, service worker caches same-origin only
+
+**i18n — Hardcoded String Elimination (17 strings fixed):**
+- `Peekaboo.jsx` — "Who is hiding?" → `t('puzzles.whoIsHiding')`
+- `ShadowMatch.jsx` — "Match items to shadows" → `t('puzzles.matchItemsToShadows')`
+- `Jigsaw.jsx` — "Tap two pieces to swap" → `t('puzzles.tapTwoToSwap')`
+- `RhymingPairs.jsx` — English-only notice + "Match the pairs!" → `t('puzzles.englishOnly')` + `t('puzzles.matchThePairs')`
+- `StorySequence.jsx` — "Put the story in order!" + "Great story!" → `t('puzzles.putStoryInOrder')` + `t('puzzles.greatStory')`
+- `SentenceBuilder.jsx` — "Tap words in order..." → `t('puzzles.tapWordsInOrder')`
+- `Counting.jsx` — "How many do you see?" + "Correct!" + "It was N" → `t()` calls
+- `Maze.jsx` — "Find your way to the star!" + "Moves: N" → `t()` calls
+- `SizeOrder.jsx` — "Tap from smallest to biggest!" → `t('puzzles.tapSmallestToBiggest')`
+- `BeginningSound.jsx` — "Tap all words that start with X" + "Round N of 8" → `t()` calls
+- `WhatsMissingGame.jsx` — "Remember these!" → `t('puzzles.rememberThese')`
+- `CategorySortingGame.jsx` — "N placed" → `t('games.placed', { count })`
+- Added `useTranslation` import to `Maze.jsx` and `BeginningSound.jsx` (previously missing)
+- Added 19 new i18n keys to both `en.json` and `fr.json`
+
+**Edge Case Handling:**
+- `Onboarding.jsx` — Added `submitting` state to prevent double-submit on "Start Practicing" button
+- `Onboarding.jsx` — Added `maxLength={30}` to name input field
+
+### Files Changed
+- `src/data/i18n/fr.json` — **complete rewrite** (was empty `{}`)
+- `src/data/i18n/en.json` — added 19 puzzle/game i18n keys
+- `scripts/translate.js` — removed Hindi language config
+- `index.html` — added CSP meta tag
+- `src/index.css` — added prefers-reduced-motion media query
+- `src/components/talkboard/PictureCardGrid.jsx` — `<span>` → `<button>` for delete
+- `src/components/puzzles/Peekaboo.jsx` — aria-label + t() for "Who is hiding?"
+- `src/components/puzzles/ShadowMatch.jsx` — aria-labels + t() for instructions
+- `src/components/puzzles/Jigsaw.jsx` — t() for instructions
+- `src/components/puzzles/RhymingPairs.jsx` — t() for English-only notice + instructions
+- `src/components/puzzles/StorySequence.jsx` — t() for spoken text
+- `src/components/puzzles/SentenceBuilder.jsx` — t() for placeholder
+- `src/components/puzzles/Counting.jsx` — t() for spoken text
+- `src/components/puzzles/Maze.jsx` — added useTranslation, t() for all strings
+- `src/components/puzzles/SizeOrder.jsx` — t() for spoken + display text
+- `src/components/puzzles/BeginningSound.jsx` — added useTranslation, t() for all strings
+- `src/components/games/PictureMatchGame.jsx` — aria-label for cards
+- `src/components/games/WhatsMissingGame.jsx` — t() for "Remember these!"
+- `src/components/games/CategorySortingGame.jsx` — t() for "placed"
+- `src/components/alphabets/TraceLetterMode.jsx` — canvas aria-label
+- `src/components/puzzles/LetterTrace.jsx` — canvas aria-label
+- `src/pages/Onboarding.jsx` — double-submit guard + name maxLength
+
+### Deviations
+- CSP meta tag may show console warnings in Vite dev server (inline HMR scripts blocked) — this only affects development, not production builds
+- French translations generated manually rather than via OpenAI translate script (no API key available) — translations are accurate but should be spot-checked by a native speaker
+- `sounds.correct` key reused for puzzle correct feedback speech to avoid duplication

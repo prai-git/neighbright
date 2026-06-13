@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '../../data/i18n';
 import { useSpeech } from '../../hooks/useSpeech';
 import PuzzleWrapper from './PuzzleWrapper';
 
@@ -39,6 +40,7 @@ function generateRound() {
 }
 
 export default function BeginningSound({ onBack }) {
+  const { t } = useTranslation();
   const { speak } = useSpeech();
   const [roundIndex, setRoundIndex] = useState(0);
   const [roundData, setRoundData] = useState(() => generateRound());
@@ -54,7 +56,7 @@ export default function BeginningSound({ onBack }) {
   }, [roundIndex]);
 
   useEffect(() => {
-    speak(`Tap all the words that start with ${roundData.letter}`);
+    speak(t('puzzles.tapAllStartWith', { letter: roundData.letter }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roundIndex]);
 
@@ -92,7 +94,7 @@ export default function BeginningSound({ onBack }) {
     >
       <div className="flex flex-col items-center gap-6">
         <p className="text-sm font-display font-bold text-text-secondary">
-          Round {roundIndex + 1} of 8
+          {t('puzzles.roundOf', { current: roundIndex + 1, total: 8 })}
         </p>
 
         <div className="w-24 h-24 rounded-2xl bg-primary/20 border-2 border-primary/40 flex items-center justify-center">
@@ -100,7 +102,7 @@ export default function BeginningSound({ onBack }) {
         </div>
 
         <p className="text-sm font-display font-bold text-text-secondary">
-          Tap words that start with "{roundData.letter}"
+          {t('puzzles.tapWordsStartWith', { letter: roundData.letter })}
         </p>
 
         <div className="grid grid-cols-2 gap-3 w-full max-w-sm">

@@ -33,6 +33,7 @@ export default function Onboarding() {
 
   const [step, setStep] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [submitting, setSubmitting] = useState(false);
 
   const [name, setName] = useState('');
   const [avatarKey, setAvatarKey] = useState('');
@@ -59,9 +60,11 @@ export default function Onboarding() {
   };
 
   const handleSubmit = async () => {
+    if (submitting) return;
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length > 0 || !avatarKey || !tier) return;
+    setSubmitting(true);
     await saveProfile({ name: name.trim(), avatarKey, tier });
     navigate('/home', { replace: true });
   };
@@ -143,6 +146,7 @@ export default function Onboarding() {
                 onChange={(e) => { setName(e.target.value); setErrors((prev) => ({ ...prev, name: null })); }}
                 error={errors.name}
                 autoComplete="given-name"
+                maxLength={30}
               />
 
               {/* Avatar */}

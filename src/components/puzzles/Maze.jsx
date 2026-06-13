@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '../../data/i18n';
 import { useSpeech } from '../../hooks/useSpeech';
 import PuzzleWrapper from './PuzzleWrapper';
 
@@ -34,6 +35,7 @@ const DIRS = {
 };
 
 export default function Maze({ onBack }) {
+  const { t } = useTranslation();
   const { speak } = useSpeech();
   const size = 9;
   const [maze, setMaze] = useState(() => generateMaze(size));
@@ -45,7 +47,7 @@ export default function Maze({ onBack }) {
   const cellSize = useMemo(() => Math.min(36, Math.floor(300 / size)), [size]);
 
   useEffect(() => {
-    speak('Find your way to the star!');
+    speak(t('puzzles.findWayToStar'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -84,7 +86,7 @@ export default function Maze({ onBack }) {
     >
       <div className="flex flex-col items-center gap-5">
         <p className="text-sm font-display font-bold text-text-secondary">
-          Moves: {moves}
+          {t('puzzles.moves', { count: moves })}
         </p>
 
         <div

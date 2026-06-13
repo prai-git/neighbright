@@ -30,7 +30,7 @@ export default function SizeOrder({ onComplete, onBack }) {
   const nextExpected = placed.length; // Index in ordered (0=tiny, 1=small, etc.)
 
   useEffect(() => {
-    speak('Tap from smallest to biggest!');
+    speak(t('puzzles.tapSmallestToBiggest'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -63,7 +63,7 @@ export default function SizeOrder({ onComplete, onBack }) {
     >
       <div className="flex flex-col gap-6">
         <p className="text-center text-sm font-display font-bold text-text-secondary">
-          {t('puzzles.sizeOrder')} — Tap smallest to biggest!
+          {t('puzzles.sizeOrder')} — {t('puzzles.tapSmallestToBiggest')}
         </p>
 
         {/* Available items */}

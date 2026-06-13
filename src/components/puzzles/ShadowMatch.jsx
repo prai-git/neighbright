@@ -68,7 +68,7 @@ export default function ShadowMatch({ onComplete, onBack }) {
     >
       <div className="flex flex-col gap-4 items-center">
         <p className="text-sm font-display font-bold text-text-secondary">
-          {t('puzzles.shadowMatch')} — Match items to shadows
+          {t('puzzles.shadowMatch')} — {t('puzzles.matchItemsToShadows')}
         </p>
 
         <div className="flex gap-6 md:gap-10">
@@ -81,6 +81,7 @@ export default function ShadowMatch({ onComplete, onBack }) {
                 <motion.button
                   key={`left-${idx}`}
                   onClick={() => handleLeftTap(emoji)}
+                  aria-label={`Select ${emoji}`}
                   className={`w-16 h-16 rounded-xl flex items-center justify-center text-3xl cursor-pointer border-2 transition-all ${
                     isMatched
                       ? 'border-primary bg-primary/20 opacity-50'
@@ -111,6 +112,7 @@ export default function ShadowMatch({ onComplete, onBack }) {
                 <motion.button
                   key={`right-${idx}`}
                   onClick={() => handleRightTap(emoji)}
+                  aria-label={`Match shadow ${idx + 1}`}
                   className={`w-16 h-16 rounded-xl flex items-center justify-center text-3xl cursor-pointer border-2 transition-all ${
                     isMatched
                       ? 'border-primary bg-primary/20'

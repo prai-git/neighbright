@@ -110,7 +110,7 @@ export default function SentenceBuilder({ onComplete, onBack }) {
         {/* Built sentence strip */}
         <div className="flex flex-wrap gap-2 min-h-[48px] bg-surface border-2 border-border rounded-xl px-4 py-3 w-full max-w-sm justify-center items-center">
           {built.length === 0 && (
-            <span className="text-text-secondary text-sm">Tap words in order...</span>
+            <span className="text-text-secondary text-sm">{t('puzzles.tapWordsInOrder')}</span>
           )}
           {built.map((item, idx) => (
             <motion.span

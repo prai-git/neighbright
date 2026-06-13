@@ -118,7 +118,7 @@ export default function CategorySortingGame({ difficulty, onBack }) {
                   {t(cat.i18nKey)}
                 </span>
                 <span className="text-xs font-display font-bold text-text-secondary">
-                  {sortedInCat.length} placed
+                  {t('games.placed', { count: sortedInCat.length })}
                 </span>
               </motion.button>
             );

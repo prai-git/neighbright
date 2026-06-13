@@ -93,7 +93,7 @@ export default function Jigsaw({ onComplete, onBack, config }) {
     >
       <div className="flex flex-col gap-4 items-center">
         <p className="text-sm font-display font-bold text-text-secondary">
-          {t('puzzles.jigsaw')} ({gridSize}x{gridSize}) — Tap two pieces to swap
+          {t('puzzles.jigsaw')} ({gridSize}x{gridSize}) — {t('puzzles.tapTwoToSwap')}
         </p>
 
         {/* Guide (faint) */}

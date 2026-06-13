@@ -227,6 +227,8 @@ export default function TraceLetterMode({ onBack }) {
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
+          aria-label={`Trace the letter ${displayLetter}`}
+          role="img"
           className="rounded-2xl bg-surface border-2 border-border touch-none cursor-crosshair"
         />
       </div>

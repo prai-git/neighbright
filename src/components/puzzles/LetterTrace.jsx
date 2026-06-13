@@ -134,6 +134,8 @@ export default function LetterTrace({ onComplete, onBack }) {
             ref={canvasRef}
             width={280}
             height={280}
+            aria-label={`Trace the letter ${currentLetter}`}
+            role="img"
             className="w-[280px] h-[280px] cursor-crosshair"
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}

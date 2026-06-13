@@ -331,3 +331,45 @@ All sections above must pass before NeighBright is considered production-ready f
 ---
 
 *When this checklist is complete and signed off, NeighBright Phase 1 is live. Begin collecting feedback for Phase 2.*
+
+---
+
+## Amendment — Module 15 Implementation (2026-06-13)
+
+### Completed Actions
+
+**i18n Verification:**
+- Generated complete `fr.json` with all UI strings and 216 vocabulary words in French
+- Eliminated 17 hardcoded English strings across 11 puzzle/game components — all now use `t()` translation function
+- Added 19 new i18n keys to both `en.json` and `fr.json` (puzzles and games sections)
+- Removed Hindi from translate.js script (Hindi was dropped in Feedback Round 1)
+
+**Accessibility Audit:**
+- Fixed non-semantic `<span>` with onClick → `<button>` (PictureCardGrid delete button)
+- Added `aria-label` to 6+ emoji-only buttons (Peekaboo, PictureMatch, ShadowMatch)
+- Added `aria-label` and `role="img"` to 2 canvas elements (TraceLetterMode, LetterTrace)
+- Added `@media (prefers-reduced-motion: reduce)` CSS rule to disable all animations
+
+**Security Checklist:**
+- Added Content-Security-Policy meta tag (script-src 'self', font-src Google Fonts, img-src data/blob)
+- Verified: no API keys in source code
+- Verified: all external links have `rel="noopener noreferrer"`
+- Verified: service worker caches same-origin only
+
+**Edge Cases:**
+- Added double-submit guard to onboarding (`submitting` state flag)
+- Added `maxLength={30}` to child name input
+- Verified: Home greeting truncates long names (has `truncate` class)
+- Verified: Dashboard shows "No activity yet" empty states in all tabs
+
+**Performance:**
+- Build succeeds in ~580ms, 32 code-split chunks
+- Total dist size: 1.7MB uncompressed
+- Vendor chunk: 71KB gzipped, Motion: 41KB gzipped
+
+### Remaining (Manual Testing Required)
+- Cross-device testing matrix (requires real devices)
+- Lighthouse scoring on deployed site
+- Screen reader testing with VoiceOver/TalkBack
+- Color contrast verification with DevTools
+- French translation spot-check by native speaker

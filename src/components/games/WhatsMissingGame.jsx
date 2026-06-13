@@ -173,7 +173,7 @@ export default function WhatsMissingGame({ difficulty, onBack }) {
 
         {phase === PHASE.MEMORIZE && (
           <p className="text-sm font-display font-bold text-accent text-center animate-pulse">
-            👀 Remember these!
+            👀 {t('puzzles.rememberThese')}
           </p>
         )}
       </div>

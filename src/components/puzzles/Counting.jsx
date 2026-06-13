@@ -24,7 +24,7 @@ export default function Counting({ onComplete, onBack }) {
   const isComplete = round >= TOTAL_ROUNDS;
 
   useEffect(() => {
-    speak('How many do you see?');
+    speak(t('puzzles.howManyDoYouSee'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [round]);
 
@@ -33,7 +33,7 @@ export default function Counting({ onComplete, onBack }) {
     const isCorrect = num === roundData.count;
     setResult(isCorrect ? 'correct' : 'wrong');
     if (isCorrect) setCorrect((prev) => prev + 1);
-    speak(isCorrect ? 'Correct!' : `It was ${roundData.count}`);
+    speak(isCorrect ? t('sounds.correct') : t('puzzles.itWasCount', { count: roundData.count }));
 
     setTimeout(() => {
       setRound((prev) => prev + 1);

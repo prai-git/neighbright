@@ -112,7 +112,8 @@ export default function PictureCardGrid({ category, onWordTap }) {
                 className="relative flex flex-col items-center justify-center gap-1 p-2 rounded-2xl bg-surface border-2 border-border cursor-pointer hover:border-primary/50 transition-all aspect-square shadow-[0_3px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
               >
                 {/* Delete/hide button */}
-                <span
+                <button
+                  type="button"
                   onClick={(e) => handleDeleteClick(e, word)}
                   className={`absolute top-1 right-1 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold cursor-pointer transition-colors ${
                     isConfirming
@@ -122,7 +123,7 @@ export default function PictureCardGrid({ category, onWordTap }) {
                   aria-label={isConfirming ? 'Confirm remove' : 'Remove card'}
                 >
                   ✕
-                </span>
+                </button>
                 {word.photoData ? (
                   <img src={word.photoData} alt={label} className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl object-cover" />
                 ) : (

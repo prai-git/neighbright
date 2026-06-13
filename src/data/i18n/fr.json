@@ -1,1 +1,1268 @@
-{}
+{
+  "app": {
+    "name": "NeighBright",
+    "tagline": "Trouve ta voix, une étincelle à la fois"
+  },
+  "nav": {
+    "home": "Accueil",
+    "talkBoard": "Tableau de parole",
+    "sounds": "Sons",
+    "wordBuilder": "Mots",
+    "games": "Jeux",
+    "puzzles": "Casse-têtes",
+    "alphabets": "Alphabet",
+    "numbers": "Chiffres",
+    "dashboard": "Tableau de bord",
+    "getStarted": "Commencer",
+    "language": "Langue"
+  },
+  "landing": {
+    "heroTitle": "Trouve ta voix, une étincelle à la fois",
+    "heroDescription": "Outils gratuits d'orthophonie et d'apprentissage pour les enfants — pas de compte, pas de téléchargement, fonctionne sur tous les appareils.",
+    "heroCta": "Commence à pratiquer — C'est gratuit",
+    "heroSubtext": "Pas de compte nécessaire. Pas de téléchargement. Fonctionne sur tous les appareils.",
+    "featuresTitle": "Ce qu'il y a dedans",
+    "featureTalkBoard": "Tableau de parole",
+    "featureTalkBoardDesc": "Un tableau de communication par images qui aide ton enfant à construire des phrases et les dire à voix haute.",
+    "featureSounds": "Explorateur de sons",
+    "featureSoundsDesc": "Pratique chaque son de la parole avec des guides visuels de la bouche et des niveaux structurés de l'isolation aux phrases.",
+    "featureWords": "Constructeur de mots",
+    "featureWordsDesc": "Plus de 240 mots de vocabulaire dans 12 catégories avec des cartes, des jeux d'écoute et de la pratique orale.",
+    "featurePuzzles": "Casse-têtes",
+    "featurePuzzlesDesc": "Des casse-têtes cognitifs adaptés à l'âge, du tri de formes à la construction de phrases sur trois niveaux de difficulté.",
+    "howTitle": "Comment ça marche",
+    "howStep1Title": "Ouvre NeighBright",
+    "howStep1Desc": "Sur n'importe quel téléphone, tablette ou ordinateur. Pas besoin d'app store.",
+    "howStep2Title": "Choisis ton niveau",
+    "howStep2Desc": "Choisis le niveau de développement de ton enfant pour des activités adaptées à son âge.",
+    "howStep3Title": "Pratiquez ensemble",
+    "howStep3Desc": "Assieds-toi avec ton enfant et transforme le temps d'écran en temps de parole.",
+    "whoTitle": "Pour qui c'est",
+    "whoParentsTitle": "Parents et familles",
+    "whoParentsDesc": "Pratique quotidienne à la maison qui complète la thérapie professionnelle. Suis les progrès et partage-les avec l'orthophoniste de ton enfant.",
+    "whoTherapistsTitle": "Orthophonistes",
+    "whoTherapistsDesc": "Un outil gratuit à recommander aux familles pour une pratique structurée à la maison entre les séances.",
+    "whoTeachersTitle": "Enseignants et écoles",
+    "whoTeachersDesc": "Utilise en classe et en salle de ressources. Pas de logiciel à installer, pas de budget nécessaire.",
+    "evidenceTitle": "Méthodes fondées sur des preuves",
+    "evidenceDesc": "NeighBright utilise des techniques thérapeutiques éprouvées : PECS pour la communication, la progression d'articulation traditionnelle, le renforcement positif inspiré de l'ABA, et des méthodes d'acquisition de vocabulaire soutenues par la recherche.",
+    "evidenceDisclaimer": "NeighBright complète mais ne remplace pas l'orthophonie professionnelle.",
+    "multilingualTitle": "Disponible en deux langues",
+    "multilingualDesc": "Anglais et français — choisis ta langue à tout moment.",
+    "feedbackTitle": "On le construit pour toi",
+    "feedbackDesc": "Dis-nous ce dont tu as besoin. Tes commentaires façonnent NeighBright.",
+    "feedbackCta": "Partager tes commentaires",
+    "footerAbout": "À propos",
+    "footerPrivacy": "Politique de confidentialité",
+    "footerContact": "Contact",
+    "footerTagline": "Construit pour chaque famille qui mérite l'accès."
+  },
+  "onboarding": {
+    "welcomeTitle": "Bienvenue sur NeighBright !",
+    "welcomeDesc": "Préparons les choses pour ton enfant.",
+    "languageStep": "Choisis une langue",
+    "profileStep": "À propos de ton enfant",
+    "nameLabel": "Prénom ou surnom de l'enfant",
+    "namePlaceholder": "ex. Emma, Lucas, Léa",
+    "avatarLabel": "Choisis un avatar",
+    "tierLabel": "Niveau de développement",
+    "tier1Name": "Premiers apprentissages",
+    "tier1Desc": "1–3 ans : formes simples, premiers mots, associations faciles",
+    "tier2Name": "Esprits en croissance",
+    "tier2Desc": "3–5 ans : motifs, comptage, tracé de lettres, rimes",
+    "tier3Name": "Prêts à apprendre",
+    "tier3Desc": "5–8 ans : lecture, construction de phrases, analogies, labyrinthes",
+    "next": "Suivant",
+    "back": "Retour",
+    "startPracticing": "Commence à pratiquer !"
+  },
+  "home": {
+    "greeting": "Salut, {name} ! Prêt à pratiquer ?",
+    "wordOfDay": "Mot du jour",
+    "modules": {
+      "talkBoard": "Tableau de parole",
+      "talkBoardDesc": "Construis des phrases avec des images",
+      "sounds": "Explorateur de sons",
+      "soundsDesc": "Pratique les sons de la parole",
+      "words": "Constructeur de mots",
+      "wordsDesc": "Apprends de nouveaux mots",
+      "games": "Associe et apprends",
+      "gamesDesc": "Joue à des jeux éducatifs",
+      "puzzles": "Casse-têtes",
+      "puzzlesDesc": "Résous des casse-têtes amusants",
+      "alphabets": "Alphabet",
+      "alphabetsDesc": "Apprends ton ABC",
+      "numbers": "Chiffres",
+      "numbersDesc": "Compte et apprends les chiffres"
+    },
+    "dailyGoal": "Objectif quotidien",
+    "minutesLeft": "{minutes} minutes restantes aujourd'hui"
+  },
+  "talkBoard": {
+    "sentenceStrip": "Touche les images pour construire une phrase",
+    "speak": "Parler",
+    "clear": "Effacer",
+    "quickPhrases": "Phrases rapides",
+    "iNeedHelp": "J'ai besoin d'aide",
+    "iWantMore": "J'en veux plus",
+    "allDone": "J'ai fini",
+    "bathroomPlease": "Toilettes s'il te plaît",
+    "yes": "Oui",
+    "no": "Non",
+    "customCards": "Cartes personnalisées",
+    "addCard": "Ajouter une carte",
+    "editCard": "Modifier la carte",
+    "deleteCard": "Supprimer la carte",
+    "categories": {
+      "feelings": "Émotions",
+      "animals": "Animaux",
+      "food": "Nourriture et boissons",
+      "actions": "Actions",
+      "people": "Personnes",
+      "places": "Lieux",
+      "body": "Parties du corps",
+      "clothes": "Vêtements",
+      "colors": "Couleurs",
+      "routines": "Routines quotidiennes"
+    }
+  },
+  "sounds": {
+    "title": "Explorateur de sons",
+    "chooseSound": "Choisis un son",
+    "chooseSoundGroup": "Choisis un groupe de sons",
+    "level": "Niveau {n}",
+    "levels": {
+      "1": "Dis le son",
+      "2": "Son en syllabes",
+      "3": "Son dans les mots",
+      "4": "Son dans les phrases",
+      "5": "Son dans les phrases complètes"
+    },
+    "listenFirst": "Écoute d'abord, puis essaie !",
+    "tapToHear": "Touche pour écouter",
+    "tapToHearBreakdown": "Touche pour entendre chaque son, puis le mot entier",
+    "yourTurn": "À ton tour !",
+    "record": "Enregistrer",
+    "stop": "Arrêter",
+    "playBack": "Réécouter",
+    "playModel": "Écouter le modèle",
+    "tryAgain": "Réessaie",
+    "sortingGame": "Tri de sons",
+    "playSortingGame": "Jouer au jeu de tri",
+    "sortPrompt": "Par quel son commence ce mot ?",
+    "sortDragPrompt": "Touche le bon panier de sons",
+    "mouthGuide": "Regarde la bouche",
+    "ageAcquisition": "Âge typique : {age}",
+    "examples": "Exemples",
+    "initial": "Début de mot",
+    "medial": "Milieu de mot",
+    "final": "Fin de mot",
+    "practiceLevel": "Niveau de pratique {n}",
+    "levelComplete": "Bravo ! ⭐",
+    "roundResult": "Tour {n} sur 10",
+    "gameComplete": "Tu as eu {correct} sur 10 !",
+    "correct": "Correct ! ⭐",
+    "incorrect": "Pas tout à fait — la réponse est {answer}",
+    "recordingNotSupported": "L'enregistrement n'est pas supporté sur cet appareil.",
+    "micPermissionDenied": "L'accès au microphone a été refusé.",
+    "backToGroups": "Retour aux groupes",
+    "backToSounds": "Retour aux sons",
+    "groups": {
+      "bilabial": "Sons des lèvres",
+      "labiodental": "Sons lèvres-dents",
+      "dental": "Sons langue-dents",
+      "alveolar": "Sons langue-palais",
+      "palatal": "Sons du palais",
+      "velar": "Sons du fond",
+      "glottal": "Sons de la gorge"
+    }
+  },
+  "words": {
+    "title": "Constructeur de mots",
+    "learnMode": "Apprendre",
+    "listenMode": "Écoute et montre",
+    "sayMode": "Dis-le",
+    "canYouFind": "Peux-tu trouver le mot {word} ?",
+    "sayTheWord": "Dis : {word}",
+    "correct": "C'est correct !",
+    "tryAgain": "Réessayons !",
+    "swipeNext": "Glisse pour le mot suivant",
+    "categories": {
+      "fruits": "Fruits et légumes",
+      "food": "Nourriture et repas",
+      "animals": "Animaux",
+      "vehicles": "Véhicules",
+      "colorsShapes": "Couleurs et formes",
+      "clothes": "Vêtements",
+      "furniture": "Meubles",
+      "kitchen": "Cuisine",
+      "hygiene": "Hygiène",
+      "school": "École",
+      "actions": "Actions",
+      "descriptors": "Descripteurs"
+    }
+  },
+  "alphabets": {
+    "title": "Alphabet",
+    "learnMode": "Apprendre les lettres",
+    "learnModeDesc": "Vois chaque lettre et son mot",
+    "listenMode": "Écoute et trouve",
+    "listenModeDesc": "Écoute une lettre, touche pour la trouver",
+    "traceMode": "Trace les lettres",
+    "traceModeDesc": "Pratique l'écriture des lettres",
+    "quizMode": "Quiz des lettres",
+    "quizModeDesc": "Par quelle lettre ça commence ?",
+    "canYouFind": "Peux-tu trouver la lettre {letter} ?",
+    "whatLetterStartsWith": "Par quelle lettre commence {word} ?",
+    "traceTheLetter": "Trace la lettre {letter}",
+    "startsWithLetter": "Le mot {word} commence par {letter}",
+    "correct": "C'est correct !",
+    "tryAgain": "Réessayons !"
+  },
+  "numbers": {
+    "title": "Chiffres",
+    "learnMode": "Apprendre les chiffres",
+    "learnModeDesc": "Vois chaque chiffre et compte",
+    "countMode": "Compte",
+    "countModeDesc": "Combien en vois-tu ?",
+    "matchMode": "Associe",
+    "matchModeDesc": "Associe les chiffres aux quantités",
+    "quizMode": "Quiz des chiffres",
+    "quizModeDesc": "Teste tes compétences en chiffres",
+    "howMany": "Combien en vois-tu ?",
+    "tapTheNumber": "Touche le chiffre {number}",
+    "whatComesNext": "Quel chiffre vient après ?",
+    "whichHasMore": "Quel groupe en a plus ?",
+    "whichHasFewer": "Quel groupe en a moins ?",
+    "letsCountTogether": "Comptons ensemble !",
+    "correct": "C'est correct !",
+    "tryAgain": "Réessaie !",
+    "word0": "zéro", "word1": "un", "word2": "deux", "word3": "trois",
+    "word4": "quatre", "word5": "cinq", "word6": "six", "word7": "sept",
+    "word8": "huit", "word9": "neuf", "word10": "dix",
+    "word11": "onze", "word12": "douze", "word13": "treize",
+    "word14": "quatorze", "word15": "quinze", "word16": "seize",
+    "word17": "dix-sept", "word18": "dix-huit", "word19": "dix-neuf",
+    "word20": "vingt",
+    "ten": "dix", "twenty": "vingt", "thirty": "trente", "forty": "quarante",
+    "fifty": "cinquante", "sixty": "soixante", "seventy": "soixante-dix", "eighty": "quatre-vingts",
+    "ninety": "quatre-vingt-dix", "hundred": "cent"
+  },
+  "games": {
+    "title": "Associe et apprends",
+    "pictureMatch": "Associe les images",
+    "pictureMatchDesc": "Trouve les paires correspondantes",
+    "categorySorting": "Tri par catégorie",
+    "categorySortingDesc": "Trie les objets en groupes",
+    "followDirections": "Suis les consignes",
+    "followDirectionsDesc": "Écoute et fais",
+    "whatsMissing": "Qu'est-ce qui manque ?",
+    "whatsMissingDesc": "Trouve ce qui a disparu",
+    "oddOneOut": "L'intrus",
+    "oddOneOutDesc": "Lequel n'appartient pas au groupe ?",
+    "sequenceBuilder": "Constructeur de séquences",
+    "sequenceBuilderDesc": "Mets l'histoire dans l'ordre",
+    "difficulty": "Difficulté",
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Difficile",
+    "pairsFound": "{found} sur {total} paires trouvées",
+    "tapInstruction": "Touche le {item}",
+    "findInstruction": "Trouve {count} {item}",
+    "whichDoesntBelong": "Lequel n'appartient pas au groupe ?",
+    "placed": "{count} placés"
+  },
+  "puzzles": {
+    "title": "Casse-têtes",
+    "tier1": "Premiers apprentissages",
+    "tier2": "Esprits en croissance",
+    "tier3": "Prêts à apprendre",
+    "shapeSorter": "Tri de formes",
+    "jigsaw": "Casse-tête",
+    "colorMatch": "Associe les couleurs",
+    "sizeOrder": "Ordre de taille",
+    "peekaboo": "Coucou",
+    "pattern": "Motif",
+    "counting": "Comptage",
+    "letterTrace": "Tracé de lettres",
+    "shadowMatch": "Associe les ombres",
+    "rhyming": "Paires de rimes",
+    "wordPicture": "Mot et image",
+    "sentenceBuild": "Constructeur de phrases",
+    "storySequence": "Séquence d'histoire",
+    "beginningSound": "Sons de début",
+    "analogies": "Analogies",
+    "maze": "Labyrinthe",
+    "whatComesNext": "Qu'est-ce qui vient après ?",
+    "dragToMatch": "Glisse vers l'emplacement correspondant",
+    "tapToCount": "Touche pour compter",
+    "traceTheLetter": "Trace la lettre",
+    "completed": "Casse-tête complété !",
+    "locked": "Complète les casse-têtes du niveau {n} pour débloquer",
+    "whoIsHiding": "Qui se cache ?",
+    "matchItemsToShadows": "Associe les objets aux ombres",
+    "tapTwoToSwap": "Touche deux pièces pour les échanger",
+    "matchThePairs": "Associe les paires !",
+    "putStoryInOrder": "Mets l'histoire dans l'ordre !",
+    "greatStory": "Belle histoire !",
+    "tapWordsInOrder": "Touche les mots dans l'ordre...",
+    "howManyDoYouSee": "Combien en vois-tu ?",
+    "itWasCount": "C'était {count}",
+    "moves": "Mouvements : {count}",
+    "findWayToStar": "Trouve ton chemin jusqu'à l'étoile !",
+    "tapSmallestToBiggest": "Touche du plus petit au plus grand !",
+    "tapWordsStartWith": "Touche les mots qui commencent par \"{letter}\"",
+    "tapAllStartWith": "Touche tous les mots qui commencent par {letter}",
+    "roundOf": "Tour {current} sur {total}",
+    "englishOnly": "Ce casse-tête est disponible uniquement en anglais. Change la langue pour jouer.",
+    "rememberThese": "Retiens-les !"
+  },
+  "rewards": {
+    "stars": "{count} étoiles",
+    "streak": "{count} jours d'affilée",
+    "stickers": "Mes autocollants",
+    "greatJob": "Bravo !",
+    "amazing": "Incroyable !",
+    "keepGoing": "Continue !",
+    "letsKeepPracticing": "Continuons à pratiquer !",
+    "newSticker": "Tu as gagné un nouvel autocollant !",
+    "awesome": "Super !",
+    "locked": "Verrouillé",
+    "streakMessage": "Tu as pratiqué {count} jours d'affilée !",
+    "milestones": {
+      "firstWord": "Premier mot",
+      "tenWords": "10 mots",
+      "fiftyWords": "50 mots",
+      "hundredStars": "100 étoiles",
+      "firstRecording": "Premier enregistrement",
+      "threeDay": "3 jours d'affilée",
+      "sevenDay": "7 jours d'affilée",
+      "thirtyDay": "30 jours d'affilée",
+      "puzzleMaster": "Maître des casse-têtes",
+      "soundStar": "Étoile des sons"
+    },
+    "avatarLevels": {
+      "beginner": "Débutant",
+      "starLearner": "Apprenti étoile",
+      "superLearner": "Super apprenant",
+      "champion": "Champion",
+      "legend": "Légende"
+    }
+  },
+  "dashboard": {
+    "title": "Tableau de bord des parents",
+    "profile": "Profil",
+    "editProfile": "Modifier le profil",
+    "progress": "Progrès",
+    "activityLog": "Journal d'activité",
+    "wordAccuracy": "Précision des mots",
+    "soundProgress": "Progrès des sons",
+    "puzzleProgress": "Progrès des casse-têtes",
+    "sessionNotes": "Notes de séance",
+    "addNote": "Ajouter une note",
+    "notePlaceholder": "Qu'as-tu observé aujourd'hui ?",
+    "settings": "Paramètres",
+    "voice": "Paramètres de la voix",
+    "voiceRate": "Vitesse",
+    "voicePitch": "Tonalité",
+    "dailyGoal": "Objectif quotidien (minutes)",
+    "modules": "Modules",
+    "customVocabulary": "Vocabulaire personnalisé",
+    "exportPdf": "Exporter le rapport de progrès (PDF)",
+    "exportPdfDesc": "Télécharge un résumé à partager avec l'orthophoniste de ton enfant.",
+    "noActivity": "Pas encore d'activité. Commence à pratiquer !",
+    "wordsLearned": "Mots appris",
+    "soundsPracticed": "Sons pratiqués",
+    "puzzlesDone": "Casse-têtes complétés",
+    "totalTime": "Temps total de pratique",
+    "minutes": "min",
+    "thisWeek": "Cette semaine",
+    "thisMonth": "Ce mois",
+    "allTime": "Tout le temps"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "confirm": "Confirmer",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "done": "Terminé",
+    "edit": "Modifier",
+    "reset": "Recommencer",
+    "search": "Rechercher",
+    "noResults": "Aucun résultat trouvé",
+    "error": "Quelque chose s'est mal passé. Réessaie.",
+    "days": "jours",
+    "minutes": "minutes",
+    "seconds": "secondes"
+  },
+  "vocabulary": {
+    "happy": {
+      "word": "content",
+      "phrase": "Je suis content"
+    },
+    "sad": {
+      "word": "triste",
+      "phrase": "Je suis triste"
+    },
+    "angry": {
+      "word": "en colère",
+      "phrase": "Je suis en colère"
+    },
+    "scared": {
+      "word": "effrayé",
+      "phrase": "J'ai peur"
+    },
+    "tired": {
+      "word": "fatigué",
+      "phrase": "Je suis fatigué"
+    },
+    "hungry": {
+      "word": "affamé",
+      "phrase": "J'ai faim"
+    },
+    "thirsty": {
+      "word": "assoiffé",
+      "phrase": "J'ai soif"
+    },
+    "sick": {
+      "word": "malade",
+      "phrase": "Je suis malade"
+    },
+    "excited": {
+      "word": "excité",
+      "phrase": "Je suis excité"
+    },
+    "love": {
+      "word": "amour",
+      "phrase": "Je t'aime"
+    },
+    "hurt": {
+      "word": "blessé",
+      "phrase": "J'ai mal"
+    },
+    "cold": {
+      "word": "froid",
+      "phrase": "J'ai froid"
+    },
+    "hot": {
+      "word": "chaud",
+      "phrase": "J'ai chaud"
+    },
+    "dog": {
+      "word": "chien",
+      "phrase": "Je vois un chien"
+    },
+    "cat": {
+      "word": "chat",
+      "phrase": "Je vois un chat"
+    },
+    "bird": {
+      "word": "oiseau",
+      "phrase": "Je vois un oiseau"
+    },
+    "fish": {
+      "word": "poisson",
+      "phrase": "Je vois un poisson"
+    },
+    "apple": {
+      "word": "pomme",
+      "phrase": "Je veux une pomme"
+    },
+    "milk": {
+      "word": "lait",
+      "phrase": "Je veux du lait"
+    },
+    "water": {
+      "word": "eau",
+      "phrase": "Je veux de l'eau"
+    },
+    "ball": {
+      "word": "ballon",
+      "phrase": "Je vois un ballon"
+    },
+    "book": {
+      "word": "livre",
+      "phrase": "Je veux le livre"
+    },
+    "car": {
+      "word": "voiture",
+      "phrase": "Je veux aller en voiture"
+    },
+    "more": {
+      "word": "encore",
+      "phrase": "J'en veux encore"
+    },
+    "stop": {
+      "word": "arrête",
+      "phrase": "Arrête s'il te plaît"
+    },
+    "cow": {
+      "word": "vache",
+      "phrase": "Je vois une vache"
+    },
+    "pig": {
+      "word": "cochon",
+      "phrase": "Je vois un cochon"
+    },
+    "duck": {
+      "word": "canard",
+      "phrase": "Je vois un canard"
+    },
+    "horse": {
+      "word": "cheval",
+      "phrase": "Je vois un cheval"
+    },
+    "sheep": {
+      "word": "mouton",
+      "phrase": "Je vois un mouton"
+    },
+    "lion": {
+      "word": "lion",
+      "phrase": "Je vois un lion"
+    },
+    "frog": {
+      "word": "grenouille",
+      "phrase": "Je vois une grenouille"
+    },
+    "bear": {
+      "word": "ours",
+      "phrase": "Je vois un ours"
+    },
+    "banana": {
+      "word": "banane",
+      "phrase": "Je veux une banane"
+    },
+    "bread": {
+      "word": "pain",
+      "phrase": "Je veux du pain"
+    },
+    "cookie": {
+      "word": "biscuit",
+      "phrase": "Je veux un biscuit"
+    },
+    "rice": {
+      "word": "riz",
+      "phrase": "Je veux du riz"
+    },
+    "egg": {
+      "word": "œuf",
+      "phrase": "Je veux un œuf"
+    },
+    "juice": {
+      "word": "jus",
+      "phrase": "Je veux du jus"
+    },
+    "cheese": {
+      "word": "fromage",
+      "phrase": "Je veux du fromage"
+    },
+    "chicken": {
+      "word": "poulet",
+      "phrase": "Je veux du poulet"
+    },
+    "pizza": {
+      "word": "pizza",
+      "phrase": "Je veux de la pizza"
+    },
+    "eat": {
+      "word": "manger",
+      "phrase": "Je veux manger"
+    },
+    "drink": {
+      "word": "boire",
+      "phrase": "Je veux boire"
+    },
+    "play": {
+      "word": "jouer",
+      "phrase": "Je veux jouer"
+    },
+    "go": {
+      "word": "aller",
+      "phrase": "Je veux y aller"
+    },
+    "help": {
+      "word": "aide",
+      "phrase": "J'ai besoin d'aide"
+    },
+    "sleep": {
+      "word": "dormir",
+      "phrase": "Je veux dormir"
+    },
+    "read": {
+      "word": "lire",
+      "phrase": "Je veux lire"
+    },
+    "wash": {
+      "word": "laver",
+      "phrase": "Je dois me laver"
+    },
+    "sit": {
+      "word": "asseoir",
+      "phrase": "Assieds-toi s'il te plaît"
+    },
+    "run": {
+      "word": "courir",
+      "phrase": "Je veux courir"
+    },
+    "hug": {
+      "word": "câlin",
+      "phrase": "Je veux un câlin"
+    },
+    "mama": {
+      "word": "maman",
+      "phrase": "Je veux maman"
+    },
+    "papa": {
+      "word": "papa",
+      "phrase": "Je veux papa"
+    },
+    "baby": {
+      "word": "bébé",
+      "phrase": "C'est un bébé"
+    },
+    "sister": {
+      "word": "sœur",
+      "phrase": "C'est ma sœur"
+    },
+    "brother": {
+      "word": "frère",
+      "phrase": "C'est mon frère"
+    },
+    "grandma": {
+      "word": "mamie",
+      "phrase": "Je veux mamie"
+    },
+    "grandpa": {
+      "word": "papi",
+      "phrase": "Je veux papi"
+    },
+    "teacher": {
+      "word": "enseignant",
+      "phrase": "C'est mon enseignant"
+    },
+    "friend": {
+      "word": "ami",
+      "phrase": "C'est mon ami"
+    },
+    "doctor": {
+      "word": "docteur",
+      "phrase": "Je vois le docteur"
+    },
+    "home": {
+      "word": "maison",
+      "phrase": "Je veux rentrer à la maison"
+    },
+    "school": {
+      "word": "école",
+      "phrase": "Je suis à l'école"
+    },
+    "park": {
+      "word": "parc",
+      "phrase": "Je veux aller au parc"
+    },
+    "store": {
+      "word": "magasin",
+      "phrase": "On est au magasin"
+    },
+    "outside": {
+      "word": "dehors",
+      "phrase": "Je veux aller dehors"
+    },
+    "bathroom": {
+      "word": "salle de bain",
+      "phrase": "J'ai besoin de la salle de bain"
+    },
+    "bed": {
+      "word": "lit",
+      "phrase": "Je veux aller au lit"
+    },
+    "kitchen": {
+      "word": "cuisine",
+      "phrase": "Je suis dans la cuisine"
+    },
+    "yard": {
+      "word": "jardin",
+      "phrase": "Je veux jouer dans le jardin"
+    },
+    "mouth": {
+      "word": "bouche",
+      "phrase": "Ma bouche me fait mal"
+    },
+    "nose": {
+      "word": "nez",
+      "phrase": "Mon nez coule"
+    },
+    "eyes": {
+      "word": "yeux",
+      "phrase": "Mes yeux me font mal"
+    },
+    "ears": {
+      "word": "oreilles",
+      "phrase": "Mes oreilles me font mal"
+    },
+    "hands": {
+      "word": "mains",
+      "phrase": "Mes mains sont sales"
+    },
+    "feet": {
+      "word": "pieds",
+      "phrase": "Mes pieds me font mal"
+    },
+    "head": {
+      "word": "tête",
+      "phrase": "Ma tête me fait mal"
+    },
+    "tummy": {
+      "word": "ventre",
+      "phrase": "Mon ventre me fait mal"
+    },
+    "shirt": {
+      "word": "chemise",
+      "phrase": "Je veux ma chemise"
+    },
+    "pants": {
+      "word": "pantalon",
+      "phrase": "Je veux mon pantalon"
+    },
+    "shoes": {
+      "word": "chaussures",
+      "phrase": "Je veux mes chaussures"
+    },
+    "hat": {
+      "word": "chapeau",
+      "phrase": "Je veux mon chapeau"
+    },
+    "socks": {
+      "word": "chaussettes",
+      "phrase": "Je veux mes chaussettes"
+    },
+    "jacket": {
+      "word": "veste",
+      "phrase": "Je veux ma veste"
+    },
+    "red": {
+      "word": "rouge",
+      "phrase": "Je vois du rouge"
+    },
+    "blue": {
+      "word": "bleu",
+      "phrase": "Je vois du bleu"
+    },
+    "green": {
+      "word": "vert",
+      "phrase": "Je vois du vert"
+    },
+    "yellow": {
+      "word": "jaune",
+      "phrase": "Je vois du jaune"
+    },
+    "orange": {
+      "word": "orange",
+      "phrase": "Je vois de l'orange"
+    },
+    "purple": {
+      "word": "violet",
+      "phrase": "Je vois du violet"
+    },
+    "white": {
+      "word": "blanc",
+      "phrase": "Je vois du blanc"
+    },
+    "black": {
+      "word": "noir",
+      "phrase": "Je vois du noir"
+    },
+    "wakeUp": {
+      "word": "se réveiller",
+      "phrase": "C'est l'heure de se réveiller"
+    },
+    "brushTeeth": {
+      "word": "brosser les dents",
+      "phrase": "C'est l'heure de se brosser les dents"
+    },
+    "eatBreakfast": {
+      "word": "petit-déjeuner",
+      "phrase": "C'est l'heure du petit-déjeuner"
+    },
+    "getDressed": {
+      "word": "s'habiller",
+      "phrase": "C'est l'heure de s'habiller"
+    },
+    "goToSchool": {
+      "word": "aller à l'école",
+      "phrase": "C'est l'heure d'aller à l'école"
+    },
+    "bathTime": {
+      "word": "l'heure du bain",
+      "phrase": "C'est l'heure du bain"
+    },
+    "bedtime": {
+      "word": "l'heure du coucher",
+      "phrase": "C'est l'heure de dormir"
+    },
+    "orangeFruit": {
+      "word": "orange",
+      "phrase": "Je veux une orange"
+    },
+    "grapes": {
+      "word": "raisins",
+      "phrase": "Je veux des raisins"
+    },
+    "strawberry": {
+      "word": "fraise",
+      "phrase": "Je veux une fraise"
+    },
+    "carrot": {
+      "word": "carotte",
+      "phrase": "Je vois une carotte"
+    },
+    "tomato": {
+      "word": "tomate",
+      "phrase": "Je vois une tomate"
+    },
+    "potato": {
+      "word": "pomme de terre",
+      "phrase": "Je veux une pomme de terre"
+    },
+    "corn": {
+      "word": "maïs",
+      "phrase": "Je veux du maïs"
+    },
+    "peas": {
+      "word": "petits pois",
+      "phrase": "Je veux des petits pois"
+    },
+    "watermelon": {
+      "word": "pastèque",
+      "phrase": "Je veux de la pastèque"
+    },
+    "mango": {
+      "word": "mangue",
+      "phrase": "Je veux une mangue"
+    },
+    "pear": {
+      "word": "poire",
+      "phrase": "Je veux une poire"
+    },
+    "broccoli": {
+      "word": "brocoli",
+      "phrase": "Je vois du brocoli"
+    },
+    "onion": {
+      "word": "oignon",
+      "phrase": "Je vois un oignon"
+    },
+    "soup": {
+      "word": "soupe",
+      "phrase": "Je veux de la soupe"
+    },
+    "cake": {
+      "word": "gâteau",
+      "phrase": "Je veux du gâteau"
+    },
+    "pasta": {
+      "word": "pâtes",
+      "phrase": "Je veux des pâtes"
+    },
+    "sandwich": {
+      "word": "sandwich",
+      "phrase": "Je veux un sandwich"
+    },
+    "cereal": {
+      "word": "céréales",
+      "phrase": "Je veux des céréales"
+    },
+    "butter": {
+      "word": "beurre",
+      "phrase": "Je veux du beurre"
+    },
+    "jam": {
+      "word": "confiture",
+      "phrase": "Je veux de la confiture"
+    },
+    "yogurt": {
+      "word": "yaourt",
+      "phrase": "Je veux du yaourt"
+    },
+    "pancake": {
+      "word": "crêpe",
+      "phrase": "Je veux une crêpe"
+    },
+    "noodles": {
+      "word": "nouilles",
+      "phrase": "Je veux des nouilles"
+    },
+    "hamburger": {
+      "word": "hamburger",
+      "phrase": "Je veux un hamburger"
+    },
+    "salad": {
+      "word": "salade",
+      "phrase": "Je veux de la salade"
+    },
+    "toast": {
+      "word": "tartine",
+      "phrase": "Je veux une tartine"
+    },
+    "elephant": {
+      "word": "éléphant",
+      "phrase": "Je vois un éléphant"
+    },
+    "monkey": {
+      "word": "singe",
+      "phrase": "Je vois un singe"
+    },
+    "rabbit": {
+      "word": "lapin",
+      "phrase": "Je vois un lapin"
+    },
+    "turtle": {
+      "word": "tortue",
+      "phrase": "Je vois une tortue"
+    },
+    "snake": {
+      "word": "serpent",
+      "phrase": "Je vois un serpent"
+    },
+    "butterfly": {
+      "word": "papillon",
+      "phrase": "Je vois un papillon"
+    },
+    "bee": {
+      "word": "abeille",
+      "phrase": "Je vois une abeille"
+    },
+    "penguin": {
+      "word": "pingouin",
+      "phrase": "Je vois un pingouin"
+    },
+    "bus": {
+      "word": "bus",
+      "phrase": "Je vois un bus"
+    },
+    "truck": {
+      "word": "camion",
+      "phrase": "Je vois un camion"
+    },
+    "train": {
+      "word": "train",
+      "phrase": "Je vois un train"
+    },
+    "airplane": {
+      "word": "avion",
+      "phrase": "Je vois un avion"
+    },
+    "bike": {
+      "word": "vélo",
+      "phrase": "Je veux faire du vélo"
+    },
+    "boat": {
+      "word": "bateau",
+      "phrase": "Je vois un bateau"
+    },
+    "helicopter": {
+      "word": "hélicoptère",
+      "phrase": "Je vois un hélicoptère"
+    },
+    "motorcycle": {
+      "word": "moto",
+      "phrase": "Je vois une moto"
+    },
+    "scooter": {
+      "word": "trottinette",
+      "phrase": "Je veux faire de la trottinette"
+    },
+    "pink": {
+      "word": "rose",
+      "phrase": "Je vois du rose"
+    },
+    "brown": {
+      "word": "marron",
+      "phrase": "Je vois du marron"
+    },
+    "circle": {
+      "word": "cercle",
+      "phrase": "Je vois un cercle"
+    },
+    "square": {
+      "word": "carré",
+      "phrase": "Je vois un carré"
+    },
+    "triangle": {
+      "word": "triangle",
+      "phrase": "Je vois un triangle"
+    },
+    "star": {
+      "word": "étoile",
+      "phrase": "Je vois une étoile"
+    },
+    "dress": {
+      "word": "robe",
+      "phrase": "Je veux ma robe"
+    },
+    "shorts": {
+      "word": "short",
+      "phrase": "Je veux mon short"
+    },
+    "boots": {
+      "word": "bottes",
+      "phrase": "Je veux mes bottes"
+    },
+    "gloves": {
+      "word": "gants",
+      "phrase": "Je veux mes gants"
+    },
+    "chair": {
+      "word": "chaise",
+      "phrase": "Je veux m'asseoir sur la chaise"
+    },
+    "table": {
+      "word": "table",
+      "phrase": "C'est sur la table"
+    },
+    "sofa": {
+      "word": "canapé",
+      "phrase": "Je veux m'asseoir sur le canapé"
+    },
+    "lamp": {
+      "word": "lampe",
+      "phrase": "Allume la lampe"
+    },
+    "shelf": {
+      "word": "étagère",
+      "phrase": "C'est sur l'étagère"
+    },
+    "desk": {
+      "word": "bureau",
+      "phrase": "C'est sur mon bureau"
+    },
+    "mirror": {
+      "word": "miroir",
+      "phrase": "Je vois le miroir"
+    },
+    "rug": {
+      "word": "tapis",
+      "phrase": "Je suis sur le tapis"
+    },
+    "door": {
+      "word": "porte",
+      "phrase": "Ouvre la porte"
+    },
+    "plate": {
+      "word": "assiette",
+      "phrase": "J'ai besoin d'une assiette"
+    },
+    "cup": {
+      "word": "tasse",
+      "phrase": "J'ai besoin d'une tasse"
+    },
+    "spoon": {
+      "word": "cuillère",
+      "phrase": "J'ai besoin d'une cuillère"
+    },
+    "fork": {
+      "word": "fourchette",
+      "phrase": "J'ai besoin d'une fourchette"
+    },
+    "knife": {
+      "word": "couteau",
+      "phrase": "J'ai besoin d'un couteau"
+    },
+    "bowl": {
+      "word": "bol",
+      "phrase": "J'ai besoin d'un bol"
+    },
+    "pot": {
+      "word": "casserole",
+      "phrase": "Je vois une casserole"
+    },
+    "stove": {
+      "word": "cuisinière",
+      "phrase": "La cuisinière est chaude"
+    },
+    "fridge": {
+      "word": "réfrigérateur",
+      "phrase": "Ouvre le réfrigérateur"
+    },
+    "sink": {
+      "word": "évier",
+      "phrase": "Je vois l'évier"
+    },
+    "toothbrush": {
+      "word": "brosse à dents",
+      "phrase": "J'ai besoin de ma brosse à dents"
+    },
+    "soap": {
+      "word": "savon",
+      "phrase": "J'ai besoin de savon"
+    },
+    "towel": {
+      "word": "serviette",
+      "phrase": "J'ai besoin d'une serviette"
+    },
+    "shampoo": {
+      "word": "shampooing",
+      "phrase": "J'ai besoin de shampooing"
+    },
+    "comb": {
+      "word": "peigne",
+      "phrase": "J'ai besoin d'un peigne"
+    },
+    "tissue": {
+      "word": "mouchoir",
+      "phrase": "J'ai besoin d'un mouchoir"
+    },
+    "bath": {
+      "word": "bain",
+      "phrase": "Je veux prendre un bain"
+    },
+    "washHands": {
+      "word": "laver les mains",
+      "phrase": "Je dois me laver les mains"
+    },
+    "clean": {
+      "word": "propre",
+      "phrase": "Je veux être propre"
+    },
+    "dry": {
+      "word": "sec",
+      "phrase": "Je dois me sécher"
+    },
+    "pencil": {
+      "word": "crayon",
+      "phrase": "J'ai besoin d'un crayon"
+    },
+    "crayon": {
+      "word": "crayon de couleur",
+      "phrase": "Je veux un crayon de couleur"
+    },
+    "paper": {
+      "word": "papier",
+      "phrase": "J'ai besoin de papier"
+    },
+    "backpack": {
+      "word": "sac à dos",
+      "phrase": "Je veux mon sac à dos"
+    },
+    "scissors": {
+      "word": "ciseaux",
+      "phrase": "J'ai besoin de ciseaux"
+    },
+    "glue": {
+      "word": "colle",
+      "phrase": "J'ai besoin de colle"
+    },
+    "ruler": {
+      "word": "règle",
+      "phrase": "J'ai besoin d'une règle"
+    },
+    "eraser": {
+      "word": "gomme",
+      "phrase": "J'ai besoin d'une gomme"
+    },
+    "dance": {
+      "word": "danser",
+      "phrase": "Je veux danser"
+    },
+    "sing": {
+      "word": "chanter",
+      "phrase": "Je veux chanter"
+    },
+    "jump": {
+      "word": "sauter",
+      "phrase": "Je veux sauter"
+    },
+    "swim": {
+      "word": "nager",
+      "phrase": "Je veux nager"
+    },
+    "climb": {
+      "word": "grimper",
+      "phrase": "Je veux grimper"
+    },
+    "throw": {
+      "word": "lancer",
+      "phrase": "Je veux lancer"
+    },
+    "catch": {
+      "word": "attraper",
+      "phrase": "Je veux attraper"
+    },
+    "draw": {
+      "word": "dessiner",
+      "phrase": "Je veux dessiner"
+    },
+    "big": {
+      "word": "grand",
+      "phrase": "C'est grand"
+    },
+    "small": {
+      "word": "petit",
+      "phrase": "C'est petit"
+    },
+    "fast": {
+      "word": "rapide",
+      "phrase": "C'est rapide"
+    },
+    "slow": {
+      "word": "lent",
+      "phrase": "C'est lent"
+    },
+    "up": {
+      "word": "en haut",
+      "phrase": "Je veux monter"
+    },
+    "down": {
+      "word": "en bas",
+      "phrase": "Je veux descendre"
+    },
+    "allDone": {
+      "word": "fini",
+      "phrase": "J'ai fini"
+    },
+    "new": {
+      "word": "nouveau",
+      "phrase": "C'est nouveau"
+    },
+    "old": {
+      "word": "vieux",
+      "phrase": "C'est vieux"
+    },
+    "soft": {
+      "word": "doux",
+      "phrase": "C'est doux"
+    },
+    "queen": {
+      "word": "reine",
+      "phrase": "Je vois une reine"
+    },
+    "umbrella": {
+      "word": "parapluie",
+      "phrase": "J'ai un parapluie"
+    },
+    "van": {
+      "word": "fourgon",
+      "phrase": "Je vois un fourgon"
+    },
+    "iceCream": {
+      "word": "glace",
+      "phrase": "Je veux une glace"
+    },
+    "kite": {
+      "word": "cerf-volant",
+      "phrase": "Je vois un cerf-volant"
+    },
+    "xylophone": {
+      "word": "xylophone",
+      "phrase": "J'entends un xylophone"
+    },
+    "zebra": {
+      "word": "zèbre",
+      "phrase": "Je vois un zèbre"
+    }
+  }
+}

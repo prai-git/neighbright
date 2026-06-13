@@ -66,14 +66,14 @@ export default function StorySequence({ onComplete, onBack }) {
   const isComplete = round >= TOTAL_ROUNDS;
 
   useEffect(() => {
-    speak('Put the story in order!');
+    speak(t('puzzles.putStoryInOrder'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [round]);
 
   useEffect(() => {
     if (placed.length === roundData.story.cards.length && placed.length > 0) {
       setCorrect((prev) => prev + 1);
-      speak('Great story!');
+      speak(t('puzzles.greatStory'));
       setTimeout(() => {
         const newUsed = [...usedStories, roundData.story.id];
         setUsedStories(newUsed);

@@ -59,7 +59,7 @@ export default function RhymingPairs({ onComplete, onBack }) {
           {t('puzzles.rhyming')}
         </p>
         <p className="text-sm text-text-secondary text-center max-w-xs">
-          This puzzle is only available in English. Please switch to English to play.
+          {t('puzzles.englishOnly')}
         </p>
         <button
           onClick={onBack}
@@ -115,7 +115,7 @@ export default function RhymingPairs({ onComplete, onBack }) {
     >
       <div className="flex flex-col gap-5 items-center">
         <p className="text-sm font-display font-bold text-text-secondary">
-          {t('puzzles.rhyming')} — Match the pairs!
+          {t('puzzles.rhyming')} — {t('puzzles.matchThePairs')}
         </p>
 
         <div className="grid grid-cols-3 gap-3 max-w-sm">

@@ -16,10 +16,6 @@ if (!OPENAI_API_KEY) {
 }
 
 const LANGUAGES = {
-  hi: {
-    name: 'Hindi',
-    systemPrompt: `You are an expert translator specializing in pediatric speech therapy terminology. Translate the following JSON values from English to Hindi. For vocabulary words, provide both the Devanagari script and a natural Hindi phrasing. Keep JSON keys exactly the same. Keep {placeholder} variables unchanged. UI strings should be concise and natural in Hindi. Return ONLY valid JSON — no markdown, no explanation.`,
-  },
   fr: {
     name: 'French',
     systemPrompt: `You are an expert translator specializing in pediatric speech therapy terminology. Translate the following JSON values from English to French. Keep JSON keys exactly the same. Keep {placeholder} variables unchanged. UI strings should be concise and natural in French, using the informal "tu" form appropriate for family contexts. Return ONLY valid JSON — no markdown, no explanation.`,

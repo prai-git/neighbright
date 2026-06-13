@@ -123,12 +123,13 @@ export default function Peekaboo({ onComplete, onBack }) {
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col gap-3 items-center"
           >
-            <p className="text-sm font-display font-bold text-white">Who is hiding?</p>
+            <p className="text-sm font-display font-bold text-white">{t('puzzles.whoIsHiding')}</p>
             <div className="flex gap-3">
               {items.map((emoji, idx) => (
                 <motion.button
                   key={idx}
                   onClick={() => handleGuess(emoji)}
+                  aria-label={`Select ${emoji}`}
                   className="w-16 h-16 rounded-xl bg-surface border-2 border-border flex items-center justify-center text-3xl cursor-pointer hover:bg-white/10 transition-all shadow-[0_4px_0_rgba(0,0,0,0.2)] active:shadow-[0_1px_0_rgba(0,0,0,0.2)] active:translate-y-[2px]"
                   whileTap={{ scale: 0.95 }}
                 >
