@@ -17,6 +17,7 @@ export function useSpeech() {
   const [voiceUnavailable, setVoiceUnavailable] = useState(false);
   const rateRef = useRef(0.9);
   const pitchRef = useRef(1);
+  const speakTimeoutRef = useRef(null);
 
   // Load voices (async on some browsers)
   useEffect(() => {
@@ -53,17 +54,21 @@ export function useSpeech() {
     if (!window.speechSynthesis || !text) return;
     window.speechSynthesis.cancel();
 
-    const utt = new SpeechSynthesisUtterance(text);
-    utt.lang = `${LANG_MAP[language] || language}-`;
-    if (selectedVoice) utt.voice = selectedVoice;
-    utt.rate = rateOverride !== undefined ? rateOverride : rateRef.current;
-    utt.pitch = pitchRef.current;
+    // Debounce to prevent double-fire from React StrictMode remounting
+    clearTimeout(speakTimeoutRef.current);
+    speakTimeoutRef.current = setTimeout(() => {
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.lang = `${LANG_MAP[language] || language}-`;
+      if (selectedVoice) utt.voice = selectedVoice;
+      utt.rate = rateOverride !== undefined ? rateOverride : rateRef.current;
+      utt.pitch = pitchRef.current;
 
-    utt.onstart = () => setSpeaking(true);
-    utt.onend = () => setSpeaking(false);
-    utt.onerror = () => setSpeaking(false);
+      utt.onstart = () => setSpeaking(true);
+      utt.onend = () => setSpeaking(false);
+      utt.onerror = () => setSpeaking(false);
 
-    window.speechSynthesis.speak(utt);
+      window.speechSynthesis.speak(utt);
+    }, 50);
   }, [language, selectedVoice]);
 
   const stop = useCallback(() => {

@@ -1048,3 +1048,41 @@ Comprehensive quality assurance pass covering French translations, accessibility
 - CSP meta tag may show console warnings in Vite dev server (inline HMR scripts blocked) — this only affects development, not production builds
 - French translations generated manually rather than via OpenAI translate script (no API key available) — translations are accurate but should be spot-checked by a native speaker
 - `sounds.correct` key reused for puzzle correct feedback speech to avoid duplication
+
+---
+
+## Module 15 — Verification & Testing (Layout Consistency Fix)
+**Date:** 2026-06-13
+**Status:** ✅ Complete
+
+### Changes
+- Rewrote `src/pages/Numbers.jsx` to match `src/pages/Alphabets.jsx` layout pattern:
+  - Replaced grid-cols-2 centered pill-button card layout with grid-cols-1 md:grid-cols-2 bar-style card layout
+  - Cards now use side-by-side icon + text with full-width Play button bar (matching Alphabets)
+  - Replaced 4 separate conditional view blocks with single `ModeComponent` dynamic rendering
+  - Added `useCallback` for `handleBack`
+- Increased icon and text sizes in Numbers and Alphabets mode cards to match Puzzles page:
+  - Icon: `text-2xl` → `text-3xl`, icon box: `w-12 h-12` → `w-14 h-14`
+  - Mode name: `text-sm` → `text-base`
+  - Mode description: `text-xs` → `text-sm`
+- Replaced hardcoded English strings with i18n t() calls:
+  - `CountMode.jsx`: "Round X / Y" → `t('numbers.round', ...)`
+  - `MatchMode.jsx`: "Round X / Y", "X / Y matched", "Digits", "Count" → t() calls
+  - `NumberQuizMode.jsx`: "Round X / Y" → `t('numbers.round', ...)`
+  - `LearnNumbersMode.jsx`: "Tap to hear" → `t('common.tapToHear')`
+- Added 6 new i18n keys to `en.json` and `fr.json`:
+  - `numbers.round`, `numbers.matched`, `numbers.digits`, `numbers.count`
+  - `common.tapToHear`, `common.items`
+
+### Files Modified
+- `src/pages/Numbers.jsx` — full layout rewrite
+- `src/pages/Alphabets.jsx` — increased icon/text sizes
+- `src/components/numbers/CountMode.jsx` — i18n for round indicator
+- `src/components/numbers/MatchMode.jsx` — i18n for round, matched, column headers
+- `src/components/numbers/NumberQuizMode.jsx` — i18n for round indicator
+- `src/components/numbers/LearnNumbersMode.jsx` — i18n for tap-to-hear
+- `src/data/i18n/en.json` — 6 new keys
+- `src/data/i18n/fr.json` — 6 new keys
+
+### Deviations
+- None

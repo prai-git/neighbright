@@ -237,6 +237,10 @@
     "letsCountTogether": "Let's count together!",
     "correct": "That's right!",
     "tryAgain": "Try again!",
+    "round": "Round {current} / {total}",
+    "matched": "{current} / {total} matched",
+    "digits": "Digits",
+    "count": "Count",
     "word0": "zero", "word1": "one", "word2": "two", "word3": "three",
     "word4": "four", "word5": "five", "word6": "six", "word7": "seven",
     "word8": "eight", "word9": "nine", "word10": "ten",
@@ -397,7 +401,9 @@
     "error": "Something went wrong. Please try again.",
     "days": "days",
     "minutes": "minutes",
-    "seconds": "seconds"
+    "seconds": "seconds",
+    "tapToHear": "Tap to hear",
+    "items": "{count} items"
   },
   "vocabulary": {
     "happy": {

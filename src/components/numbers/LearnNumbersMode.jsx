@@ -80,7 +80,7 @@ function QuantityGrid({ count }) {
           <motion.span key={i} initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: i * 0.04 }} className="text-lg text-center">{emoji}</motion.span>
         ))}
       </div>
-      <span className="text-xs font-display font-bold text-text-secondary mt-1">{count} items</span>
+      <span className="text-xs font-display font-bold text-text-secondary mt-1">{count}</span>
     </div>
   );
 }
@@ -192,7 +192,7 @@ export default function LearnNumbersMode({ onBack }) {
 
           {/* Tap to hear hint */}
           <span className="text-xs text-text-secondary font-display">
-            🔊 Tap to hear
+            🔊 {t('common.tapToHear')}
           </span>
         </motion.button>
       </AnimatePresence>

@@ -84,5 +84,5 @@ export default function GameWrapper({
     );
   }
 
-  return <div className="max-w-2xl mx-auto w-full">{children}</div>;
+  return <div className="w-full">{children}</div>;
 }

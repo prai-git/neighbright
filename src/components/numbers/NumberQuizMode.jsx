@@ -363,7 +363,7 @@ export default function NumberQuizMode({ onBack }) {
         {/* Round indicator */}
         <div className="flex items-center justify-between w-full">
           <span className="text-sm font-display font-bold text-text-secondary">
-            Round {round + 1} / {TOTAL_ROUNDS}
+            {t('numbers.round', { current: round + 1, total: TOTAL_ROUNDS })}
           </span>
           <span className="text-sm font-display font-bold text-primary">
             ⭐ {correct}

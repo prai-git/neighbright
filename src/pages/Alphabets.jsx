@@ -71,16 +71,16 @@ export default function Alphabets() {
                 >
                   <div className="flex items-start gap-3">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0"
+                      className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl shrink-0"
                       style={{ backgroundColor: mode.color + '25' }}
                     >
                       {mode.emoji}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-display font-extrabold text-white text-sm">
+                      <p className="font-display font-extrabold text-white text-base">
                         {t(mode.nameKey)}
                       </p>
-                      <p className="text-xs text-text-secondary mt-0.5">
+                      <p className="text-sm text-text-secondary mt-0.5">
                         {t(mode.descKey)}
                       </p>
                     </div>
@@ -102,6 +102,7 @@ export default function Alphabets() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
+              className="w-full"
             >
               {ModeComponent && <ModeComponent onBack={() => setView(VIEW.MENU)} />}
             </motion.div>

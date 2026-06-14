@@ -137,8 +137,8 @@ export default function PracticeView({ sound, speak, onStarEarned }) {
             </p>
             <RecordCompare
               speak={speak}
-              modelText={levelData?.model || levelData?.syllables?.[0] || levelData?.words?.[0]?.word || levelData?.phrases?.[0] || levelData?.sentences?.[0] || sound.symbol}
-              modelRate={activeLevel <= 2 ? 0.6 : 0.8}
+              modelText={activeLevel === 1 ? (levelData?.model || sound.symbol).replace(/(.)\1+/g, '$1') : (levelData?.model || levelData?.syllables?.[0] || levelData?.words?.[0]?.word || levelData?.phrases?.[0] || levelData?.sentences?.[0] || sound.symbol)}
+              modelRate={activeLevel === 1 ? 0.3 : activeLevel === 2 ? 0.6 : 0.8}
             />
           </div>
         </motion.div>
@@ -164,13 +164,17 @@ export default function PracticeView({ sound, speak, onStarEarned }) {
 /* ── Sub-views ── */
 
 function LevelIsolation({ levelData, onSpeak, t }) {
+  // Deduplicate repeated chars so TTS says the phoneme once, not letter-by-letter
+  // e.g. 'nnn' → 'n', 'sss' → 's', 'shh' → 'sh'
+  const spokenPhoneme = levelData.model.replace(/(.)\1+/g, '$1');
+
   return (
     <div className="flex flex-col items-center gap-4 py-4">
       <p className="text-xl font-display font-extrabold text-white text-center">
         {levelData.prompt}
       </p>
       <button
-        onClick={() => onSpeak(levelData.model, 0.5)}
+        onClick={() => onSpeak(spokenPhoneme, 0.3)}
         className="flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-2xl font-display font-extrabold shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:brightness-110 transition cursor-pointer text-base uppercase tracking-wide active:translate-y-[2px] active:shadow-[0_1px_0_rgba(0,0,0,0.2)]"
       >
         🔊 {t('sounds.tapToHear')}

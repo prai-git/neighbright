@@ -138,10 +138,10 @@ export default function MatchMode({ onBack }) {
         {/* Round indicator */}
         <div className="flex items-center justify-between w-full">
           <span className="text-sm font-display font-bold text-text-secondary">
-            Round {round + 1} / {TOTAL_ROUNDS}
+            {t('numbers.round', { current: round + 1, total: TOTAL_ROUNDS })}
           </span>
           <span className="text-sm font-display font-bold text-primary">
-            {matchedValues.length} / {pairCount} matched
+            {t('numbers.matched', { current: matchedValues.length, total: pairCount })}
           </span>
         </div>
 
@@ -150,7 +150,7 @@ export default function MatchMode({ onBack }) {
           {/* Digit column */}
           <div className="flex flex-col gap-3">
             <p className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-wider text-center mb-1">
-              Digits
+              {t('numbers.digits')}
             </p>
             {digitOrder.map((value) => {
               const isMatched = matchedValues.includes(value);
@@ -182,7 +182,7 @@ export default function MatchMode({ onBack }) {
           {/* Quantity column */}
           <div className="flex flex-col gap-3">
             <p className="text-xs font-display font-extrabold text-text-secondary uppercase tracking-wider text-center mb-1">
-              Count
+              {t('numbers.count')}
             </p>
             {quantityOrder.map((value) => {
               const isMatched = matchedValues.includes(value);
